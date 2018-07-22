@@ -17,6 +17,6 @@ namespace WhatsOnTap.Models
         public string BarAddress { get; set; }
         public string BarPhone { get; set; }
         public double BarLatitude { get; set; }
-        public double BarLongitute { get; set; }
+        public double BarLongitude { get; set; }
     }
 }
