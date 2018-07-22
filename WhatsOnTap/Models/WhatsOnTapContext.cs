@@ -9,6 +9,8 @@ namespace WhatsOnTap.Models
     public class WhatsOnTap : DbContext
     {
         public DbSet<Bar> Bars { get; set; }
+        public DbSet<Beer> Beers { get; set; }
+        public DbSet<Taplist> Taplists { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
