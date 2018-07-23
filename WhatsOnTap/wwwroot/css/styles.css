@@ -1,0 +1,11 @@
+img {
+    max-width: 100%;
+}
+
+.card-category {
+    font-weight: bold;
+}
+
+.card {
+    max-width: 400px;
+}
