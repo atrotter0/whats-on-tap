@@ -10,10 +10,14 @@ namespace WhatsOnTap.Models
     public class Beer
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int BeerId { get; set; }
         public string BeerName { get; set; }
+        public string BeerBreweryName { get; set; }
         public string BeerStyle { get; set; }
         public double BeerAbv { get; set; }
         public int BeerIbu { get; set; }
+
+        public virtual ICollection<Bar> Bars { get; set; }
     }
 }
