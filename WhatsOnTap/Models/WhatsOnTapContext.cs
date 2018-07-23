@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WhatsOnTap.Models
 {
-    public class WhatsOnTap : DbContext
+    public class WhatsOnTapContext : DbContext
     {
         public DbSet<Bar> Bars { get; set; }
         public DbSet<Beer> Beers { get; set; }
