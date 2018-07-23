@@ -7,9 +7,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WhatsOnTap.Controllers
 {
-    public class HomeController : Controller
+    public class BarsController : Controller
     {
-        [HttpGet("/")]
+        [HttpGet("/bars")]
         public ActionResult Index()
         {
             return View();
