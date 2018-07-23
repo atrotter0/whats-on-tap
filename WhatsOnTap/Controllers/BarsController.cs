@@ -3,12 +3,13 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using WhatsOnTap.Models;
 using WhatsOnTap.ViewModels;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace WhatsOnTap.Controllers
 {
     public class BarsController : Controller
     {
-
         WhatsOnTapContext db = new WhatsOnTapContext();
 
         [HttpGet("/bars")]
