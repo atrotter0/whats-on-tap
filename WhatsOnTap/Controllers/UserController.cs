@@ -19,11 +19,18 @@ namespace WhatsOnTap.Controllers
             _db = db;
         }
 
+        [HttpGet("/user")]
         public IActionResult Index()
         {
             return View();
         }
 
-        
+        [HttpPost("/user/{id}/favorites")]
+        public IActionResult AddFavorite(int id, int beerId)
+        {
+            //add logic here
+            return View();
+        }
+
     }
 }
