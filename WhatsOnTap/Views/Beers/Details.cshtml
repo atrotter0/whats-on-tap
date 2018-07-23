@@ -1,0 +1,27 @@
+@{
+  Layout = "_Layout";
+}
+
+<div class='container'>
+  <h1>Sample detail page for a Beer</h1>
+
+  <div class="beersGrid">
+    <div>Beer</div>
+    <div>Brewery</div>
+    <div>Style</div>
+    <div>ABV</div>
+    <div>IBU</div>
+
+    @foreach (beer in Model)
+    {
+      <div>beer.Name</div>
+      <div>beer.BeerBreweryName</div>
+      <div>beer.BeerStyle</div>
+      <div>beer.BeerAbv</div>
+      <div>beer.BeerIbu</div>
+    }
+
+
+  </div>
+
+</div>
