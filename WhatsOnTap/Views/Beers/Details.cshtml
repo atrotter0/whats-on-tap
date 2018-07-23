@@ -1,4 +1,4 @@
-@model IEnumerable<WhatsOnTap.Models.Beer>
+@model WhatsOnTap.Models.Beer
 
 @{
   Layout = "_Layout";
@@ -14,14 +14,12 @@
     <div>ABV</div>
     <div>IBU</div>
 
-    @foreach (var beer in Model)
-    {
-      <div>@beer.BeerName</div>
-      <div>@beer.BeerBreweryName</div>
-      <div>@beer.BeerStyle</div>
-      <div>@beer.BeerAbv</div>
-      <div>@beer.BeerIbu</div>
-    }
+    <div>@Model.BeerName</div>
+    <div>@Model.BeerBreweryName</div>
+    <div>@Model.BeerStyle</div>
+    <div>@Model.BeerAbv</div>
+    <div>@Model.BeerIbu</div>
+
 
 
   </div>
