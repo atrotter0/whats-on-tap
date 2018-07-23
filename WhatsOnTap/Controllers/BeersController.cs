@@ -21,8 +21,10 @@ namespace WhatsOnTap.Controllers
         public ActionResult Details(int id)
         {
             Beer beer = db.Beers.FirstOrDefault(beers => beers.BeerId == id);
-
             return View(beer);
         }
+
+
+
     }
 }
