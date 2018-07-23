@@ -10,8 +10,19 @@ namespace WhatsOnTap.Models
     public class Taplist
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int TaplistId { get; set; }
         public int BarId { get; set; }
         public int BeerId { get; set; }
+        public virtual Beer Beers { get; set; }
+        public virtual Bar Bars { get; set; }
+
+        public Taplist() {}
+
+        public Taplist(int beerId, int barId)
+        {
+            BeerId = beerId;
+            BarId = barId;
+        }
     }
 }
