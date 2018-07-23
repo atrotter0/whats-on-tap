@@ -1,8 +1,28 @@
+@model IEnumerable<WhatsOnTap.Models.Bar>
+
 @{
-  Layout = "_Layout";
+    Layout = "_Layout";
 }
 
+
+
 <div class='container'>
-  <h1>Sample Bars Index Page</h1>
-  
+    <h1>Bars</h1>
+        <div class="card-deck">
+        @foreach (var bar in Model)
+        { 
+            <div class="card">
+                <img class="card-img-top" src="~/img/bar-icon.png" alt="Card image cap">
+                <div class="card-body">
+                    <h4 class="card-title">@bar.BarName</h4>
+                    <p class="card-text"><span class="card-category">Address:</span> @bar.BarStreet, @bar.BarCity, @bar.BarState, @bar.BarZip</p>
+                    <p class="card-text"><span class="card-category">Phone Number:</span> @bar.BarPhone</p>
+                    <p class="card-text"><span class="card-category">Website:</span> <a href="@bar.BarWebsite">@bar.BarWebsite</a></p>
+                </div>
+                <div class="card-footer">
+                    <p class="card-text"><span class="card-category">Rating:</span> @bar.BarRating</p>
+                </div>
+            </div>
+        }
+        </div>
 </div>
