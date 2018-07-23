@@ -2,19 +2,17 @@
 
 @{
     Layout = "_Layout";
+    var itemCount = 1;
 }
 
 
 
 <div class='container'>
     <h1>Bars</h1>
-    @{
-        var itemCount = 0;
-    }
 
     @foreach (var bar in Model)
     {   
-        @if (itemCount == 0)
+        @if (itemCount == 1)
         {
             @Html.Raw("<div class='card-deck'>")
         }
@@ -32,10 +30,10 @@
             </div>
         </div>
 
-        @if (itemCount == 2)
+        @if (itemCount == 3)
         {
             @Html.Raw("</div>")
-            itemCount = 0;
+            itemCount = 1;
         }
         else {
             itemCount++;
