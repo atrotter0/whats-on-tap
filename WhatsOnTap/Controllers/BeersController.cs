@@ -5,7 +5,7 @@ namespace WhatsOnTap.Controllers
 {
     public class BeersController : Controller
     {
-        [HttpGet("/")]
+        [HttpGet("/beers")]
         public ActionResult Index()
         {
             return View();

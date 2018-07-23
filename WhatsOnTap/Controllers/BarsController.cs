@@ -5,7 +5,7 @@ namespace WhatsOnTap.Controllers
 {
     public class BarsController : Controller
     {
-        [HttpGet("/")]
+        [HttpGet("/bars")]
         public ActionResult Index()
         {
             return View();
