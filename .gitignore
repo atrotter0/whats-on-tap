@@ -1,3 +1,4 @@
 # ignore bin and obj files
 obj/
 bin/
+.vscode/
