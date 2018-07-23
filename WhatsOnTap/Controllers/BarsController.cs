@@ -1,6 +1,8 @@
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using WhatsOnTap.Models;
+using WhatsOnTap.ViewModels;
 
 namespace WhatsOnTap.Controllers
 {
@@ -11,5 +13,13 @@ namespace WhatsOnTap.Controllers
 
         [HttpGet("/bars")]
         public ActionResult Index() => View(db.Bars.ToList());
+
+        [HttpGet("bars/{id}")]
+        public ActionResult Details(int id)
+        {
+            BarDetailsViewModel viewModel = new BarDetailsViewModel(id);
+            viewModel.FindBarBeers(id);
+            return View(viewModel);
+        }
     }
 }
