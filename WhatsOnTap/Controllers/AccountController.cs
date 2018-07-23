@@ -19,20 +19,22 @@ namespace WhatsOnTap.Controllers
             _db = db;
         }
         
+        [HttpGet("/account")]
         public IActionResult Index()
         {
             return View();
         }
 
+        [HttpGet("/account/register")]
         public IActionResult Register()
         {
             return View();
         }
 
-        [HttpPost]
+        [HttpPost("/account/register")]
         public async Task<IActionResult> Register (RegisterViewModel model)
         {
-            var user = new ApplicationUser { UserName = model.Email };
+            var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
             IdentityResult result = await _userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
