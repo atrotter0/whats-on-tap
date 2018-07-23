@@ -1,0 +1,18 @@
+@{
+    Layout = "_Layout";
+}
+
+@using System.Security.Claims
+
+<div class="container">
+    <div class="jumbotron">
+        <h2>Welcome back, @User.Identity.Name!</h2>
+        <div class="user-actions">
+            <a href="#" class="btn btn-lg btn-outline-primary">Bars</a>
+            <a href="#" class="btn btn-lg btn-outline-primary">Beers</a>
+        </div>
+        <div>
+            <a href="#" class="btn btn-lg btn-outline-primary">Favorite Beers</a>
+        </div>
+    </div>
+</div>
