@@ -1,0 +1,26 @@
+@model IEnumerable<WhatsOnTap.Models.Beer>
+
+@{
+  Layout = "_Layout";
+}
+
+  <div class='container'>
+    <h1>Sample index page for Beers</h1>
+
+    <div class="beersGridThree">
+      <div class="cellHead">Beer Name</div>
+      <div class="cellHead">Brewery</div>
+      <div class="cellHead">Style</div>
+
+      @foreach (var beer in Model)
+      {
+        <div><a href="/beers/@beer.BeerId">@beer.BeerName</a></div>
+        <div>@beer.BeerBreweryName</div>
+        <div>@beer.BeerStyle</div>
+      }
+
+    </div>
+
+    <a href="/"><button>Back</button></a>
+
+  </div>

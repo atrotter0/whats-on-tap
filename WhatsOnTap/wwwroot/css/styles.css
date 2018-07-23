@@ -1,0 +1,40 @@
+img {
+    max-width: 100%;
+}
+
+.card-category {
+    font-weight: bold;
+}
+
+.card-deck {
+    max-width: 100%;
+    justify-content: space-evenly;
+    margin: 0px;
+    margin-bottom: 20px;
+}
+
+.card {
+    font-size: 14px;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.card-img-top
+{
+    padding: 25px;
+}
+
+.beersGridThree {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.beersGridFive {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 4px;
+}
+
+.cellHead {
+  border-bottom: 1px lightgray solid;
+}

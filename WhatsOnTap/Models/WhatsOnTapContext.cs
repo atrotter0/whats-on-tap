@@ -12,7 +12,7 @@ namespace WhatsOnTap.Models
     {
         public DbSet<Bar> Bars { get; set; }
         public DbSet<Beer> Beers { get; set; }
-        public DbSet<Taplist> Taplists { get; set; }
+        public virtual DbSet<Taplist> Taplists { get; set; }
         public virtual DbSet<UserBeer> UsersBeers { get; set; }
 
         // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
