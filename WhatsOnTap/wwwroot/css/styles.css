@@ -26,7 +26,7 @@ img {
 
 .beersGridThree {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .beersGridFive {
@@ -41,4 +41,13 @@ img {
 
 .btn-hover {
   cursor: pointer
+}
+
+.alert {
+  display: none;
+  width: 50%;
+  height: 50px;
+  max-width: 300px;
+  margin: 20px auto;
+  text-align: center;
 }

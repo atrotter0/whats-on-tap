@@ -10,11 +10,14 @@
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
-    <script src='~/js/scripts.js'></script>
+    <script src='~/js/addBeer.js'></script>
 </head>
 <body>
     @{
         await Html.RenderPartialAsync("_Nav");
+    }
+    @{
+        await Html.RenderPartialAsync("_Alert");
     }
     @RenderBody()
   </body>
