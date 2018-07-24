@@ -27,13 +27,14 @@ namespace WhatsOnTap.Controllers
         }
 
         [HttpPost("/user/beers")]
-        public async Task<IActionResult> AddBeer(int id, int beerId)
+        public async Task<IActionResult> AddBeer(int beerId)
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var currentUser = await _userManager.FindByIdAsync(userId);
-            UserBeer userBeer = new UserBeer();
+            UserBeer userBeer = new UserBeer(userId.ToString(), beerId);
             userBeer.User = currentUser;
-            return RedirectToAction("Beers");
+            _db.SaveChanges();
+            return View("Index");
         }
     }
 }

@@ -12,12 +12,16 @@ namespace WhatsOnTap.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int UserBeerId { get; set; }
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         public int BeerId { get; set; }
         public bool Favorite { get; set; }
         public string Notes { get; set; }
         public virtual ApplicationUser User { get; set; }
 
-        public UserBeer() {}
+        public UserBeer(string userId, int beerId)
+        {
+            UserId = userId;
+            BeerId = beerId;
+        }
     }
 }
