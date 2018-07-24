@@ -1,0 +1,46 @@
+@{
+  Layout = "_Layout";
+}
+
+  <div class='container'>
+    <h1>Welcome Joe Owner!</h1>
+
+    <div class="owner-bar">
+        <h2>Owner's Bar Name</h2>
+    </div>
+    
+
+    <div class="owner-beers">
+        <h1>Taplist for Owner's Bar</h1>
+           <!-- @* @foreach (var beer in Model)
+            {   
+                @if (itemCount == 1)
+                {
+                    @Html.Raw("<div class='card-deck'>")
+                }
+
+                <div class="card">
+                    <img class="card-img-top" src="~/img/beer-icon.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title"><a href="/beers/@beer.BeerId">@beer.BeerName</a></h4>
+                        <p class="card-text"><span class="card-category">Style:</span> @beer.BeerStyle</p>
+                        <p class="card-text"><span class="card-category">Phone ABV:</span> @beer.BeerAbv</p>
+                        <p class="card-text"><span class="card-category">IBU:</span>@beer.BeerIbu</p>
+                    </div>
+                    <div class="card-footer">
+                        <p class="card-text"><span class="card-category">Favorite Placeholder</span></p>
+                    </div>
+                </div>
+
+                @if (itemCount == 3)
+                {
+                    @Html.Raw("</div>")
+                    itemCount = 1;
+                }
+                else {
+                    itemCount++;
+                } 
+            }         *@ -->
+    </div>
+
+  </div>

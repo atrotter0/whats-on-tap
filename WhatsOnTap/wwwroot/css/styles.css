@@ -1,3 +1,4 @@
+/* Bars/Beers Index & Details */
 img {
   max-width: 100%;
 }
@@ -24,6 +25,8 @@ img {
   padding: 25px;
 }
 
+
+/* Beer Details Grid */
 .beersGridThree {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -39,6 +42,19 @@ img {
   border-bottom: 1px lightgray solid;
 }
 
+
+/* Buttons */
 .btn-hover {
   cursor: pointer
+}
+
+
+/* Owner's Bar Index */
+.owner-bar {
+  height: 100px;
+  margin: 0 auto;
+}
+
+.owner-beers {
+  margin: 0 auto;
 }
