@@ -1,10 +1,36 @@
 @{
     Layout = "_Layout";
     var itemCount = 1;
+    @* Edit API Key to hide from public *@
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhXVDo8Km_LaWNnYCw_WeGQoiT6XMgHvg&callback=initMap"></script>
 }
 
 <div class='container'>
-    <h1>@Model.CurrentBar.BarName</h1>
+    <h1 class="details-heading">@Model.CurrentBar.BarName</h1>
+
+
+    <div id="map_canvas"></div>
+
+    @{
+        var lat = @Model.CurrentBar.BarLatitude;
+        var lng = @Model.CurrentBar.BarLongitude;
+    }
+
+    <script type="text/javascript">  
+        $(document).ready(function () {
+            initialize();
+        });
+        function initialize() {
+            var mapOptions = {
+                center: new google.maps.LatLng(@lat, @lng),
+                zoom: 17,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var map = new google.maps.Map(document.getElementById("map_canvas"),
+            mapOptions);
+            var marker = new google.maps.Marker({position: {lat: @lat, lng: @lng}, map: map});
+        }
+    </script>  
 
     @foreach (var beer in @Model.BarBeers)
     {   
@@ -17,9 +43,9 @@
             <img class="card-img-top" src="~/img/beer-icon.jpg" alt="Card image cap">
             <div class="card-body">
                 <h4 class="card-title"><a href="/beers/@beer.BeerId">@beer.BeerName</a></h4>
-                <p class="card-text"><span class="card-category">Style:</span> @beer.BeerStyle</p>
-                <p class="card-text"><span class="card-category">Phone ABV:</span> @beer.BeerAbv</p>
-                <p class="card-text"><span class="card-category">IBU:</span> @beer.BeerIbu</p>
+                <p class="card-text">@beer.BeerStyle</p>
+                <p class="card-text">@beer.BeerAbv% ABV</p>
+                <p class="card-text">@beer.BeerIbu IBU</p>
             </div>
         </div>
 
