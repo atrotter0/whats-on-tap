@@ -43,20 +43,36 @@ img {
   cursor: pointer
 }
 
-.page-center {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
 .center {
   text-align: center;
 }
 
-.page-center-low {
-  position: fixed;
-  top: 70%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.splash-logo {
+  display: block;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  max-width: 1000px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.index-buttons {
+  display: block;
+  text-align: center;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  max-width: 1000px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#bar-button {
+  width: 120px;
+  margin-right: 50px;
+}
+
+#beer-button {
+  width: 120px;
 }
