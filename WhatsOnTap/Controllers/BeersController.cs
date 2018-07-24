@@ -34,7 +34,7 @@ namespace WhatsOnTap.Controllers
         public ActionResult Create() => View(_db.Bars.ToList());
 
         [HttpPost("/beers/new")]
-        public ActionResult Create(int barId, string beerName, string brewery, string style, string abv, string ibu)
+        public ActionResult Create(List<int> BarId, string beerName, string brewery, string style, string abv, string ibu)
         {
             Beer newBeer = new Beer();
             newBeer.BeerName = beerName;
@@ -43,6 +43,11 @@ namespace WhatsOnTap.Controllers
             newBeer.BeerAbv = Convert.ToDouble(abv);
             newBeer.BeerIbu = int.Parse(ibu);
             
+            foreach (int barId in BarId)
+            {
+                Taplist newTaplist = new Taplist(newBeer.BeerId, barId);
+                _db.Taplists.Add(newTaplist);
+            }
             _db.Add(newBeer);
             _db.SaveChanges();
 
