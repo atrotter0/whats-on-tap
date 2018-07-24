@@ -1,0 +1,25 @@
+@{
+    Layout = "_Layout";
+}
+
+<div class="container">
+    <h2 class="form-header">My Profile</h2>
+    @using (Html.BeginForm("Details", "User", FormMethod.Post))
+    {
+        <div class="form-model">
+            <hr>
+            <br>
+            <div class="form-group">
+                @Html.LabelFor(user => @User.Identity.Name)
+                @Html.TextBoxFor(user => @User.Identity.Name, new {@class="form-control", required="true"})
+            </div>
+            <div class="form-group">
+                
+            </div>
+        </div>
+        <div class="reg-buttons">
+            <a href="/user" class="btn btn-lg btn-outline-warning cancel-button">Cancel</a>
+            <input type="submit" class="btn btn-lg btn-outline-primary" value="Update" />
+        </div>
+    }
+</div>

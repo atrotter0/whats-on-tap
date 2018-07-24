@@ -37,8 +37,10 @@
 }
 
 #id {
-    width: 200px;
-    height: 100px;
+  width: 200px;
+  height: 100px;
+}
+
 /* Owner's Bar Index */
 .owner-bar {
   height: 100px;
