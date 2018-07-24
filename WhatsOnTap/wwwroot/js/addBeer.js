@@ -5,12 +5,17 @@ function addBeer(beerId) {
 		url: "/user/beers",
 		success: function (result) {
 			console.log("Success!");
-			//add alert
+			var text = "Beer added!";
+			displayAlert(text);
 		},
 		error: function(error) {
 			console.log("Error, not appending: " + JSON.stringify(error));
 		}
 	});
+}
+
+function displayAlert(text) {
+	$(".alert").text(text).fadeIn(800).delay(3000).fadeOut(1200);
 }
 
 $(document).ready(function() {
