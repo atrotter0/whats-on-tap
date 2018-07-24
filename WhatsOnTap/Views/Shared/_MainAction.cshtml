@@ -1,0 +1,12 @@
+<div class="splash-logo">
+    <img src="~/img/wot-logo-transparent.png" alt="whats on tap logo">
+</div>
+<div class="index-buttons">
+    <a class="btn btn-outline-dark btn-lg" id="bar-button" href="/bars">Bars</a>
+    <a class="btn btn-outline-dark btn-lg" id="beer-button" href="/beers">Beers</a>
+    @if(User.Identity.IsAuthenticated)
+    {
+        <a class="btn btn-outline-dark btn-lg" id="fav-beer-button" href="/user/beers">My Beers</a>
+            
+    }
+</div>
