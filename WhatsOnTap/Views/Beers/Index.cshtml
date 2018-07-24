@@ -4,23 +4,22 @@
   Layout = "_Layout";
 }
 
-  <div class='container'>
+<div class='container'>
     <h1>Sample index page for Beers</h1>
-
     <div class="beersGridThree">
-      <div class="cellHead">Beer Name</div>
-      <div class="cellHead">Brewery</div>
-      <div class="cellHead">Style</div>
-
-      @foreach (var beer in Model)
-      {
-        <div><a href="/beers/@beer.BeerId">@beer.BeerName</a></div>
-        <div>@beer.BeerBreweryName</div>
-        <div>@beer.BeerStyle</div>
-      }
-
+        <div class="cellHead">Beer Name</div>
+        <div class="cellHead">Brewery</div>
+        <div class="cellHead">Style</div>
+        <div class="cellHead"></div>
+        @foreach (var beer in Model)
+        {
+            <div><a href="/beers/@beer.BeerId">@beer.BeerName</a></div>
+            <div>@beer.BeerBreweryName</div>
+            <div>@beer.BeerStyle</div>
+            <div>
+                <button id="@beer.BeerId" class="btn btn-lg btn-info add-beer">Add Beer</button>
+            </div>
+        }
     </div>
-
     <a href="/"><button>Back</button></a>
-
-  </div>
+</div>
