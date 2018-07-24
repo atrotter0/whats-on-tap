@@ -29,7 +29,7 @@ namespace WhatsOnTap.Controllers
             Beer beer = _db.Beers.FirstOrDefault(beers => beers.BeerId == id);
             return View(beer);
         }
-
+        
         [HttpGet("/beers/new")]
         public ActionResult Create() => View(_db.Bars.ToList());
 

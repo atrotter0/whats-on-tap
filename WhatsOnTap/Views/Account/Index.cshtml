@@ -7,19 +7,12 @@
 <div class="container">
     @if(User.Identity.IsAuthenticated)
     {
-        <div class="jumbotron">
-            <h2>Welcome back, @User.Identity.Name!</h2>
-            <div class="user-actions">
-                <a href="#" class="btn btn-lg btn-outline-primary">Bars</a>
-                <a href="#" class="btn btn-lg btn-outline-primary">Beers</a>
-            </div>
-            <div>
-                <a href="/user/beers" class="btn btn-lg btn-outline-primary">Favorite Beers</a>
-            </div>
-        </div>
+        await Html.RenderPartialAsync("_MainAction");     
     }
     else
     {
-        <p>You must first log in to view this page.</p>
+        <div class="alert alert-warning" role="alert">
+            <i class="fas fa-exclamation-triangle"></i>&nbsp;<strong>Oops! </strong> You need to log in to view this page!
+        </div>
     }
 </div>

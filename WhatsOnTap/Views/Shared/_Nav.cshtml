@@ -1,7 +1,7 @@
 @using System.Security.Claims
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">What's On Tap</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <a class="navbar-brand" href="/">What's On Tap</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -23,7 +23,7 @@
                     </a>
                      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="/user/beers">My Beers</a>
-                        <a class="dropdown-item" href="#">My Profile</a>
+                        <a class="dropdown-item" href="/user">My Profile</a>
                         @using (Html.BeginForm("LogOff", "Account"))
                         {
                             <input type="submit" class="dropdown-item btn-hover" value="Log out" />
