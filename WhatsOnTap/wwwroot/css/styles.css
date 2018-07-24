@@ -1,30 +1,19 @@
 /* Bars/Beers Index & Details */
-img {
-  max-width: 100%;
-}
 
 .card-category {
   font-weight: bold;
 }
 
 .card-deck {
-  max-width: 100%;
-  justify-content: space-evenly;
-  margin: 0px;
+  width: 100%;
+  max-width: 900px;
+  margin: 0px auto;
   margin-bottom: 20px;
 }
 
 .card {
-  font-size: 14px;
-  max-width: 300px;
-  margin: 0 auto;
+  max-width: 260px;
 }
-
-.card-img-top
-{
-  padding: 25px;
-}
-
 
 /* Beer Details Grid */
 .beersGridThree {
@@ -57,4 +46,17 @@ img {
 
 .owner-beers {
   margin: 0 auto;
+}
+
+/* Map */
+#map_canvas {
+  width: 100%;
+  max-width: 900px;
+  height: 300px;
+  margin: 24px auto;
+  position: relative;
+  overflow: hidden;
+  border: 4px solid #fec325;
+  border-radius: 20px;
+  padding: 10px;
 }
