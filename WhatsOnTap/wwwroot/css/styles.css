@@ -10,10 +10,6 @@
   margin-bottom: 20px;
 }
 
-.card {
-  max-width: 260px;
-}
-
 /* Beer Details Grid */
 .beersGridThree {
   display: grid;
@@ -162,3 +158,20 @@
 .column-header {
   font-weight: bold;
 }
+
+.beer-detail-card {
+  width: 100%;
+}
+
+.beer-card-title {
+  text-align: center;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.beer-details {
+  max-width: 300px;
+}
+

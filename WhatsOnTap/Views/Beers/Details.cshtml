@@ -4,8 +4,20 @@
   Layout = "_Layout";
 }
 
+
 <div class='container'>
-  <h1>Sample detail page for a Beer</h1>
+  <div class="card">
+    <div class="card-body">
+      <span>@Model.BeerName</span><i class="fas fa-angle-right"></i>&nbsp;<span>@Model.BeerBreweryName</span>
+      <h5 class="card-title beer-card-title"></h5><h5 class="card-subtitle mb-2 text-muted beer-card-title"> </h5>
+      <ul class="list-group list-group-flush beer-details">
+        <li class="list-group-item"><span class="bold">Style <i class="fas fa-angle-right"></i></span> <span class="text-muted">@Model.BeerStyle</span></li>
+        <li class="list-group-item"><span class="bold">ABV <i class="fas fa-angle-right"></i></span> <span class="text-muted">@Model.BeerAbv</span></li>
+        <li class="list-group-item"><span class="bold">IBU <i class="fas fa-angle-right"></i></span> <span class="text-muted">@Model.BeerIbu</span></li>
+      </ul>
+    </div>
+  </div>
+
 
   <div class="beersGridFive">
     <div class="cellHead">Beer Name</div>

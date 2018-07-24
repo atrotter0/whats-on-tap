@@ -6,53 +6,59 @@
 
 <div class='container'>
     <div class="row beers-list-row">
-        <div class="col">
+        <div class="col-4">
             <ul class="list-group list-group-flush">
                 <li class="list-group-item column-header">Beer Name</li>
             </ul>
         </div>
-        <div class="col">
+        <div class="col-2">
             <ul class="list-group list-group-flush">
                 <li class="list-group-item column-header">Style</li>
             </ul>
         </div>
-        <div class="col">
+        <div class="col-2">
             <ul class="list-group list-group-flush">
                 <li class="list-group-item column-header">
                     <span data-toggle="tooltip" data-placement="top" title="Alcohol by Volume">ABV</span>
                 </li>
             </ul>
         </div>
-        <div class="col">
+        <div class="col-2">
             <ul class="list-group list-group-flush">
                 <li class="list-group-item column-header">
                     <span data-toggle="tooltip" data-placement="top" title="International Bittering Units">IBU</span>
                 </li>
             </ul>
         </div>
+        <div class="col-2">
+            
+        </div>
     </div>
     @foreach (var beer in Model)
     {    
         <div class="row beers-list-row">
-            <div class="col">
+            <div class="col-4">
                 <ul class="list-group list-group-flush">
                     <a href="/beers/@beer.BeerId"><li class="list-group-item">@beer.BeerName</li></a>
                 </ul>
             </div>
-            <div class="col">
+            <div class="col-2">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">@beer.BeerStyle</li>
                 </ul>
             </div>
-            <div class="col">
+            <div class="col-2">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">@beer.BeerAbv</li>
                 </ul>
             </div>
-            <div class="col">
+            <div class="col-2">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">@beer.BeerIbu</li>
                 </ul>
+            </div>
+            <div class="col-2">
+                <button id="@beer.BeerId" class="btn btn-sm btn-outline-primary btn-pill add-beer">Add to my beers</button>
             </div>
         </div>
     }
