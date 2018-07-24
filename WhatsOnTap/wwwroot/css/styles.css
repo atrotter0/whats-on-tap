@@ -1,27 +1,27 @@
 img {
-    max-width: 100%;
+  max-width: 100%;
 }
 
 .card-category {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .card-deck {
-    max-width: 100%;
-    justify-content: space-evenly;
-    margin: 0px;
-    margin-bottom: 20px;
+  max-width: 100%;
+  justify-content: space-evenly;
+  margin: 0px;
+  margin-bottom: 20px;
 }
 
 .card {
-    font-size: 14px;
-    max-width: 300px;
-    margin: 0 auto;
+  font-size: 14px;
+  max-width: 300px;
+  margin: 0 auto;
 }
 
 .card-img-top
 {
-    padding: 25px;
+  padding: 25px;
 }
 
 .beersGridThree {
@@ -37,4 +37,8 @@ img {
 
 .cellHead {
   border-bottom: 1px lightgray solid;
+}
+
+.btn-hover {
+  cursor: pointer
 }

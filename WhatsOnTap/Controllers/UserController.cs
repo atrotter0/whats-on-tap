@@ -20,12 +20,6 @@ namespace WhatsOnTap.Controllers
             _db = db;
         }
 
-        [HttpGet("/user")]
-        public IActionResult Index()
-        {
-            return View();
-        }
-
         [HttpGet("/user/beers")]
         public IActionResult Beers()
         {
@@ -41,6 +35,5 @@ namespace WhatsOnTap.Controllers
             userBeer.User = currentUser;
             return RedirectToAction("Beers");
         }
-
     }
 }

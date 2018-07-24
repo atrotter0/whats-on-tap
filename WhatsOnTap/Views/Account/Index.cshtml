@@ -4,18 +4,23 @@
 
 @using System.Security.Claims
 
-<h1>What's On Tap Authentication</h1>
-<hr />
-@if(User.Identity.IsAuthenticated)
-{
-    <p>Hello @User.Identity.Name</p>
-    @using (Html.BeginForm("LogOff", "Account"))
+<div class="container">
+    @if(User.Identity.IsAuthenticated)
     {
-        <input type="submit" class="btn btn-default" value="Log out" />
+        <div class="jumbotron">
+            <h2>Welcome back, @User.Identity.Name!</h2>
+            <div class="user-actions">
+                <a href="#" class="btn btn-lg btn-outline-primary">Bars</a>
+                <a href="#" class="btn btn-lg btn-outline-primary">Beers</a>
+            </div>
+            <div>
+                <a href="/user/beers" class="btn btn-lg btn-outline-primary">Favorite Beers</a>
+            </div>
+        </div>
     }
-}
-else
-{
-    <p>@Html.ActionLink("Sign Up", "Register")</p>
-    <p>@Html.ActionLink("Log in", "Login")</p>
-}
+    else
+    {
+        <p>@Html.ActionLink("Sign Up", "Register")</p>
+        <p>@Html.ActionLink("Log in", "Login")</p>
+    }
+</div>

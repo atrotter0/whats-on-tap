@@ -24,14 +24,20 @@
                      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="#">My Beers</a>
                         <a class="dropdown-item" href="#">My Profile</a>
-                        <a class="dropdown-item" href="#">Log Out</a>
+                        @using (Html.BeginForm("LogOff", "Account"))
+                        {
+                            <input type="submit" class="dropdown-item btn-hover" value="Log out" />
+                        }
                     </div>
                 </li>
             }
             else
             {
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Log In</a>
+                    <a class="nav-link" href="/signup">Sign Up</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Log In</a>
                 </li>
             }
         </ul>
