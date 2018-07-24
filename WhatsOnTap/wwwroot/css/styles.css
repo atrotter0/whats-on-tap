@@ -60,21 +60,22 @@ img {
 .index-buttons {
   display: block;
   text-align: center;
-  margin-top: 5%;
-  margin-bottom: 5%;
-  max-width: 1000px;
-  width: 100%;
   margin-left: auto;
   margin-right: auto;
 }
 
 #bar-button {
-  width: 120px;
+  width: 150px;
   margin-right: 50px;
 }
 
 #beer-button {
-  width: 120px;
+  width: 150px;
+}
+
+#fav-beer-button {
+  margin-left: 50px;
+  width: 150px;
 }
 
 .form-header {
@@ -89,4 +90,16 @@ img {
 
 .btn-outline-warning:hover {
   color: #fff;
+}
+
+.user-header {
+  text-align: center;
+  margin-top: 5%;
+}
+
+.user-actions {
+  display: block;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
