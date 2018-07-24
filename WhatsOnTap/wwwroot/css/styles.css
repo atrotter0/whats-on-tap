@@ -43,6 +43,79 @@ img {
   cursor: pointer
 }
 
+.center {
+  text-align: center;
+}
+
+.splash-logo {
+  display: block;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  max-width: 1000px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.index-buttons {
+  display: block;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#bar-button {
+  width: 150px;
+  margin-right: 50px;
+}
+
+#beer-button {
+  width: 150px;
+}
+
+#fav-beer-button {
+  margin-left: 50px;
+  width: 150px;
+}
+
+.cancel-button {
+  margin-right: 15px; 
+}
+
+.form-header {
+  text-align: center;
+  margin-top: 5%;
+}
+
+.form-model {
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+.btn-outline-warning:hover {
+  color: #fff;
+}
+
+.user-header {
+  text-align: center;
+  margin-top: 5%;
+}
+
+.user-actions {
+  display: block;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reg-buttons {
+  text-align: center;
+}
+
+.login-buttons {
+  text-align: center;
+}
+
 .alert {
   display: none;
   width: 50%;
