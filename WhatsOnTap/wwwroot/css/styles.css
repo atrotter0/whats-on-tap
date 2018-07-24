@@ -77,12 +77,12 @@ img {
   width: 120px;
 }
 
-#reg-header {
+.form-header {
   text-align: center;
   margin-top: 10%;
 }
 
-.register-form {
+.form-model {
   margin-left: 25%;
   margin-right: 25%;
 }
