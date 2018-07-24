@@ -42,3 +42,21 @@ img {
 .btn-hover {
   cursor: pointer
 }
+
+.page-center {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.center {
+  text-align: center;
+}
+
+.page-center-low {
+  position: fixed;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
