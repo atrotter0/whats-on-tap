@@ -9,18 +9,23 @@ namespace WhatsOnTap.Controllers
 {
     public class BeersController : Controller
     {
-        private WhatsOnTapContext db = new WhatsOnTapContext();
+        private readonly WhatsOnTapContext _db;
+
+        public BeersController(WhatsOnTapContext context)
+        {
+            _db = context;
+        }
 
         [HttpGet("/beers")]
         public ActionResult Index()
         {
-            return View(db.Beers.ToList());
+            return View(_db.Beers.ToList());
         }
 
         [HttpGet("/beers/{id}")]
         public ActionResult Details(int id)
         {
-            Beer beer = db.Beers.FirstOrDefault(beers => beers.BeerId == id);
+            Beer beer = _db.Beers.FirstOrDefault(beers => beers.BeerId == id);
             return View(beer);
         }
 
