@@ -32,11 +32,11 @@
                 }
                 <div class="card">
 
-                    <img class="card-img-top" src="~/img/bar-icon.png" alt="Card image cap">
-                    <div class="card-body">
+                    <img class="card-img-top" src="~/img/bar-icon.png" alt="Card image cap" for="barId">
+                    <div class="card-body" for="barId">
                         <h4 class="card-title">@bar.BarName</h4>
                     </div>
-                    <div class="card-footer">
+                    <div class="card-footer" for="barId">
                         <p class="card-text"><span class="card-category">Rating:</span> @bar.BarRating</p>
                     </div>
                     <input type="checkbox" name="barId" value="@bar.BarId">

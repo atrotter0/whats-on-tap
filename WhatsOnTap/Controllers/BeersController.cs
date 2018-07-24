@@ -43,12 +43,12 @@ namespace WhatsOnTap.Controllers
             newBeer.BeerAbv = Convert.ToDouble(abv);
             newBeer.BeerIbu = int.Parse(ibu);
             
+            _db.Add(newBeer);
             foreach (int barId in BarId)
             {
                 Taplist newTaplist = new Taplist(newBeer.BeerId, barId);
                 _db.Taplists.Add(newTaplist);
             }
-            _db.Add(newBeer);
             _db.SaveChanges();
 
             return RedirectToAction("Index");
