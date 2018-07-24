@@ -2,39 +2,29 @@
 
 @{
     Layout = "_Layout";
-    var itemCount = 1;
 }
 
 <div class='container'>
-    <h1>Beers</h1>
-
-    @foreach (var beer in Model)
-    {   
-        @if (itemCount == 1)
-        {
-            @Html.Raw("<div class='card-deck'>")
-        }
-
-        <div class="card">
-            <img class="card-img-top" src="~/img/beer-icon.jpg" alt="Card image cap">
-            <div class="card-body">
-                <h4 class="card-title"><a href="/beers/@beer.BeerId">@beer.BeerName</a></h4>
-                <p class="card-text"><span class="card-category">Style:</span> @beer.BeerStyle</p>
-                <p class="card-text"><span class="card-category">Phone ABV:</span> @beer.BeerAbv</p>
-                <p class="card-text"><span class="card-category">IBU:</span>@beer.BeerIbu</p>
-            </div>
-            <div class="card-footer">
-                <p class="card-text"><span class="card-category">Favorite Placeholder</span></p>
-            </div>
+    <div class="row beers-list-row">
+        <div class="col">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item column-header">Beer Name</li>
+            </ul>
         </div>
-
-        @if (itemCount == 3)
-        {
-            @Html.Raw("</div>")
-            itemCount = 1;
-        }
-        else {
-            itemCount++;
-        } 
-    }
+        <div class="col">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item column-header">Style</li>
+            </ul>
+        </div>
+        <div class="col">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item column-header">ABV</li>
+            </ul>
+        </div>
+        <div class="col">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item column-header">IBU</li>
+            </ul>
+        </div>
+    </div>
 </div>

@@ -76,12 +76,15 @@
 
 .splash-logo {
   display: block;
-  margin-top: 5%;
-  margin-bottom: 5%;
+  margin-top: 0%;
+  margin-bottom: 0%;
   max-width: 1000px;
-  width: 100%;
   margin-left: auto;
   margin-right: auto;
+}
+
+.splash-logo img {
+  width: 100%;
 }
 
 .index-buttons {
@@ -150,4 +153,12 @@
   max-width: 300px;
   margin: 20px auto;
   text-align: center;
+}
+
+.beers-list-row {
+  border-bottom: 1px solid #E9ECEF;
+}
+
+.column-header {
+  font-weight: bold;
 }
