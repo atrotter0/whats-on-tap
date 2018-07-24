@@ -43,6 +43,7 @@ namespace WhatsOnTap.Controllers
             newBeer.BeerAbv = Convert.ToDouble(abv);
             newBeer.BeerIbu = int.Parse(ibu);
             
+            _db.Add(newBeer);
             _db.SaveChanges();
 
             return RedirectToAction("Index");
