@@ -18,21 +18,21 @@ namespace WhatsOnTap.Controllers
             _signInManager = signInManager;
             _db = db;
         }
-        
-        [HttpGet("/account")]
+
+        [HttpGet("/user")]
         public IActionResult Index()
         {
             return View();
         }
 
-        [HttpGet("/account/register")]
+        [HttpGet("/signup")]
         public IActionResult Register()
         {
             return View();
         }
 
-        [HttpPost("/account/register")]
-        public async Task<IActionResult> Register (RegisterViewModel model)
+        [HttpPost("/signup")]
+        public async Task<IActionResult> Register(RegisterViewModel model)
         {
             var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
             IdentityResult result = await _userManager.CreateAsync(user, model.Password);
@@ -46,13 +46,13 @@ namespace WhatsOnTap.Controllers
             }
         }
 
-        [HttpGet("/account/login")]
+        [HttpGet("/login")]
         public IActionResult Login()
         {
             return View();
         }
 
-        [HttpPost("/account/login")]
+        [HttpPost("/login")]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
             Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, isPersistent: true, lockoutOnFailure: false);
@@ -66,11 +66,11 @@ namespace WhatsOnTap.Controllers
             }
         }
 
-        [HttpPost("/account/logout")]
+        [HttpPost("/logout")]
         public async Task<IActionResult> LogOff()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index");            
+            return RedirectToAction("Index", "Home", new { area = "" });       
         }
 
     }

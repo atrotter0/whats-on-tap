@@ -16,5 +16,8 @@ namespace WhatsOnTap.Models
         public int BeerId { get; set; }
         public bool Favorite { get; set; }
         public string Notes { get; set; }
+        public virtual ApplicationUser User { get; set; }
+
+        public UserBeer() {}
     }
 }
