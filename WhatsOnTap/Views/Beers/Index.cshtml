@@ -18,13 +18,42 @@
         </div>
         <div class="col">
             <ul class="list-group list-group-flush">
-                <li class="list-group-item column-header">ABV</li>
+                <li class="list-group-item column-header">
+                    <span data-toggle="tooltip" data-placement="top" title="Alcohol by Volume">ABV</span>
+                </li>
             </ul>
         </div>
         <div class="col">
             <ul class="list-group list-group-flush">
-                <li class="list-group-item column-header">IBU</li>
+                <li class="list-group-item column-header">
+                    <span data-toggle="tooltip" data-placement="top" title="International Bittering Units">IBU</span>
+                </li>
             </ul>
         </div>
     </div>
+    @foreach (var beer in Model)
+    {    
+        <div class="row beers-list-row">
+            <div class="col">
+                <ul class="list-group list-group-flush">
+                    <a href="/beers/@beer.BeerId"><li class="list-group-item">@beer.BeerName</li></a>
+                </ul>
+            </div>
+            <div class="col">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">@beer.BeerStyle</li>
+                </ul>
+            </div>
+            <div class="col">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">@beer.BeerAbv</li>
+                </ul>
+            </div>
+            <div class="col">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">@beer.BeerIbu</li>
+                </ul>
+            </div>
+        </div>
+    }
 </div>
