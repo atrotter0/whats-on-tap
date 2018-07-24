@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
-
 namespace WhatsOnTap.Models
 {
     public class WhatsOnTapContext : IdentityDbContext<ApplicationUser>
