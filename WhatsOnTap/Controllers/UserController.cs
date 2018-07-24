@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using WhatsOnTap.Models;
 using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
 
 namespace WhatsOnTap.Controllers
 {
@@ -19,17 +20,26 @@ namespace WhatsOnTap.Controllers
             _db = db;
         }
 
-        [HttpGet("/user")]
+        [HttpGet("/user/{id}")]
         public IActionResult Index()
         {
             return View();
         }
 
-        [HttpPost("/user/{id}/favorites")]
-        public IActionResult AddFavorite(int id, int beerId)
+        [HttpGet("/user/{id}/beers")]
+        public IActionResult Beers()
         {
-            //add logic here
             return View();
+        }
+
+        [HttpPost("/user/{id}/beers")]
+        public async Task<IActionResult> AddBeer(int id, int beerId)
+        {
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var currentUser = await _userManager.FindByIdAsync(userId);
+            UserBeer userBeer = new UserBeer();
+            userBeer.User = currentUser;
+            return RedirectToAction("Beers");
         }
 
     }

@@ -17,7 +17,6 @@ namespace WhatsOnTap.Models
         public string BeerStyle { get; set; }
         public double BeerAbv { get; set; }
         public int BeerIbu { get; set; }
-
         public virtual ICollection<Taplist> Taplists { get; set; }
     }
 }

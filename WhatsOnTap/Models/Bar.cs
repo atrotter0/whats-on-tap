@@ -22,7 +22,6 @@ namespace WhatsOnTap.Models
         public string BarPhone { get; set; }
         public double BarLatitude { get; set; }
         public double BarLongitude { get; set; }
-
         public virtual ICollection<Taplist> Taplists { get; set; }
     }
 }
