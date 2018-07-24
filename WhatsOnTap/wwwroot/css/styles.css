@@ -78,9 +78,13 @@ img {
   width: 150px;
 }
 
+.cancel-button {
+  margin-right: 15px; 
+}
+
 .form-header {
   text-align: center;
-  margin-top: 10%;
+  margin-top: 5%;
 }
 
 .form-model {
@@ -102,4 +106,12 @@ img {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
+}
+
+.reg-buttons {
+  text-align: center;
+}
+
+.login-buttons {
+  text-align: center;
 }
