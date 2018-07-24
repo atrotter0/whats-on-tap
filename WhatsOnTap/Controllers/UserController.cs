@@ -20,19 +20,19 @@ namespace WhatsOnTap.Controllers
             _db = db;
         }
 
-        [HttpGet("/user/{id}")]
+        [HttpGet("/user")]
         public IActionResult Index()
         {
             return View();
         }
 
-        [HttpGet("/user/{id}/beers")]
+        [HttpGet("/user/beers")]
         public IActionResult Beers()
         {
             return View();
         }
 
-        [HttpPost("/user/{id}/beers")]
+        [HttpPost("/user/beers")]
         public async Task<IActionResult> AddBeer(int id, int beerId)
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;

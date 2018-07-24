@@ -1,3 +1,5 @@
+@using System.Security.Claims
+
 <nav class="navbar navbar-default">
     <div class="container-fluid">
           <div class="navbar-header">
@@ -15,7 +17,14 @@
                 <li><a href="/beers">Beers</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="#">User</a></li>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <li><a href="/user">My Account</a></li>
+            }
+            else
+            {
+                <li><a href="/account/login">Log In</a></li>
+            }
             </ul>
         </div>
     </div>
