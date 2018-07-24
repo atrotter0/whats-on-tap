@@ -76,3 +76,17 @@ img {
 #beer-button {
   width: 120px;
 }
+
+#reg-header {
+  text-align: center;
+  margin-top: 10%;
+}
+
+.register-form {
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+.btn-outline-warning:hover {
+  color: #fff;
+}
