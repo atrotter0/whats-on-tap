@@ -33,6 +33,7 @@ namespace WhatsOnTap.Controllers
             var currentUser = await _userManager.FindByIdAsync(userId);
             UserBeer userBeer = new UserBeer(userId.ToString(), beerId);
             userBeer.User = currentUser;
+            _db.UsersBeers.Add(userBeer);
             _db.SaveChanges();
             return View("Index");
         }

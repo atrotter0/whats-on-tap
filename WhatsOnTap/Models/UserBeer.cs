@@ -22,6 +22,7 @@ namespace WhatsOnTap.Models
         {
             UserId = userId;
             BeerId = beerId;
+            Favorite = false;
         }
     }
 }
