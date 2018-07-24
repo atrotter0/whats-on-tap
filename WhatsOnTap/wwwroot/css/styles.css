@@ -60,3 +60,14 @@
   border-radius: 20px;
   padding: 10px;
 }
+
+.details-heading {
+  margin-top: 25px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.details-subheading {
+  width: 100%;
+  margin: 0 auto;
+}
