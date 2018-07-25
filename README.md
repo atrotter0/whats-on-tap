@@ -1,18 +1,21 @@
-# Project Name Here
+# What's On Tap
 
-#### Epicodus C# exercise, date
+#### Epicodus C# Group Project, 7/23 - 7/26
 
-#### By Your Name Here
+#### By Abel Trotter, Elly Maimon, Kevin Ahn and Ryan Murry
 
 ## Description
 
-Add a description here
+A web app to show the bars in the Portland Metro area and the various beers that are on tap.
 
-## Specs
+## User Stories
 
-| Behavior | Input | Output |
-|----------|-------|--------|
-| Behavior | input | output |
+* As a user, I am able to make an account and choose between being a regular user or an owner.
+* As a user, I am able to see the bars and beers in the Portland area.
+* As a user, I am able to add beers to my favorite list.
+* As an owner, I can add beers and bars to the program.
+* As an owner, I can edit the information of the bars and beers.
+* As an owner, I can delete bars and beers.
 
 ## Setup on OSX
 
@@ -53,7 +56,3 @@ Add a description here
 * [Heroku] ()
 
 ## License
-
-This software is licensed under the MIT license.
-
-Copyright (c) 2018 **Your Name Here**
