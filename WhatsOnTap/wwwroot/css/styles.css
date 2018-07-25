@@ -1,31 +1,58 @@
-/* Bars/Beers Index & Details */
-.card-category {
-  font-weight: bold;
-}
-
+/* Bars and Beers Index & Details */
 .card-deck {
   width: 100%;
-  max-width: 900px;
+  max-width: 1200px;
   margin: 0px auto;
   margin-bottom: 20px;
 }
 
-.card {
-  max-width: 260px;
+.bar-card {
+  max-width: 350px;
 }
 
-.submitForm {
-  height: 40px;
+.card-body {
+  padding-bottom: 0px;
+  font-size: 14px;
 }
 
-.newBeerQuestions {
-  width: 100%;
+.card-img-top {
+  padding: 20px;
 }
 
-/* Beer Details Grid */
-.beersGridThree {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+.card-title {
+  border-bottom: 1px solid lightgray;
+  padding: 8px;
+}
+
+.card-icons {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+.rating-icons {
+  width: 24px;
+  height: 24px;
+}
+
+.card-insides {
+  margin-bottom: 20px;
+}
+
+.rating-text {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.address-icon {
+  display: inline-block;
+  width: 10%;
+  vertical-align: top;
+}
+
+.address-text {
+  display: inline-block;
+  width: 80%;
 }
 
 .beersGridFive {
@@ -44,8 +71,8 @@
 }
 
 #id {
-    width: 200px;
-    height: 100px;
+  width: 200px;
+  height: 100px;
 }
 
 /* Owner's Bar Index */
@@ -88,12 +115,15 @@
 
 .splash-logo {
   display: block;
-  margin-top: 5%;
-  margin-bottom: 5%;
+  margin-top: 0%;
+  margin-bottom: 0%;
   max-width: 1000px;
-  width: 100%;
   margin-left: auto;
   margin-right: auto;
+}
+
+.splash-logo img {
+  width: 100%;
 }
 
 .index-buttons {
@@ -163,3 +193,50 @@
   margin: 20px auto;
   text-align: center;
 }
+
+.beers-list-row {
+  border-bottom: 1px solid #E9ECEF;
+}
+
+.column-header {
+  font-weight: bold;
+}
+
+.beer-detail-card {
+  width: 100%;
+}
+
+.beer-card-title {
+  text-align: center;
+  font-size: 2.5em;
+  margin-bottom: 15px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.beer-details {
+  display: block;
+  text-align: center;
+  font-size: 1.5em;
+  margin-bottom: 25px;
+}
+
+.favorite-beer {
+  margin-top: 8px;
+}
+
+.beer-detail-modal {
+  display: block;
+  text-align: center;
+}
+
+.modal-button {
+  font-size: 1em;
+}
+
+.beer-modal-bar-name {
+  font-size: 1.25em;
+}
+

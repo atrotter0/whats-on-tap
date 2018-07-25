@@ -1,33 +1,53 @@
+@model WhatsOnTap.ViewModels.BeerDetailsViewModel
+
 @{
   Layout = "_Layout";
 }
 
 <div class='container'>
-  <h1>Sample detail page for a Beer</h1>
+  <div class="card">
+    <div class="card-body">
+      <div class="beer-card-title">
+        <button id="@Model.CurrentBeer.BeerId" class="btn btn-outline-warning btn-pill add-beer float-right"><i class="fas fa-heart"></i></button>
+        <span>@Model.CurrentBeer.BeerName </span><i class="fas fa-angle-right"></i>&nbsp;<span class="text-muted">@Model.CurrentBeer.BeerBreweryName</span>
+      </div>
+      <div class="beer-details">
+          <span class="bold">Style <i class="fas fa-angle-right"></i></span> <span class="text-muted">@Model.CurrentBeer.BeerStyle</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <span class="bold">ABV <i class="fas fa-angle-right"></i></span> <span class="text-muted">@Model.CurrentBeer.BeerAbv</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <span class="bold">IBU <i class="fas fa-angle-right"></i></span> <span class="text-muted">@Model.CurrentBeer.BeerIbu</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </div>
+      <div class="beer-detail-modal">
+          <button type="button" class="btn btn-primary modal-button" data-toggle="modal" data-target="#barsWithBeerModal">
+            Bars Serving @Model.CurrentBeer.BeerName
+          </button>
 
-  <div class="beersGridFive">
-    <div class="cellHead">Beer Name</div>
-    <div class="cellHead">Bars Serving</div>
-    <div class="cellHead">Brewery</div>
-    <div class="cellHead">Style</div>
-    <div class="cellHead">ABV</div>
-    <div class="cellHead">IBU</div>
-
-    <div>@Model.CurrentBeer.BeerName</div>
-    <div>
-      @foreach(var bar in @Model.BeerBars)
-      {
-        <a href="/bars/@bar.BarId"><span>@bar.BarName</span></a><br />
-      }
+          <div class="modal fade" id="barsWithBeerModal" tabindex="-1" role="dialog" aria-labelledby="beerDetailModal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-body">
+                  <ul class="list-group list-group-flush">
+                    @foreach (var bar in Model.BeerBars)
+                    {
+                      <li class="list-group-item">
+                        <div class="beer-modal-bar-name">
+                          <a href="/bars/@bar.BarId">@bar.BarName</a>
+                        </div>
+                      </li>
+                    }
+                  </ul>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>      
+      </div>
     </div>
-    <div>@Model.CurrentBeer.BeerBreweryName</div>
-    <div>@Model.CurrentBeer.BeerStyle</div>
-    <div>@Model.CurrentBeer.BeerAbv</div>
-    <div>@Model.CurrentBeer.BeerIbu</div>
-
   </div>
   <a href="/beers/@Model.CurrentBeer.BeerId/delete">Delete</a>
 
   <button>Add to your favorites</button>
 
 </div>
+

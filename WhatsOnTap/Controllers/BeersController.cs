@@ -1,9 +1,9 @@
+using System.Collections.Generic;
+using System.Linq;
 using System;
 using Microsoft.AspNetCore.Mvc;
 using WhatsOnTap.Models;
 using WhatsOnTap.ViewModels;
-using System.Linq;
-using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
