@@ -1,47 +1,45 @@
-@model IEnumerable<WhatsOnTap.Models.Bar>
-
 @{
   Layout = "_Layout";
   var itemCount = 1;
 }
 
 <div class="container">
-    
-    <form action="/beers/new" method="post">
+
+    <form action="/beers/@Model.CurrentBeer.BeerId/edit" method="post">
         <h1>Enter a new Beer:</h1>
         <div class="input-group input-group-sm mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-sm">Beer Name</span>
             </div>
-            <input type="text" name="beerName" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required>
+            <input type="text" name="beerName" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required value="@Model.CurrentBeer.BeerName">
 
             <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-sm">Brewery</span>
             </div>
-            <input type="text" name="brewery" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required>
+            <input type="text" name="brewery" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required value="@Model.CurrentBeer.BeerBreweryName">
 
             <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-sm">Style</span>
             </div>
-            <input type="text" name="style" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required>
+            <input type="text" name="style" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required value="@Model.CurrentBeer.BeerStyle">
 
             <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-sm">ABV</span>
             </div>
-            <input type="text" name="abv" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required>
+            <input type="text" name="abv" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required value="@Model.CurrentBeer.BeerAbv">
 
             <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-sm">IBU</span>
             </div>
-            <input type="text" name="ibu" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required>
+            <input type="text" name="ibu" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required value="@Model.CurrentBeer.BeerIbu">
         </div>
 
 
 
 
         <h2>Which bars is this beer served in?</h2>
-            @foreach (var bar in Model)
-            {   
+            @foreach (var bar in @Model.AllBars)
+            {
                 @if (itemCount == 1)
                 {
                     @Html.Raw("<div class='card-deck'>")
@@ -65,7 +63,7 @@
                 }
                 else {
                     itemCount++;
-                } 
+                }
             }
         <button class="submitForm" type="submit">Submit</button>
     </form>
