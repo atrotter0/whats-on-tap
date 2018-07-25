@@ -2,4 +2,8 @@
 obj/
 bin/
 .vscode/
+<<<<<<< HEAD
 .DS_Store
+=======
+.vs/
+>>>>>>> develop
