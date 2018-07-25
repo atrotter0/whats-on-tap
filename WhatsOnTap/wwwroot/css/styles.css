@@ -151,3 +151,17 @@
 .alert-success {
   display: none;
 }
+
+.radio-with-height {
+  height: 40px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+input[type="radio"]:hover, .radio-with-height:hover {
+  cursor: pointer;
+}
+
+.register-radio-label {
+  padding-top: 7px;
+}
