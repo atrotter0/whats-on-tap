@@ -6,24 +6,40 @@
 }
 
 <div class="container">
-
+    
     <form action="/beers/new" method="post">
-        <label for="beerName">Beer Name</label>
-        <input name="beerName" type="text" required>
-        <label for="brewery">Brewery</label>
-        <input name="brewery" type="text" required>
-        <label for="style">Style</label>
-        <input name="style" type="text" required>
-        <label for="abv">ABV</label>
-        <input name="abv" type="text" required>
-        <label for="ibu">IBU</label>
-        <input name="ibu" type="text" required>
+        <h1>Enter a new Beer:</h1>
+        <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Beer Name</span>
+            </div>
+            <input type="text" name="beerName" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required>
+
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Brewery</span>
+            </div>
+            <input type="text" name="brewery" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required>
+
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Style</span>
+            </div>
+            <input type="text" name="style" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required>
+
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">ABV</span>
+            </div>
+            <input type="text" name="abv" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required>
+
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">IBU</span>
+            </div>
+            <input type="text" name="ibu" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required>
+        </div>
 
 
 
 
-
-        <h1>Which bars is this beer served in?</h1>
+        <h2>Which bars is this beer served in?</h2>
             @foreach (var bar in Model)
             {   
                 @if (itemCount == 1)
@@ -51,8 +67,7 @@
                     itemCount++;
                 } 
             }
-
-        <button type="submit">Submit</button>
+        <button class="submitForm" type="submit">Submit</button>
     </form>
 
 </div>

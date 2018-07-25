@@ -14,6 +14,14 @@
   max-width: 260px;
 }
 
+.submitForm {
+  height: 40px;
+}
+
+.newBeerQuestions {
+  width: 100%;
+}
+
 /* Beer Details Grid */
 .beersGridThree {
   display: grid;
@@ -30,7 +38,6 @@
   border-bottom: 1px lightgray solid;
 }
 
-
 /* Buttons */
 .btn-hover {
   cursor: pointer
@@ -39,6 +46,8 @@
 #id {
     width: 200px;
     height: 100px;
+}
+
 /* Owner's Bar Index */
 .owner-bar {
   height: 100px;
