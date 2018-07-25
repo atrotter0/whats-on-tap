@@ -12,7 +12,8 @@ namespace WhatsOnTap.ViewModels
         public List<Beer> AllBeers { get; set; }
         public Bar CurrentBar { get; set; }
 
-        public BarDetailsViewModel (WhatsOnTapContext context, int id) {
+        public BarDetailsViewModel (WhatsOnTapContext context, int id)
+        {
             _db = context;
             CurrentBar = _db.Bars.FirstOrDefault(bars => bars.BarId == id);
         }
