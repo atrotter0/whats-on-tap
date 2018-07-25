@@ -38,6 +38,15 @@ namespace WhatsOnTap.Controllers
             IdentityResult result = await _userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
+                if (model.UserType == "owner")
+                {
+                    await _userManager.AddToRoleAsync(user, "owner");
+                }
+                else
+                {
+                    await _userManager.AddToRoleAsync(user, "user");
+                }
+
                 Microsoft.AspNetCore.Identity.SignInResult login = await _signInManager.PasswordSignInAsync(model.Email, model.Password, isPersistent: true, lockoutOnFailure: false);
                 return RedirectToAction("Index");
             }
