@@ -4,7 +4,6 @@
   Layout = "_Layout";
 }
 
-
 <div class='container'>
   <div class="card">
     <div class="card-body">
@@ -22,13 +21,12 @@
             Bars Serving @Model.CurrentBeer.BeerName
           </button>
 
-          <!-- Modal -->
           <div class="modal fade" id="barsWithBeerModal" tabindex="-1" role="dialog" aria-labelledby="beerDetailModal" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
                 <div class="modal-body">
                   <ul class="list-group list-group-flush">
-                    @foreach (var bar in Model.BarsWithBeer)
+                    @foreach (var bar in Model.BeerBars)
                     {
                       <li class="list-group-item">
                         <div class="beer-modal-bar-name">
@@ -47,4 +45,9 @@
       </div>
     </div>
   </div>
+  <a href="/beers/@Model.CurrentBeer.BeerId/delete">Delete</a>
+
+  <button>Add to your favorites</button>
+
 </div>
+
