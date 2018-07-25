@@ -1,8 +1,10 @@
-$(function () {
+function initializeToolTipAndPopover() {
     $('[data-toggle="popover"]').popover()
     .popover({html:true})
-})
+    $('[data-toggle="tooltip"]').tooltip()
+}
+
 
 $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
+    initializeToolTipAndPopover();
 })
