@@ -3,12 +3,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using WhatsOnTap.Models;
+using WhatsOnTap.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
 
 namespace WhatsOnTap.Controllers
 {
-    [Authorize]
     public class UserController : Controller
     {
         private readonly WhatsOnTapContext _db;
@@ -39,11 +39,18 @@ namespace WhatsOnTap.Controllers
         }
 
         [HttpGet("/user/profile")]
-        public async Task<IActionResult> Details()
+        public IActionResult Details()
+        {
+            return View();
+        }
+
+        [HttpPost("/user/profile")]
+        public async Task<IActionResult> Details(ProfileViewModel model)
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var currentUser = await _userManager.FindByIdAsync(userId);
-            return View();
+            var changePassword = await _userManager.ChangePasswordAsync(currentUser, model.CurrentPassword, model.NewPassword);
+            return View("Details");
         }
     }
 }

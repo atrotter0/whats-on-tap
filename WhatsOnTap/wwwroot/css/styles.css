@@ -148,11 +148,6 @@
   text-align: center;
 }
 
-.alert {
+.alert-success {
   display: none;
-  width: 50%;
-  height: 50px;
-  max-width: 300px;
-  margin: 20px auto;
-  text-align: center;
 }
