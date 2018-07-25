@@ -1,0 +1,43 @@
+@{
+    Layout = "_Layout";
+}
+
+@using System.Security.Claims
+@using WhatsOnTap.ViewModels
+@model ProfileViewModel
+
+<div class="container">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <h2 class="form-header">My Profile</h2>
+        @using (Html.BeginForm("Details", "User", FormMethod.Post))
+        {
+            <div class="form-model">
+                <hr>
+                <br>
+                <div class="form-group">
+                    @Html.LabelFor(model => @model.Email, "Email")
+                    @Html.TextBoxFor(model => @model.Email, new {@class="form-control", type="email"})
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => @model.CurrentPassword, "Current Password")
+                    @Html.TextBoxFor(model => @model.CurrentPassword, new {@class="form-control", type="password"})
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => @model.NewPassword, "New Password")
+                    @Html.TextBoxFor(model => @model.NewPassword, new {@class="form-control", type="password"})
+                </div>
+            </div>
+            <div class="reg-buttons">
+                <a href="/user" class="btn btn-lg btn-outline-warning cancel-button">Cancel</a>
+                <input type="submit" class="btn btn-lg btn-outline-primary" value="Update" />
+            </div>
+        }
+    }
+    else
+    {
+        <div class="alert alert-warning" role="alert">
+            <i class="fas fa-exclamation-triangle"></i>&nbsp;<strong>Oops! </strong> You need to log in to view this page!
+        </div>
+    }
+</div>

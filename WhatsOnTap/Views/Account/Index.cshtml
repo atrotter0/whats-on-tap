@@ -7,7 +7,7 @@
 <div class="container">
     @if(User.Identity.IsAuthenticated)
     {
-        await Html.RenderPartialAsync("_MainAction");     
+        await Html.RenderPartialAsync("_MainAction");
     }
     else
     {

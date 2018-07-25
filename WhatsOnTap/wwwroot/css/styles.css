@@ -6,8 +6,6 @@
   margin-bottom: 20px;
 }
 
-<<<<<<< HEAD
-=======
 .bar-card {
   max-width: 350px;
 }
@@ -57,7 +55,6 @@
   width: 80%;
 }
 
->>>>>>> develop
 /* Beer Details Grid */
 .beersGridThree {
   display: grid;
@@ -84,6 +81,7 @@
   width: 200px;
   height: 100px;
 }
+
 /* Owner's Bar Index */
 .owner-bar {
   height: 100px;
@@ -194,13 +192,8 @@
   text-align: center;
 }
 
-.alert {
+.alert-success {
   display: none;
-  width: 50%;
-  height: 50px;
-  max-width: 300px;
-  margin: 20px auto;
-  text-align: center;
 }
 
 .beers-list-row {
@@ -248,4 +241,3 @@
 .beer-modal-bar-name {
   font-size: 1.25em;
 }
-
