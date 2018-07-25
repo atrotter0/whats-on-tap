@@ -1,0 +1,96 @@
+@{
+  Layout = "_Layout";
+  var itemCount = 1;
+}
+
+<div class="container">
+
+    <form action="/bars/@Model.CurrentBar.BarId/edit" method="post">
+        <h1>Edit this Bar:</h1>
+        <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Bar Name</span>
+            </div>
+            <input type="text" name="barName" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required value="@Model.CurrentBar.BarName">
+
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Rating</span>
+            </div>
+            <input type="text" name="barRating" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required value="@Model.CurrentBar.BarRating">
+
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Website</span>
+            </div>
+            <input type="text" name="barWebsite" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required value="@Model.CurrentBar.BarWebsite">
+
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Street Address</span>
+            </div>
+            <input type="text" name="barStreet" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required value="@Model.CurrentBar.BarStreet">
+
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">City</span>
+            </div>
+            <input type="text" name="barCity" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required value="@Model.CurrentBar.BarCity">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">State</span>
+            </div>
+            <input type="text" name="barState" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required value="@Model.CurrentBar.BarState">
+
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Zip</span>
+            </div>
+            <input type="text" name="barZip" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required value="@Model.CurrentBar.BarZip">
+
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Phone</span>
+            </div>
+            <input type="text" name="barPhone" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required value="@Model.CurrentBar.BarPhone">
+
+
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Latitude</span>
+            </div>
+            <input type="text" name="barLatitude" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required value="@Model.CurrentBar.BarLatitude">
+
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Longitude</span>
+            </div>
+            <input type="text" name="barLongitude" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required value="@Model.CurrentBar.BarLongitude">
+
+
+
+        </div>
+
+
+
+
+        <h2>Which beers does this bar serve?</h2>
+            @foreach (var beer in @Model.AllBeers)
+            {
+                @if (itemCount == 1)
+                {
+                    @Html.Raw("<div class='card-deck'>")
+                }
+                <div class="card">
+
+                    <img class="card-img-top" src="~/img/bar-icon.png" alt="Card image cap" for="beerId">
+                    <div class="card-body" for="beerId">
+                        <h4 class="card-title">@beer.BeerName</h4>
+                    </div>
+                    <input type="checkbox" name="beerId" value="@beer.BeerId">
+                </div>
+
+                @if (itemCount == 3)
+                {
+                    @Html.Raw("</div>")
+                    itemCount = 1;
+                }
+                else {
+                    itemCount++;
+                }
+            }
+        <button class="submitForm" type="submit">Submit</button>
+    </form>
+
+</div>

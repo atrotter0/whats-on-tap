@@ -9,6 +9,7 @@ namespace WhatsOnTap.ViewModels
     {
         private readonly WhatsOnTapContext _db;
         public List<Beer> BarBeers { get; set; }
+        public List<Beer> AllBeers { get; set; }
         public Bar CurrentBar { get; set; }
 
         public BarDetailsViewModel (WhatsOnTapContext context, int id) {
@@ -24,8 +25,20 @@ namespace WhatsOnTap.ViewModels
             {
                 int beerId = beer.BeerId;
                 beerList.Add(_db.Beers.FirstOrDefault(record => record.BeerId == beerId));
-            }  
-            BarBeers = beerList;          
+            }
+            BarBeers = beerList;
+        }
+
+        public void FindAllBeers()
+        {
+            var Beers = _db.Beers.ToList();
+            List<Beer> beerList = new List<Beer>();
+            foreach (var beer in Beers)
+            {
+                int beerId = beer.BeerId;
+                beerList.Add(_db.Beers.FirstOrDefault(record => record.BeerId == beerId));
+            }
+            AllBeers = beerList;
         }
     }
 }
