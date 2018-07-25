@@ -21,7 +21,44 @@ namespace WhatsOnTap.Controllers
         [HttpGet("/beers")]
         public ActionResult Index()
         {
-            return View(_db.Beers.ToList());
+            BeerIndexViewModel viewModel = new BeerIndexViewModel(_db);
+            return View(viewModel);
+        }
+
+        [HttpGet("/beers/sortby/name")]
+        public ActionResult SortByName()
+        {
+            BeerIndexViewModel viewModel = new BeerIndexViewModel(_db);
+            BeerIndexViewModel.FlipName();
+            viewModel.SortByName();
+            return View("Index", viewModel);
+        }
+
+        [HttpGet("/beers/sortby/style")]
+        public ActionResult SortByStyle()
+        {
+            BeerIndexViewModel viewModel = new BeerIndexViewModel(_db);
+            BeerIndexViewModel.FlipStyle();
+            viewModel.SortByStyle();
+            return View("Index", viewModel);
+        }
+
+        [HttpGet("/beers/sortby/abv")]
+        public ActionResult SortByAbv()
+        {
+            BeerIndexViewModel viewModel = new BeerIndexViewModel(_db);
+            BeerIndexViewModel.FlipAbv();
+            viewModel.SortByAbv();
+            return View("Index", viewModel);
+        }
+
+        [HttpGet("/beers/sortby/ibu")]
+        public ActionResult SortByIbu()
+        {
+            BeerIndexViewModel viewModel = new BeerIndexViewModel(_db);
+            BeerIndexViewModel.FlipIbu();
+            viewModel.SortByIbu();
+            return View("Index", viewModel);
         }
 
         [HttpGet("/beers/{id}")]
@@ -100,7 +137,7 @@ namespace WhatsOnTap.Controllers
             Taplist joinEntry = _db.Taplists.FirstOrDefault(entry => entry.BeerId == id);
             if (joinEntry != null)
             {
-              _db.Taplists.Remove(joinEntry);
+                _db.Taplists.Remove(joinEntry);
             }
             _db.Beers.Remove(beer);
             _db.SaveChanges();

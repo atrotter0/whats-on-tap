@@ -1,6 +1,5 @@
 @{
     Layout = "_Layout";
-    var itemCount = 1;
     @* Edit API Key to hide from public *@
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhXVDo8Km_LaWNnYCw_WeGQoiT6XMgHvg&callback=initMap"></script>
 }
@@ -30,33 +29,34 @@
             mapOptions);
             var marker = new google.maps.Marker({position: {lat: @lat, lng: @lng}, map: map});
         }
-    </script>
-
-    @foreach (var beer in @Model.BarBeers)
-    {
-        @if (itemCount == 1)
-        {
-            @Html.Raw("<div class='card-deck'>")
-        }
-
-        <div class="card">
-            <img class="card-img-top" src="~/img/beer-icon.jpg" alt="Card image cap">
-            <div class="card-body">
-                <h4 class="card-title"><a href="/beers/@beer.BeerId">@beer.BeerName</a></h4>
-                <p class="card-text">@beer.BeerStyle</p>
-                <p class="card-text">@beer.BeerAbv% ABV</p>
-                <p class="card-text">@beer.BeerIbu IBU</p>
+    </script>  
+    @foreach (var beer in Model.BarBeers)
+    {    
+        <div class="row beers-list-row">
+            <div class="col-4">
+                <ul class="list-group list-group-flush">
+                    <a href="/beers/@beer.BeerId"><li class="list-group-item">@beer.BeerName</li></a>
+                </ul>
+            </div>
+            <div class="col-2">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">@beer.BeerStyle</li>
+                </ul>
+            </div>
+            <div class="col-2">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">@beer.BeerAbv</li>
+                </ul>
+            </div>
+            <div class="col-2">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">@beer.BeerIbu</li>
+                </ul>
+            </div>
+            <div class="col-2">
+                <button id="@beer.BeerId" class="btn btn-sm btn-outline-warning add-beer favorite-beer"><i class="fas fa-heart"></i> &nbsp;Favorite</button>
             </div>
         </div>
-
-        @if (itemCount == 3)
-        {
-            @Html.Raw("</div>")
-            itemCount = 1;
-        }
-        else {
-            itemCount++;
-        }
     }
     <a href="/bars/@Model.CurrentBar.BarId/delete">Delete</a>
     <a href="/bars/@Model.CurrentBar.BarId/edit">Edit</a>
