@@ -28,13 +28,13 @@
                 <label>Account Type</label>
                 <div class="input-group-prepend">
                     <div class="input-group-text radio-with-height">
-                        @Html.RadioButtonFor(user => user.UserType, "Bar Owner", new { id = "user-account" })
+                        @Html.RadioButtonFor(user => user.UserType, "owner", new { id = "user-account" })
                     </div>
                     <label for="user-account" class="register-radio-label">Bar Owner</label>
                 </div>
                 <div class="input-group-prepend">
                     <div class="input-group-text radio-with-height">
-                        @Html.RadioButtonFor(model => model.UserType, "User", new { id = "owner-account" })
+                        @Html.RadioButtonFor(model => model.UserType, "user", new { id = "owner-account" })
                     </div>
                     <label for="owner-account" class="register-radio-label">User</label>
                 </div>
