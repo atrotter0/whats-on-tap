@@ -88,21 +88,21 @@ namespace WhatsOnTap.Controllers
             viewModel.CurrentBeer.BeerIbu = int.Parse(ibu);
 
             var beersToRemove = _db.Taplists.Where(entry => entry.BeerId == id).ToList();
-            foreach (var beer in beersToRemove)
+            foreach (var beers in beersToRemove)
             {
-                if (beer != null)
+                if (beers != null)
                 {
-                    _db.Taplists.Remove(beer);
+                    _db.Taplists.Remove(beers);
                 }
             }
 
-            foreach (int barId in BarId)
+            foreach (var barId in BarId)
             {
-                Taplist newTaplist = new Taplist(viewModel.CurrentBeer.BeerId, barId);
+                Bar bar = _db.Bars.FirstOrDefault(item => item.BarId == barId);
+                Taplist newTaplist = new Taplist(id, bar.BarId);
                 _db.Taplists.Add(newTaplist);
             }
             _db.SaveChanges();
-
             return RedirectToAction("Index");
         }
 

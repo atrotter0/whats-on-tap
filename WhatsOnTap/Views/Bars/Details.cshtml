@@ -15,7 +15,7 @@
         var lng = @Model.CurrentBar.BarLongitude;
     }
 
-    <script type="text/javascript">  
+    <script type="text/javascript">
         $(document).ready(function () {
             initialize();
         });
@@ -58,4 +58,6 @@
             </div>
         </div>
     }
+    <a href="/bars/@Model.CurrentBar.BarId/delete">Delete</a>
+    <a href="/bars/@Model.CurrentBar.BarId/edit">Edit</a>
 </div>
