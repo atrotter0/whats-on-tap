@@ -165,6 +165,8 @@
 
 .beer-card-title {
   text-align: center;
+  font-size: 3em;
+  margin-bottom: 15px;
 }
 
 .bold {
@@ -172,10 +174,22 @@
 }
 
 .beer-details {
-  max-width: 300px;
+  display: block;
+  text-align: center;
+  font-size: 1.5em;
+  margin-bottom: 25px;
 }
 
 .favorite-beer {
   margin-top: 8px;
+}
+
+.beer-detail-modal {
+  display: block;
+  text-align: center;
+}
+
+.modal-button {
+  font-size: 1em;
 }
 
