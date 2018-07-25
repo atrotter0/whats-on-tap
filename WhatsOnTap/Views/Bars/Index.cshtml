@@ -6,6 +6,38 @@
 }
 
 <div class='container'>
+
+    <form action="/bars/filter" method="get">
+        <div class="filter-box">
+            <div>Filter Your Search:</div>
+            <div class="filter-choice">
+                <select name="barNeighborhood">
+                    <option value="">Select a Neighborhood</option>
+                    <option value="Northwest">Northwest Portland</option>
+                    <option value="North">North Portland</option>
+                    <option value="Northeast">Northeast Portland</option>
+                    <option value="Southeast">Southeast Portland</option>
+                    <option value="Southwest">Southwest Portland</option>
+                    <option value="Downtown">Downtown/The Pearl</option>
+                    <option value="Beaverton">Beaverton</option>
+                    <option value="Vancouver">Vancouver</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="filter-choice">
+                <select name="barRating">
+                    <option value="0">Select a minimum rating</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>                     
+                </select>
+            </div>
+            <input type="submit" value="Filter">
+        </div>
+    </form>
+
     @foreach (var bar in Model)
     {   
         @if (itemCount == 1)
@@ -48,9 +80,4 @@
             itemCount++;
         } 
     }
-
-
-
-
-
 </div>
