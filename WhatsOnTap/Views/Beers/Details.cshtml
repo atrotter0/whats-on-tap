@@ -8,13 +8,14 @@
   <div class="card">
     <div class="card-body">
       <div class="beer-card-title">
-        <button id="@Model.CurrentBeer.BeerId" class="btn btn-outline-warning btn-pill add-beer float-right"><i class="fas fa-heart"></i></button>
+        <button id="@Model.CurrentBeer.BeerId" class="btn btn-outline-warning btn-pill btn-sm add-beer float-right"><i class="fas fa-heart"></i> &nbsp;Favorite</button>
+        <a href="/beers/@Model.CurrentBeer.BeerId/delete" class="btn btn-outline-danger btn-pill btn-sm add-beer float-left"><i class="fas fa-trash-alt"></i> &nbsp;Delete</a>
         <span>@Model.CurrentBeer.BeerName </span><i class="fas fa-angle-right"></i>&nbsp;<span class="text-muted">@Model.CurrentBeer.BeerBreweryName</span>
       </div>
       <div class="beer-details">
-          <span class="bold">Style <i class="fas fa-angle-right"></i></span> <span class="text-muted">@Model.CurrentBeer.BeerStyle</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <span class="bold">ABV <i class="fas fa-angle-right"></i></span> <span class="text-muted">@Model.CurrentBeer.BeerAbv</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <span class="bold">IBU <i class="fas fa-angle-right"></i></span> <span class="text-muted">@Model.CurrentBeer.BeerIbu</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <span class="beer-detail-info"><span class="bold">Style <i class="fas fa-angle-right"></i></span> <span class="text-muted">@Model.CurrentBeer.BeerStyle</span></span>
+          <span class="beer-detail-info"><span class="bold">ABV <i class="fas fa-angle-right"></i></span> <span class="text-muted">@Model.CurrentBeer.BeerAbv.ToString("0.0")</span></span>
+          <span class="beer-detail-info"><span class="bold">IBU <i class="fas fa-angle-right"></i></span> <span class="text-muted">@Model.CurrentBeer.BeerIbu</span></span>
       </div>
       <div class="beer-detail-modal">
           <button type="button" class="btn btn-primary modal-button" data-toggle="modal" data-target="#barsWithBeerModal">
@@ -45,9 +46,5 @@
       </div>
     </div>
   </div>
-  <a href="/beers/@Model.CurrentBeer.BeerId/delete">Delete</a>
-
-  <button>Add to your favorites</button>
-
 </div>
 

@@ -231,6 +231,7 @@
 .beer-detail-modal {
   display: block;
   text-align: center;
+  margin-bottom: 15px;
 }
 
 .modal-button {
@@ -239,4 +240,9 @@
 
 .beer-modal-bar-name {
   font-size: 1.25em;
+}
+
+.beer-detail-info {
+  margin-left: 20px;
+  margin-right: 20px;
 }
