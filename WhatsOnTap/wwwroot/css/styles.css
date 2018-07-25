@@ -196,9 +196,24 @@
   display: none;
 }
 
+.radio-with-height {
+  height: 40px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+input[type="radio"]:hover, .radio-with-height:hover {
+  cursor: pointer;
+}
+
+.register-radio-label {
+  padding-top: 7px;
+}
+
 .beers-list-row {
   border-bottom: 1px solid #E9ECEF;
 }
+
 
 .column-header {
   font-weight: bold;
