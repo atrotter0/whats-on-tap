@@ -54,6 +54,7 @@ namespace WhatsOnTap.Controllers
             viewModel.CurrentBar.BarPhone = barPhone;
             viewModel.CurrentBar.BarLatitude = Convert.ToDouble(barLatitude);
             viewModel.CurrentBar.BarLongitude = Convert.ToDouble(barLongitude);
+            viewModel.CurrentBar.BarNeighborhood = barNeighborhood;
             var barsToRemove = _db.Taplists.Where(entry => entry.BarId == id).ToList();
             foreach (var bars in barsToRemove)
             {
@@ -90,7 +91,7 @@ namespace WhatsOnTap.Controllers
             newBar.BarPhone = barPhone;
             newBar.BarLatitude = Convert.ToDouble(barLatitude);
             newBar.BarLongitude = Convert.ToDouble(barLongitude);
-
+            newBar.BarNeighborhood = barNeighborhood;
             _db.Add(newBar);
             foreach (int beerId in BeerId)
             {
