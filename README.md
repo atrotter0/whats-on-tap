@@ -13,9 +13,10 @@ A web app to show the bars in the Portland Metro area and the various beers that
 * As a user, I am able to make an account and choose between being a regular user or an owner.
 * As a user, I am able to see the bars and beers in the Portland area.
 * As a user, I am able to add beers to my favorite list.
-* As an owner, I can add beers and bars to the program.
-* As an owner, I can edit the information of the bars and beers.
-* As an owner, I can delete bars and beers.
+* As a user, I am able to filter bars and beers by specific categories (rating, neighborhood, etc.)
+* As an owner, I am able to add beers and bars to the program.
+* As an owner, I am able to edit the information of the bars and beers.
+* As an owner, I am able to delete bars and beers.
 
 ## Setup on OSX
 
