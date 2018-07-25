@@ -36,7 +36,11 @@
                   <ul class="list-group list-group-flush">
                     @foreach (var bar in Model.BarsWithBeer)
                     {
-                      <li class="list-group-item">@bar.BarName</li>
+                      <li class="list-group-item">
+                        <div class="beer-modal-bar-name">
+                          <a href="/bars/@bar.BarId">@bar.BarName</a>
+                        </div>
+                      </li>
                     }
                   </ul>
                 </div>
