@@ -31,7 +31,7 @@ namespace WhatsOnTap.Controllers
             viewModel.FindBeerBars(id);
             return View(viewModel);
         }
-        
+
         [HttpGet("/beers/new")]
         public ActionResult Create() => View(_db.Bars.ToList());
 
@@ -44,7 +44,7 @@ namespace WhatsOnTap.Controllers
             newBeer.BeerStyle = style;
             newBeer.BeerAbv = Convert.ToDouble(abv);
             newBeer.BeerIbu = int.Parse(ibu);
-            
+
             _db.Add(newBeer);
             foreach (int barId in BarId)
             {
@@ -61,9 +61,11 @@ namespace WhatsOnTap.Controllers
         {
             Beer beer = _db.Beers.FirstOrDefault(beers => beers.BeerId == id);
             Taplist joinEntry = _db.Taplists.FirstOrDefault(entry => entry.BeerId == id);
-            _db.Taplists.Remove(joinEntry);
+            if (joinEntry != null)
+            {
+              _db.Taplists.Remove(joinEntry);
+            }
             _db.Beers.Remove(beer);
-            if (joinEntry != null) _db.Taplists.Remove(joinEntry);
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
