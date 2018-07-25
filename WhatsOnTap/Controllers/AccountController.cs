@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Identity;
 using WhatsOnTap.Models;
 using System.Threading.Tasks;
 using WhatsOnTap.ViewModels;
-using System.Security.Claims;
 
 namespace WhatsOnTap.Controllers
 {
