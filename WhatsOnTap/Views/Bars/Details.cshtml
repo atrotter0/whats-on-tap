@@ -16,7 +16,7 @@
         var lng = @Model.CurrentBar.BarLongitude;
     }
 
-    <script type="text/javascript">  
+    <script type="text/javascript">
         $(document).ready(function () {
             initialize();
         });
@@ -30,10 +30,10 @@
             mapOptions);
             var marker = new google.maps.Marker({position: {lat: @lat, lng: @lng}, map: map});
         }
-    </script>  
+    </script>
 
     @foreach (var beer in @Model.BarBeers)
-    {   
+    {
         @if (itemCount == 1)
         {
             @Html.Raw("<div class='card-deck'>")
@@ -56,6 +56,8 @@
         }
         else {
             itemCount++;
-        } 
+        }
     }
+    <a href="/bars/@Model.CurrentBar.BarId/delete">Delete</a>
+    <a href="/bars/@Model.CurrentBar.BarId/edit">Edit</a>
 </div>

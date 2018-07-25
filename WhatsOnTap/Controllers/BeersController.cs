@@ -43,30 +43,30 @@ namespace WhatsOnTap.Controllers
         [HttpPost("/beers/{id}/edit")]
         public ActionResult Edit(List<int> BarId, string beerName, string brewery, string style, string abv, string ibu, int id)
         {
-          BeerDetailsViewModel viewModel = new BeerDetailsViewModel(_db, id);
-          viewModel.CurrentBeer.BeerName = beerName;
-          viewModel.CurrentBeer.BeerBreweryName = brewery;
-          viewModel.CurrentBeer.BeerStyle = style;
-          viewModel.CurrentBeer.BeerAbv = Convert.ToDouble(abv);
-          viewModel.CurrentBeer.BeerIbu = int.Parse(ibu);
+            BeerDetailsViewModel viewModel = new BeerDetailsViewModel(_db, id);
+            viewModel.CurrentBeer.BeerName = beerName;
+            viewModel.CurrentBeer.BeerBreweryName = brewery;
+            viewModel.CurrentBeer.BeerStyle = style;
+            viewModel.CurrentBeer.BeerAbv = Convert.ToDouble(abv);
+            viewModel.CurrentBeer.BeerIbu = int.Parse(ibu);
 
-          var beersToRemove = _db.Taplists.Where(entry => entry.BeerId == id).ToList();
-          foreach (var beer in beersToRemove)
-          {
-            if (beer != null)
+            var beersToRemove = _db.Taplists.Where(entry => entry.BeerId == id).ToList();
+            foreach (var beers in beersToRemove)
             {
-              _db.Taplists.Remove(beer);
+                if (beers != null)
+                {
+                    _db.Taplists.Remove(beers);
+                }
             }
-          }
 
-          foreach (int barId in BarId)
-          {
-              Taplist newTaplist = new Taplist(viewModel.CurrentBeer.BeerId, barId);
-              _db.Taplists.Add(newTaplist);
-          }
-          _db.SaveChanges();
-
-          return RedirectToAction("Index");
+            foreach (var barId in BarId)
+            {
+                Bar bar = _db.Bars.FirstOrDefault(item => item.BarId == barId);
+                Taplist newTaplist = new Taplist(id, bar.BarId);
+                _db.Taplists.Add(newTaplist);
+            }
+            _db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         [HttpGet("/beers/new")]
