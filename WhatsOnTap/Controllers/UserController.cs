@@ -3,12 +3,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using WhatsOnTap.Models;
+using WhatsOnTap.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
 
 namespace WhatsOnTap.Controllers
 {
-    [Authorize]
     public class UserController : Controller
     {
         private readonly WhatsOnTapContext _db;
@@ -35,7 +35,31 @@ namespace WhatsOnTap.Controllers
             userBeer.User = currentUser;
             _db.UsersBeers.Add(userBeer);
             _db.SaveChanges();
-            return View("Index");
+            return View();
+        }
+
+        [HttpGet("/user/profile")]
+        public async Task<IActionResult> Details()
+        {
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var currentUser = await _userManager.FindByIdAsync(userId);
+            ProfileViewModel newViewModel = new ProfileViewModel(currentUser.Email);
+            return View(newViewModel);
+        }
+
+        [HttpPost("/user/profile")]
+        public async Task<IActionResult> Details(ProfileViewModel model)
+        {
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var currentUser = await _userManager.FindByIdAsync(userId);
+            if (model.CurrentPassword != null)
+            {
+                var changePassword = await _userManager.ChangePasswordAsync(currentUser, model.CurrentPassword, model.NewPassword);
+            }
+            currentUser.Email = model.Email;
+            currentUser.UserName = model.Email;
+            await _userManager.UpdateAsync(currentUser);
+            return View("Details");
         }
     }
 }
