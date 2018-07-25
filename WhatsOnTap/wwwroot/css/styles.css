@@ -55,6 +55,12 @@
   width: 80%;
 }
 
+/* Beer Details Grid */
+.beersGridThree {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
 .beersGridFive {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -185,13 +191,8 @@
   text-align: center;
 }
 
-.alert {
+.alert-success {
   display: none;
-  width: 50%;
-  height: 50px;
-  max-width: 300px;
-  margin: 20px auto;
-  text-align: center;
 }
 
 .beers-list-row {
@@ -239,4 +240,3 @@
 .beer-modal-bar-name {
   font-size: 1.25em;
 }
-
