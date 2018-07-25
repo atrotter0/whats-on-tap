@@ -1,71 +1,58 @@
 @{
   Layout = "_Layout";
-  var itemCount = 1;
 }
 
 <div class="container">
 
     <form action="/beers/@Model.CurrentBeer.BeerId/edit" method="post">
-        <h1>Update @Model.CurrentBeer.BeerName:</h1>
-        <div class="input-group input-group-sm mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-sm">Beer Name</span>
-            </div>
-            <input type="text" name="beerName" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required value="@Model.CurrentBeer.BeerName">
-
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-sm">Brewery</span>
-            </div>
-            <input type="text" name="brewery" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required value="@Model.CurrentBeer.BeerBreweryName">
-
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-sm">Style</span>
-            </div>
-            <input type="text" name="style" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required value="@Model.CurrentBeer.BeerStyle">
-
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-sm">ABV</span>
-            </div>
-            <input type="text" name="abv" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required value="@Model.CurrentBeer.BeerAbv">
-
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-sm">IBU</span>
-            </div>
-            <input type="text" name="ibu" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required value="@Model.CurrentBeer.BeerIbu">
+        <h2 class="form-header">Update Beer</h1>
+        <div class="form-model">
+            <hr>
         </div>
-
-
-
-
-        <h2>Which bars is this beer served in?</h2>
-            @foreach (var bar in @Model.AllBars)
-            {
-                @if (itemCount == 1)
-                {
-                    @Html.Raw("<div class='card-deck'>")
-                }
-                <div class="card">
-
-                    <img class="card-img-top" src="~/img/bar-icon.png" alt="Card image cap" for="barId">
-                    <div class="card-body" for="barId">
-                        <h4 class="card-title">@bar.BarName</h4>
-                    </div>
-                    <div class="card-footer" for="barId">
-                        <p class="card-text"><span class="card-category">Rating:</span> @bar.BarRating</p>
-                    </div>
-                    <input type="checkbox" name="barId" value="@bar.BarId">
+        <div class="row update-row">
+            <div class="col">
+                <h3 class="update-subheader">Beer Details</h3>
+                <div class="form-group">
+                    <label for="beerName">Beer Name </label>
+                    <input name="beerName" type="text" class="form-control" value="@Model.CurrentBeer.BeerName" required>
                 </div>
-
-                @if (itemCount == 3)
-                {
-                    @Html.Raw("</div>")
-                    itemCount = 1;
-                }
-                else {
-                    itemCount++;
-                }
-            }
-        <button class="submitForm" type="submit">Submit</button>
+                <div class="form-group">
+                    <label for="brewery">Brewery Name </label>
+                    <input name="brewery" type="text" class="form-control" value="@Model.CurrentBeer.BeerBreweryName" required>
+                </div>
+                <div class="form-group">
+                    <label for="style">Beer Style </label>
+                    <input name="style" type="text" class="form-control" value="@Model.CurrentBeer.BeerStyle" required>
+                </div>
+                <div class="form-group">
+                    <label for="abv">ABV </label>
+                    <input name="abv" type="text" class="form-control" value="@Model.CurrentBeer.BeerAbv" required>
+                </div>
+                <div class="form-group">
+                    <label for="ibu">IBU </label>
+                    <input name="ibu" type="text" class="form-control" value="@Model.CurrentBeer.BeerIbu" required>
+                </div>
+            </div>
+            <div class="col">
+                <h3 class="update-subheader">Available At</h3>
+                <ul class="list-group list-group-flush available-at-list">
+                    @foreach (var bar in Model.AllBars)
+                    {
+                        if (Model.BeerBars.Contains(@bar))
+                        {
+                            <li class="list-group-item"><input type="checkbox" name="barId" value="@bar.BarId" checked> &nbsp;@bar.BarName</li>
+                        }
+                        else
+                        {
+                            <li class="list-group-item"><input type="checkbox" name="barId" value="@bar.BarId"> &nbsp;@bar.BarName</li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+        <div class="reg-buttons">
+            <a href="/beers/@Model.CurrentBeer.BeerId" class="btn btn-lg btn-outline-warning cancel-button">Cancel</a>
+            <button type="submit" class="btn btn-lg btn-outline-primary">Update</button> 
+        </div>
     </form>
-
 </div>

@@ -37,18 +37,19 @@ namespace WhatsOnTap.Controllers
         {
             BeerDetailsViewModel viewModel = new BeerDetailsViewModel(_db, id);
             viewModel.FindAllBars();
+            viewModel.FindBeerBars(id);
             return View(viewModel);
         }
 
         [HttpPost("/beers/{id}/edit")]
-        public ActionResult Edit(List<int> BarId, string beerName, string brewery, string style, string abv, string ibu, int id)
+        public ActionResult Edit(List<int> BarId, string beerName, string brewery, string style, string abv, int ibu, int id)
         {
           BeerDetailsViewModel viewModel = new BeerDetailsViewModel(_db, id);
           viewModel.CurrentBeer.BeerName = beerName;
           viewModel.CurrentBeer.BeerBreweryName = brewery;
           viewModel.CurrentBeer.BeerStyle = style;
           viewModel.CurrentBeer.BeerAbv = Convert.ToDouble(abv);
-          viewModel.CurrentBeer.BeerIbu = int.Parse(ibu);
+          viewModel.CurrentBeer.BeerIbu = ibu;
 
           var beersToRemove = _db.Taplists.Where(entry => entry.BeerId == id).ToList();
           foreach (var beer in beersToRemove)

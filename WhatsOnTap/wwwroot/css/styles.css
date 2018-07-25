@@ -185,6 +185,7 @@
 
 .reg-buttons {
   text-align: center;
+  margin-bottom: 25px;
 }
 
 .login-buttons {
@@ -245,5 +246,21 @@
 .beer-detail-info {
   margin-left: 20px;
   margin-right: 20px;
+}
+
+.update-row {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.update-subheader {
+  margin-bottom: 20px;
+  text-decoration: underline;
+  text-align: center;
+}
+
+.available-at-list {
+  margin-top: 50px;
+  margin-left: 10%;
 }
 
