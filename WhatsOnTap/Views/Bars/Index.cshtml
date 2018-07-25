@@ -6,8 +6,6 @@
 }
 
 <div class='container'>
-    <h1>Bars</h1>
-
     @foreach (var bar in Model)
     {   
         @if (itemCount == 1)
@@ -15,16 +13,29 @@
             @Html.Raw("<div class='card-deck'>")
         }
 
-        <div class="card">
+        <div class="card bar-card">
             <img class="card-img-top" src="~/img/bar-icon.png" alt="Card image cap">
             <div class="card-body">
                 <h4 class="card-title"><a href="/bars/@bar.BarId">@bar.BarName</a></h4>
-                <p class="card-text"><span class="card-category">Address:</span> @bar.BarStreet, @bar.BarCity, @bar.BarState @bar.BarZip</p>
-                <p class="card-text"><span class="card-category">Phone Number:</span> @bar.BarPhone</p>
-                <p class="card-text"><span class="card-category">Website:</span> <a href="@bar.BarWebsite">@bar.BarWebsite</a></p>
+                <div class="card-insides">
+                    <div class="address-icon"><img class="card-icons" src="~/img/address.png" alt="Address Icon"></div>
+                    <div class="address-text">@bar.BarStreet, @bar.BarCity, @bar.BarState @bar.BarZip</div>
+                </div>  
+                <div class="card-insides">
+                    <img class="card-icons" src="~/img/telephone.png" alt="Phone Icon">
+                    <span>@bar.BarPhone</span>
+                </div>
+                <div class="card-insides">
+                    <img class="card-icons" src="~/img/web.png" alt="Website Icon">
+                    <span><a href="@bar.BarWebsite">@bar.BarName Site</a></span>
+                </div>
             </div>
             <div class="card-footer">
-                <p class="card-text"><span class="card-category">Rating:</span> @bar.BarRating</p>
+                <span class="rating-text">Rating:</span>
+            @for (var i = 0; i < @bar.BarRating; i++)
+            {
+                <img class="rating-icons" src="~/img/beer-bottle.png" alt="Star Icon"> 
+            }
             </div>
         </div>
 
