@@ -35,13 +35,16 @@ namespace WhatsOnTap.Controllers
             userBeer.User = currentUser;
             _db.UsersBeers.Add(userBeer);
             _db.SaveChanges();
-            return View("Index");
+            return View();
         }
 
         [HttpGet("/user/profile")]
-        public IActionResult Details()
+        public async Task<IActionResult> Details()
         {
-            return View();
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var currentUser = await _userManager.FindByIdAsync(userId);
+            ProfileViewModel newViewModel = new ProfileViewModel(currentUser.Email);
+            return View(newViewModel);
         }
 
         [HttpPost("/user/profile")]
@@ -49,7 +52,13 @@ namespace WhatsOnTap.Controllers
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var currentUser = await _userManager.FindByIdAsync(userId);
-            var changePassword = await _userManager.ChangePasswordAsync(currentUser, model.CurrentPassword, model.NewPassword);
+            if (model.CurrentPassword != null)
+            {
+                var changePassword = await _userManager.ChangePasswordAsync(currentUser, model.CurrentPassword, model.NewPassword);
+            }
+            currentUser.Email = model.Email;
+            currentUser.UserName = model.Email;
+            await _userManager.UpdateAsync(currentUser);
             return View("Details");
         }
     }

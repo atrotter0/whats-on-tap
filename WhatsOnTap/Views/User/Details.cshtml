@@ -16,8 +16,8 @@
                 <hr>
                 <br>
                 <div class="form-group">
-                    @Html.LabelFor(user => @User.Identity.Name, "Email")
-                    @Html.TextBoxFor(user => @User.Identity.Name, new {@class="form-control"})
+                    @Html.LabelFor(model => @model.Email, "Email")
+                    @Html.TextBoxFor(model => @model.Email, new {@class="form-control", type="email"})
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(model => @model.CurrentPassword, "Current Password")
