@@ -1,5 +1,3 @@
-@model WhatsOnTap.Models.Beer
-
 @{
   Layout = "_Layout";
 }
@@ -15,15 +13,20 @@
     <div class="cellHead">ABV</div>
     <div class="cellHead">IBU</div>
 
-    <div>@Model.BeerName</div>
-    <div>Taplist</div>
-    <div>@Model.BeerBreweryName</div>
-    <div>@Model.BeerStyle</div>
-    <div>@Model.BeerAbv</div>
-    <div>@Model.BeerIbu</div>
+    <div>@Model.CurrentBeer.BeerName</div>
+    <div>
+      @foreach(var bar in @Model.BeerBars)
+      {
+        <a href="/bars/@bar.BarId"><span>@bar.BarName</span></a><br />
+      }
+    </div>
+    <div>@Model.CurrentBeer.BeerBreweryName</div>
+    <div>@Model.CurrentBeer.BeerStyle</div>
+    <div>@Model.CurrentBeer.BeerAbv</div>
+    <div>@Model.CurrentBeer.BeerIbu</div>
 
   </div>
-  <a href="/beers/@Model.BeerId/delete">Delete</a>
+  <a href="/beers/@Model.CurrentBeer.BeerId/delete">Delete</a>
 
   <button>Add to your favorites</button>
 

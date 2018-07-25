@@ -1,6 +1,7 @@
 using System;
 using Microsoft.AspNetCore.Mvc;
 using WhatsOnTap.Models;
+using WhatsOnTap.ViewModels;
 using System.Linq;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -26,8 +27,9 @@ namespace WhatsOnTap.Controllers
         [HttpGet("/beers/{id}")]
         public ActionResult Details(int id)
         {
-            Beer beer = _db.Beers.FirstOrDefault(beers => beers.BeerId == id);
-            return View(beer);
+            BeerDetailsViewModel viewModel = new BeerDetailsViewModel(_db, id);
+            viewModel.FindBeerBars(id);
+            return View(viewModel);
         }
         
         [HttpGet("/beers/new")]
