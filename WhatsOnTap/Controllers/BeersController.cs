@@ -74,21 +74,24 @@ namespace WhatsOnTap.Controllers
         {
             BeerDetailsViewModel viewModel = new BeerDetailsViewModel(_db, id);
             viewModel.FindAllBars();
+            viewModel.FindBeerBars(id);
             return View(viewModel);
         }
 
         [HttpPost("/beers/{id}/edit")]
-        public ActionResult Edit(List<int> BarId, string beerName, string brewery, string style, string abv, string ibu, int id)
+        public ActionResult Edit(List<int> BarId, string beerName, string brewery, string style, string abv, int ibu, int id)
         {
-            BeerDetailsViewModel viewModel = new BeerDetailsViewModel(_db, id);
-            viewModel.CurrentBeer.BeerName = beerName;
-            viewModel.CurrentBeer.BeerBreweryName = brewery;
-            viewModel.CurrentBeer.BeerStyle = style;
-            viewModel.CurrentBeer.BeerAbv = Convert.ToDouble(abv);
-            viewModel.CurrentBeer.BeerIbu = int.Parse(ibu);
+          BeerDetailsViewModel viewModel = new BeerDetailsViewModel(_db, id);
+          viewModel.CurrentBeer.BeerName = beerName;
+          viewModel.CurrentBeer.BeerBreweryName = brewery;
+          viewModel.CurrentBeer.BeerStyle = style;
+          viewModel.CurrentBeer.BeerAbv = Convert.ToDouble(abv);
+          viewModel.CurrentBeer.BeerIbu = ibu;
 
-            var beersToRemove = _db.Taplists.Where(entry => entry.BeerId == id).ToList();
-            foreach (var beers in beersToRemove)
+          var beersToRemove = _db.Taplists.Where(entry => entry.BeerId == id).ToList();
+          foreach (var beer in beersToRemove)
+          {
+            if (beer != null)
             {
                 if (beers != null)
                 {
@@ -103,7 +106,7 @@ namespace WhatsOnTap.Controllers
                 _db.Taplists.Add(newTaplist);
             }
             _db.SaveChanges();
-            return RedirectToAction("Index");
+          return RedirectToAction("Details", new { id = viewModel.CurrentBeer.BeerId});
         }
 
         [HttpGet("/beers/new")]

@@ -185,6 +185,7 @@
 
 .reg-buttons {
   text-align: center;
+  margin-bottom: 25px;
 }
 
 .login-buttons {
@@ -246,12 +247,35 @@ input[type="radio"]:hover, .radio-with-height:hover {
 .beer-detail-modal {
   display: block;
   text-align: center;
+  margin-bottom: 35px;
 }
 
 .modal-button {
-  font-size: 1em;
+  font-size: 1.2em;
 }
 
 .beer-modal-bar-name {
   font-size: 1.25em;
 }
+
+.beer-detail-info {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.update-row {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.update-subheader {
+  margin-bottom: 20px;
+  text-decoration: underline;
+  text-align: center;
+}
+
+.available-at-list {
+  margin-top: 50px;
+  margin-left: 10%;
+}
+
