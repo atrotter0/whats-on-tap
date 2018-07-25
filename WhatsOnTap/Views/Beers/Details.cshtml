@@ -7,14 +7,17 @@
 <div class='container'>
   <div class="card">
     <div class="card-body">
+      <button id="@Model.CurrentBeer.BeerId" class="btn btn-outline-warning btn-pill btn-sm add-beer float-right"><i class="fas fa-heart"></i> &nbsp;Favorite</button>
+      <div class="beer-detail-actions">
+        <a href="/beers/@Model.CurrentBeer.BeerId/delete" class="btn btn-outline-danger btn-pill btn-sm add-beer"><i class="fas fa-trash-alt"></i> &nbsp;Delete</a>
+        <a href="/beers/@Model.CurrentBeer.BeerId/edit" class="btn btn-outline-info btn-pill btn-sm add-beer"><i class="fas fa-edit"></i> &nbsp;Edit</a>
+      </div>
       <div class="beer-card-title">
-        <button id="@Model.CurrentBeer.BeerId" class="btn btn-outline-warning btn-pill btn-sm add-beer float-right"><i class="fas fa-heart"></i> &nbsp;Favorite</button>
-        <a href="/beers/@Model.CurrentBeer.BeerId/delete" class="btn btn-outline-danger btn-pill btn-sm add-beer float-left"><i class="fas fa-trash-alt"></i> &nbsp;Delete</a>
         <span>@Model.CurrentBeer.BeerName </span><i class="fas fa-angle-right"></i>&nbsp;<span class="text-muted">@Model.CurrentBeer.BeerBreweryName</span>
       </div>
       <div class="beer-details">
           <span class="beer-detail-info"><span class="bold">Style <i class="fas fa-angle-right"></i></span> <span class="text-muted">@Model.CurrentBeer.BeerStyle</span></span>
-          <span class="beer-detail-info"><span class="bold">ABV <i class="fas fa-angle-right"></i></span> <span class="text-muted">@Model.CurrentBeer.BeerAbv.ToString("0.0")</span></span>
+          <span class="beer-detail-info"><span class="bold">ABV <i class="fas fa-angle-right"></i></span> <span class="text-muted">@Model.CurrentBeer.BeerAbv</span></span>
           <span class="beer-detail-info"><span class="bold">IBU <i class="fas fa-angle-right"></i></span> <span class="text-muted">@Model.CurrentBeer.BeerIbu</span></span>
       </div>
       <div class="beer-detail-modal">
