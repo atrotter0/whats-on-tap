@@ -57,5 +57,19 @@ namespace WhatsOnTap.Controllers
 
             return RedirectToAction("Index");
         }
+
+        [HttpGet("/bars/{id}/delete")]
+        public ActionResult Delete(int id)
+        {
+            Bar bar = _db.Bars.FirstOrDefault(bars => bars.BarId == id);
+            Taplist joinEntry = _db.Taplists.FirstOrDefault(entry => entry.BarId == id);
+            if (joinEntry != null)
+            {
+              _db.Taplists.Remove(joinEntry);
+            }
+            _db.Bars.Remove(bar);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
