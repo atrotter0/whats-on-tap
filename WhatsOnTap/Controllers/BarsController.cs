@@ -41,39 +41,60 @@ namespace WhatsOnTap.Controllers
         }
 
         [HttpPost("/bars/{id}/edit")]
-        public ActionResult Edit(List<int> BeerId, Bar bar, int id)
+        public ActionResult Edit(List<int> BeerId, string barName, string barRating, string barWebsite, string barStreet, string barCity, string barState, string barZip, string barPhone, string barLatitude, string barLongitude, int id)
         {
-          _db.Entry(bar).State = EntityState.Modified;
-          BarDetailsViewModel viewModel = new BarDetailsViewModel(_db, id);
-          var barsToRemove = _db.Taplists.Where(entry => entry.BarId == id).ToList();
-          foreach (var bars in barsToRemove)
-          {
-            if (bars != null)
+            BarDetailsViewModel viewModel = new BarDetailsViewModel(_db, id);
+            viewModel.CurrentBar.BarName = barName;
+            viewModel.CurrentBar.BarRating = int.Parse(barRating);
+            viewModel.CurrentBar.BarWebsite = barWebsite;
+            viewModel.CurrentBar.BarStreet = barStreet;
+            viewModel.CurrentBar.BarCity = barCity;
+            viewModel.CurrentBar.BarState = barState;
+            viewModel.CurrentBar.BarZip = barZip;
+            viewModel.CurrentBar.BarPhone = barPhone;
+            viewModel.CurrentBar.BarLatitude = Convert.ToDouble(barLatitude);
+            viewModel.CurrentBar.BarLongitude = Convert.ToDouble(barLongitude);
+            var barsToRemove = _db.Taplists.Where(entry => entry.BarId == id).ToList();
+            foreach (var bars in barsToRemove)
             {
-              _db.Taplists.Remove(bars);
+              if (bars != null)
+              {
+                _db.Taplists.Remove(bars);
+              }
             }
-          }
 
-          foreach (int beerId in BeerId)
-          {
-              Taplist newTaplist = new Taplist(beerId, viewModel.CurrentBar.BarId);
-              _db.Taplists.Add(newTaplist);
-          }
-          _db.SaveChanges();
+            foreach (int beerId in BeerId)
+            {
+                Taplist newTaplist = new Taplist(beerId, viewModel.CurrentBar.BarId);
+                _db.Taplists.Add(newTaplist);
+            }
+            _db.SaveChanges();
 
-          return RedirectToAction("Index");
+            return RedirectToAction("Index");
         }
 
         [HttpGet("/bars/new")]
         public ActionResult Create() => View(_db.Beers.ToList());
 
         [HttpPost("/bars/new")]
-        public ActionResult Create(List<int> BeerId, Bar bar)
+        public ActionResult Create(List<int> BeerId, string barName, string barRating, string barWebsite, string barStreet, string barCity, string barState, string barZip, string barPhone, string barLatitude, string barLongitude)
         {
-            _db.Add(bar);
+            Bar newBar = new Bar();
+            newBar.BarName = barName;
+            newBar.BarRating = int.Parse(barRating);
+            newBar.BarWebsite = barWebsite;
+            newBar.BarStreet = barStreet;
+            newBar.BarCity = barCity;
+            newBar.BarState = barState;
+            newBar.BarZip = barZip;
+            newBar.BarPhone = barPhone;
+            newBar.BarLatitude = Convert.ToDouble(barLatitude);
+            newBar.BarLongitude = Convert.ToDouble(barLongitude);
+
+            _db.Add(newBar);
             foreach (int beerId in BeerId)
             {
-                Taplist newTaplist = new Taplist(beerId, bar.BarId);
+                Taplist newTaplist = new Taplist(beerId, newBar.BarId);
                 _db.Taplists.Add(newTaplist);
             }
             _db.SaveChanges();

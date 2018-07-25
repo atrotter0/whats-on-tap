@@ -41,40 +41,51 @@ namespace WhatsOnTap.Controllers
         }
 
         [HttpPost("/beers/{id}/edit")]
-        public ActionResult Edit(List<int> BarId, Beer beer, int id)
+        public ActionResult Edit(List<int> BarId, string beerName, string brewery, string style, string abv, string ibu, int id)
         {
-          _db.Entry(beer).State = EntityState.Modified;
-          BeerDetailsViewModel viewModel = new BeerDetailsViewModel(_db, id);
+            BeerDetailsViewModel viewModel = new BeerDetailsViewModel(_db, id);
+            viewModel.CurrentBeer.BeerName = beerName;
+            viewModel.CurrentBeer.BeerBreweryName = brewery;
+            viewModel.CurrentBeer.BeerStyle = style;
+            viewModel.CurrentBeer.BeerAbv = Convert.ToDouble(abv);
+            viewModel.CurrentBeer.BeerIbu = int.Parse(ibu);
 
-          var beersToRemove = _db.Taplists.Where(entry => entry.BeerId == id).ToList();
-          foreach (var beers in beersToRemove)
-          {
-            if (beers != null)
+            var beersToRemove = _db.Taplists.Where(entry => entry.BeerId == id).ToList();
+            foreach (var beers in beersToRemove)
             {
-              _db.Taplists.Remove(beers);
+                if (beers != null)
+                {
+                    _db.Taplists.Remove(beers);
+                }
             }
-          }
 
-          foreach (int barId in BarId)
-          {
-              Taplist newTaplist = new Taplist(viewModel.CurrentBeer.BeerId, barId);
-              _db.Taplists.Add(newTaplist);
-          }
-          _db.SaveChanges();
-
-          return RedirectToAction("Index");
+            foreach (var barId in BarId)
+            {
+                Bar bar = _db.Bars.FirstOrDefault(item => item.BarId == barId);
+                Taplist newTaplist = new Taplist(id, bar.BarId);
+                _db.Taplists.Add(newTaplist);
+            }
+            _db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         [HttpGet("/beers/new")]
         public ActionResult Create() => View(_db.Bars.ToList());
 
         [HttpPost("/beers/new")]
-        public ActionResult Create(List<int> BarId, Beer beer)
+        public ActionResult Create(List<int> BarId, string beerName, string brewery, string style, string abv, string ibu)
         {
-          _db.Add(beer);
+            Beer newBeer = new Beer();
+            newBeer.BeerName = beerName;
+            newBeer.BeerBreweryName = brewery;
+            newBeer.BeerStyle = style;
+            newBeer.BeerAbv = Convert.ToDouble(abv);
+            newBeer.BeerIbu = int.Parse(ibu);
+
+            _db.Add(newBeer);
             foreach (int barId in BarId)
             {
-                Taplist newTaplist = new Taplist(beer.BeerId, barId);
+                Taplist newTaplist = new Taplist(newBeer.BeerId, barId);
                 _db.Taplists.Add(newTaplist);
             }
             _db.SaveChanges();

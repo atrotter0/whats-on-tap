@@ -6,7 +6,7 @@
 }
 
 <div class="container">
-    
+
     <form action="/beers/new" method="post">
         <h1>Enter a new Beer:</h1>
         <div class="input-group input-group-sm mb-3">
@@ -41,7 +41,7 @@
 
         <h2>Which bars is this beer served in?</h2>
             @foreach (var bar in Model)
-            {   
+            {
                 @if (itemCount == 1)
                 {
                     @Html.Raw("<div class='card-deck'>")
@@ -65,7 +65,7 @@
                 }
                 else {
                     itemCount++;
-                } 
+                }
             }
         <button class="submitForm" type="submit">Submit</button>
     </form>
