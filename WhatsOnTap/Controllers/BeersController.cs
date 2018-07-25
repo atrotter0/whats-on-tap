@@ -21,7 +21,44 @@ namespace WhatsOnTap.Controllers
         [HttpGet("/beers")]
         public ActionResult Index()
         {
-            return View(_db.Beers.ToList());
+            BeerIndexViewModel viewModel = new BeerIndexViewModel(_db);
+            return View(viewModel);
+        }
+
+        [HttpGet("/beers/sortby/name")]
+        public ActionResult SortByName()
+        {
+            BeerIndexViewModel viewModel = new BeerIndexViewModel(_db);
+            BeerIndexViewModel.FlipName();
+            viewModel.SortByName();
+            return View("Index", viewModel);
+        }
+
+        [HttpGet("/beers/sortby/style")]
+        public ActionResult SortByStyle()
+        {
+            BeerIndexViewModel viewModel = new BeerIndexViewModel(_db);
+            BeerIndexViewModel.FlipStyle();
+            viewModel.SortByStyle();
+            return View("Index", viewModel);
+        }
+
+        [HttpGet("/beers/sortby/abv")]
+        public ActionResult SortByAbv()
+        {
+            BeerIndexViewModel viewModel = new BeerIndexViewModel(_db);
+            BeerIndexViewModel.FlipAbv();
+            viewModel.SortByAbv();
+            return View("Index", viewModel);
+        }
+
+        [HttpGet("/beers/sortby/ibu")]
+        public ActionResult SortByIbu()
+        {
+            BeerIndexViewModel viewModel = new BeerIndexViewModel(_db);
+            BeerIndexViewModel.FlipIbu();
+            viewModel.SortByIbu();
+            return View("Index", viewModel);
         }
 
         [HttpGet("/beers/{id}")]
@@ -43,30 +80,30 @@ namespace WhatsOnTap.Controllers
         [HttpPost("/beers/{id}/edit")]
         public ActionResult Edit(List<int> BarId, string beerName, string brewery, string style, string abv, string ibu, int id)
         {
-          BeerDetailsViewModel viewModel = new BeerDetailsViewModel(_db, id);
-          viewModel.CurrentBeer.BeerName = beerName;
-          viewModel.CurrentBeer.BeerBreweryName = brewery;
-          viewModel.CurrentBeer.BeerStyle = style;
-          viewModel.CurrentBeer.BeerAbv = Convert.ToDouble(abv);
-          viewModel.CurrentBeer.BeerIbu = int.Parse(ibu);
+            BeerDetailsViewModel viewModel = new BeerDetailsViewModel(_db, id);
+            viewModel.CurrentBeer.BeerName = beerName;
+            viewModel.CurrentBeer.BeerBreweryName = brewery;
+            viewModel.CurrentBeer.BeerStyle = style;
+            viewModel.CurrentBeer.BeerAbv = Convert.ToDouble(abv);
+            viewModel.CurrentBeer.BeerIbu = int.Parse(ibu);
 
-          var beersToRemove = _db.Taplists.Where(entry => entry.BeerId == id).ToList();
-          foreach (var beer in beersToRemove)
-          {
-            if (beer != null)
+            var beersToRemove = _db.Taplists.Where(entry => entry.BeerId == id).ToList();
+            foreach (var beer in beersToRemove)
             {
-              _db.Taplists.Remove(beer);
+                if (beer != null)
+                {
+                    _db.Taplists.Remove(beer);
+                }
             }
-          }
 
-          foreach (int barId in BarId)
-          {
-              Taplist newTaplist = new Taplist(viewModel.CurrentBeer.BeerId, barId);
-              _db.Taplists.Add(newTaplist);
-          }
-          _db.SaveChanges();
+            foreach (int barId in BarId)
+            {
+                Taplist newTaplist = new Taplist(viewModel.CurrentBeer.BeerId, barId);
+                _db.Taplists.Add(newTaplist);
+            }
+            _db.SaveChanges();
 
-          return RedirectToAction("Index");
+            return RedirectToAction("Index");
         }
 
         [HttpGet("/beers/new")]
@@ -100,7 +137,7 @@ namespace WhatsOnTap.Controllers
             Taplist joinEntry = _db.Taplists.FirstOrDefault(entry => entry.BeerId == id);
             if (joinEntry != null)
             {
-              _db.Taplists.Remove(joinEntry);
+                _db.Taplists.Remove(joinEntry);
             }
             _db.Beers.Remove(beer);
             _db.SaveChanges();
