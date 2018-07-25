@@ -56,3 +56,7 @@ A web app to show the bars in the Portland Metro area and the various beers that
 * [Heroku] ()
 
 ## License
+
+This software is licensed under the MIT license.
+
+Copyright (c) 2018 **Dream Team**
