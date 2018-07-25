@@ -5,6 +5,7 @@ using WhatsOnTap.Models;
 using WhatsOnTap.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 
 namespace WhatsOnTap.Controllers
 {
@@ -18,7 +19,10 @@ namespace WhatsOnTap.Controllers
         }
 
         [HttpGet("/bars")]
-        public ActionResult Index() => View(_db.Bars.ToList());
+        public ActionResult Index() {
+            BarIndexViewModel viewModel = new BarIndexViewModel(_db);
+            return View(viewModel);
+        }
 
         [HttpGet("bars/{id}")]
         public ActionResult Details(int id)
@@ -26,6 +30,14 @@ namespace WhatsOnTap.Controllers
             BarDetailsViewModel viewModel = new BarDetailsViewModel(_db, id);
             viewModel.FindBarBeers(id);
             return View(viewModel);
+        }
+
+        [HttpGet("bars/filter")]
+        public ActionResult FilterBy(string barNeighborhood, int barRating)
+        {
+            BarIndexViewModel viewModel = new BarIndexViewModel(_db);
+            viewModel.FilterBy(barNeighborhood, barRating);
+            return View ("Index", viewModel);
         }
     }
 }
