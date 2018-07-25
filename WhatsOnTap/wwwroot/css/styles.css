@@ -207,10 +207,12 @@ input[type="radio"]:hover, .radio-with-height:hover {
 
 .register-radio-label {
   padding-top: 7px;
+}
 
 .beers-list-row {
   border-bottom: 1px solid #E9ECEF;
 }
+
 
 .column-header {
   font-weight: bold;
