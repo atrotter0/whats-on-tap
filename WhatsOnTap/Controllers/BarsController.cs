@@ -6,7 +6,6 @@ using WhatsOnTap.Models;
 using WhatsOnTap.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
 
 namespace WhatsOnTap.Controllers
 {
@@ -47,11 +46,11 @@ namespace WhatsOnTap.Controllers
           _db.Entry(bar).State = EntityState.Modified;
           BarDetailsViewModel viewModel = new BarDetailsViewModel(_db, id);
           var barsToRemove = _db.Taplists.Where(entry => entry.BarId == id).ToList();
-          foreach (var barz in barsToRemove)
+          foreach (var bars in barsToRemove)
           {
-            if (barz != null)
+            if (bars != null)
             {
-              _db.Taplists.Remove(barz);
+              _db.Taplists.Remove(bars);
             }
           }
 
@@ -94,6 +93,7 @@ namespace WhatsOnTap.Controllers
             _db.Bars.Remove(bar);
             _db.SaveChanges();
             return RedirectToAction("Index");
+        }
 
         [HttpGet("bars/filter")]
         public ActionResult FilterBy(string barNeighborhood, int barRating)

@@ -41,21 +41,17 @@ namespace WhatsOnTap.Controllers
         }
 
         [HttpPost("/beers/{id}/edit")]
-        public ActionResult Edit(List<int> BarId, string beerName, string brewery, string style, string abv, string ibu, int id)
+        public ActionResult Edit(List<int> BarId, Beer beer, int id)
         {
+          _db.Entry(beer).State = EntityState.Modified;
           BeerDetailsViewModel viewModel = new BeerDetailsViewModel(_db, id);
-          viewModel.CurrentBeer.BeerName = beerName;
-          viewModel.CurrentBeer.BeerBreweryName = brewery;
-          viewModel.CurrentBeer.BeerStyle = style;
-          viewModel.CurrentBeer.BeerAbv = Convert.ToDouble(abv);
-          viewModel.CurrentBeer.BeerIbu = int.Parse(ibu);
 
           var beersToRemove = _db.Taplists.Where(entry => entry.BeerId == id).ToList();
-          foreach (var beer in beersToRemove)
+          foreach (var beers in beersToRemove)
           {
-            if (beer != null)
+            if (beers != null)
             {
-              _db.Taplists.Remove(beer);
+              _db.Taplists.Remove(beers);
             }
           }
 
@@ -73,19 +69,12 @@ namespace WhatsOnTap.Controllers
         public ActionResult Create() => View(_db.Bars.ToList());
 
         [HttpPost("/beers/new")]
-        public ActionResult Create(List<int> BarId, string beerName, string brewery, string style, string abv, string ibu)
+        public ActionResult Create(List<int> BarId, Beer beer)
         {
-            Beer newBeer = new Beer();
-            newBeer.BeerName = beerName;
-            newBeer.BeerBreweryName = brewery;
-            newBeer.BeerStyle = style;
-            newBeer.BeerAbv = Convert.ToDouble(abv);
-            newBeer.BeerIbu = int.Parse(ibu);
-
-            _db.Add(newBeer);
+          _db.Add(beer);
             foreach (int barId in BarId)
             {
-                Taplist newTaplist = new Taplist(newBeer.BeerId, barId);
+                Taplist newTaplist = new Taplist(beer.BeerId, barId);
                 _db.Taplists.Add(newTaplist);
             }
             _db.SaveChanges();
