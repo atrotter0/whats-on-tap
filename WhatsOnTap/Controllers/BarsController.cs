@@ -19,7 +19,10 @@ namespace WhatsOnTap.Controllers
         }
 
         [HttpGet("/bars")]
-        public ActionResult Index() => View(_db.Bars.ToList());
+        public ActionResult Index() {
+            BarIndexViewModel viewModel = new BarIndexViewModel(_db);
+            return View(viewModel);
+        }
 
         [HttpGet("bars/{id}")]
         public ActionResult Details(int id)
@@ -32,31 +35,9 @@ namespace WhatsOnTap.Controllers
         [HttpGet("bars/filter")]
         public ActionResult FilterBy(string barNeighborhood, int barRating)
         {
-            if (barNeighborhood == null && barRating == 0)
-            {
-                var matches = _db.Bars.ToList();
-                return View ("Index", matches);
-            }
-            else if (barRating == 0)
-            {
-                var matches = _db.Bars.Where(entry => entry.BarNeighborhood == barNeighborhood);
-                return View ("Index", matches);
-            }
-            else if (barNeighborhood == null)
-            {
-                var matches = _db.Bars.Where(entry => entry.BarRating >= barRating)
-                                      .OrderByDescending(entry => entry.BarRating)
-                                      .ToList();
-                return View ("Index", matches);
-            }
-            else
-            {
-                var matches = _db.Bars.Where(entry => entry.BarNeighborhood == barNeighborhood)
-                                      .Where(entry => entry.BarRating >= barRating)
-                                      .OrderByDescending(entry => entry.BarRating)
-                                      .ToList();
-                return View ("Index", matches);
-            } 
+            BarIndexViewModel viewModel = new BarIndexViewModel(_db);
+            viewModel.FilterBy(barNeighborhood, barRating);
+            return View ("Index", viewModel);
         }
     }
 }

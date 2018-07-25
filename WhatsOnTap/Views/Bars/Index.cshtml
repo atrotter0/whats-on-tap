@@ -1,32 +1,25 @@
-@model IEnumerable<WhatsOnTap.Models.Bar>
+@model WhatsOnTap.ViewModels.BarIndexViewModel
 
 @{
     Layout = "_Layout";
     var itemCount = 1;
 }
-
 <div class='container'>
-
     <form action="/bars/filter" method="get">
         <div class="filter-box">
             <div>Filter Your Search:</div>
             <div class="filter-choice">
                 <select name="barNeighborhood">
                     <option value="">Select a Neighborhood</option>
-                    <option value="Northwest">Northwest Portland</option>
-                    <option value="North">North Portland</option>
-                    <option value="Northeast">Northeast Portland</option>
-                    <option value="Southeast">Southeast Portland</option>
-                    <option value="Southwest">Southwest Portland</option>
-                    <option value="Downtown">Downtown/The Pearl</option>
-                    <option value="Beaverton">Beaverton</option>
-                    <option value="Vancouver">Vancouver</option>
-                    <option value="Other">Other</option>
+                    @foreach (var neighborhood in @Model.AllNeighborhoods)
+                    {
+                        <option value="@neighborhood">@neighborhood</option>
+                    }
                 </select>
             </div>
             <div class="filter-choice">
                 <select name="barRating">
-                    <option value="0">Select a minimum rating</option>
+                    <option value="1">Select a minimum rating</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -38,46 +31,53 @@
         </div>
     </form>
 
-    @foreach (var bar in Model)
-    {   
-        @if (itemCount == 1)
-        {
-            @Html.Raw("<div class='card-deck'>")
-        }
-
-        <div class="card bar-card">
-            <img class="card-img-top" src="~/img/bar-icon.png" alt="Card image cap">
-            <div class="card-body">
-                <h4 class="card-title"><a href="/bars/@bar.BarId">@bar.BarName</a></h4>
-                <div class="card-insides">
-                    <div class="address-icon"><img class="card-icons" src="~/img/address.png" alt="Address Icon"></div>
-                    <div class="address-text">@bar.BarStreet, @bar.BarCity, @bar.BarState @bar.BarZip</div>
-                </div>  
-                <div class="card-insides">
-                    <img class="card-icons" src="~/img/telephone.png" alt="Phone Icon">
-                    <span>@bar.BarPhone</span>
-                </div>
-                <div class="card-insides">
-                    <img class="card-icons" src="~/img/web.png" alt="Website Icon">
-                    <span><a href="@bar.BarWebsite">@bar.BarName Site</a></span>
-                </div>
-            </div>
-            <div class="card-footer">
-                <span class="rating-text">Rating:</span>
-            @for (var i = 0; i < @bar.BarRating; i++)
+    @if (Model.Matches.Count == 0)
+    { 
+        <span>Whoops! Your search returned 0 results!</span>
+    }
+    else 
+    {
+        @foreach (var bar in Model.Matches)
+        {   
+            @if (itemCount == 1)
             {
-                <img class="rating-icons" src="~/img/beer-bottle.png" alt="Star Icon"> 
+                @Html.Raw("<div class='card-deck'>")
             }
-            </div>
-        </div>
 
-        @if (itemCount == 3)
-        {
-            @Html.Raw("</div>")
-            itemCount = 1;
+            <div class="card bar-card">
+                <img class="card-img-top" src="~/img/bar-icon.png" alt="Card image cap">
+                <div class="card-body">
+                    <h4 class="card-title"><a href="/bars/@bar.BarId">@bar.BarName</a></h4>
+                    <div class="card-insides">
+                        <div class="address-icon"><img class="card-icons" src="~/img/address.png" alt="Address Icon"></div>
+                        <div class="address-text">@bar.BarStreet, @bar.BarCity, @bar.BarState @bar.BarZip</div>
+                    </div>  
+                    <div class="card-insides">
+                        <img class="card-icons" src="~/img/telephone.png" alt="Phone Icon">
+                        <span>@bar.BarPhone</span>
+                    </div>
+                    <div class="card-insides">
+                        <img class="card-icons" src="~/img/web.png" alt="Website Icon">
+                        <span><a href="@bar.BarWebsite">@bar.BarName Site</a></span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <span class="rating-text">Rating:</span>
+                @for (var i = 0; i < @bar.BarRating; i++)
+                {
+                    <img class="rating-icons" src="~/img/beer-bottle.png" alt="Star Icon"> 
+                }
+                </div>
+            </div>
+
+            @if (itemCount == 3)
+            {
+                @Html.Raw("</div>")
+                itemCount = 1;
+            }
+            else {
+                itemCount++;
+            } 
         }
-        else {
-            itemCount++;
-        } 
     }
 </div>
