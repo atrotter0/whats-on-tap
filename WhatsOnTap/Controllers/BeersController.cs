@@ -81,21 +81,19 @@ namespace WhatsOnTap.Controllers
         [HttpPost("/beers/{id}/edit")]
         public ActionResult Edit(List<int> BarId, string beerName, string brewery, string style, string abv, int ibu, int id)
         {
-          BeerDetailsViewModel viewModel = new BeerDetailsViewModel(_db, id);
-          viewModel.CurrentBeer.BeerName = beerName;
-          viewModel.CurrentBeer.BeerBreweryName = brewery;
-          viewModel.CurrentBeer.BeerStyle = style;
-          viewModel.CurrentBeer.BeerAbv = Convert.ToDouble(abv);
-          viewModel.CurrentBeer.BeerIbu = ibu;
+            BeerDetailsViewModel viewModel = new BeerDetailsViewModel(_db, id);
+            viewModel.CurrentBeer.BeerName = beerName;
+            viewModel.CurrentBeer.BeerBreweryName = brewery;
+            viewModel.CurrentBeer.BeerStyle = style;
+            viewModel.CurrentBeer.BeerAbv = Convert.ToDouble(abv);
+            viewModel.CurrentBeer.BeerIbu = ibu;
 
-          var beersToRemove = _db.Taplists.Where(entry => entry.BeerId == id).ToList();
-          foreach (var beer in beersToRemove)
-          {
-            if (beer != null)
+            var beersToRemove = _db.Taplists.Where(entry => entry.BeerId == id).ToList();
+            foreach (var beer in beersToRemove)
             {
-                if (beers != null)
+                if (beer != null)
                 {
-                    _db.Taplists.Remove(beers);
+                    _db.Taplists.Remove(beer);
                 }
             }
 
@@ -105,8 +103,9 @@ namespace WhatsOnTap.Controllers
                 Taplist newTaplist = new Taplist(id, bar.BarId);
                 _db.Taplists.Add(newTaplist);
             }
+
             _db.SaveChanges();
-          return RedirectToAction("Details", new { id = viewModel.CurrentBeer.BeerId});
+            return RedirectToAction("Details", new { id = viewModel.CurrentBeer.BeerId});
         }
 
         [HttpGet("/beers/new")]
