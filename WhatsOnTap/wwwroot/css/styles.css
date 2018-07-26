@@ -219,11 +219,6 @@ input[type="radio"]:hover, .radio-with-height:hover {
   border-bottom: 1px solid #E9ECEF;
 }
 
-
-.column-header {
-  font-weight: bold;
-}
-
 .beer-detail-card {
   width: 100%;
 }
@@ -311,5 +306,16 @@ input[type="radio"]:hover, .radio-with-height:hover {
 
 .bar-icon-col {
   margin-right: 20px;
+}
+
+.beer-details-header {
+  color: black;
+  font-weight: bold;
+  
+}
+
+.beer-details-header:hover {
+  text-decoration: none;
+  color: black;
 }
 
