@@ -4,9 +4,7 @@ function addBeer(beerId) {
 		data: { beerId: beerId },
 		url: "/user/beers",
 		success: function (result) {
-			console.log("Success!");
-			var text = "Beer added!";
-			displayAlert(text);
+			displayAlert(".beer-added");
 		},
 		error: function(error) {
 			console.log("Error, not appending: " + JSON.stringify(error));
@@ -14,13 +12,12 @@ function addBeer(beerId) {
 	});
 }
 
-function displayAlert(text) {
-	$(".alert").text(text).fadeIn(800).delay(3000).fadeOut(1200);
+function displayAlert(element) {
+	$(element).fadeIn(800).delay(3000).fadeOut(1200);
 }
 
 $(document).ready(function() {
 	$(".add-beer").click(function() {
-		console.log("clicked add beer");
 		var beerId = $(this).attr("id");
 		addBeer(beerId);
 	});
