@@ -6,6 +6,30 @@
 
 <div class='container'>
     <h1 class="details-heading">@Model.CurrentBar.BarName</h1>
+        @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
+        {
+            <div class="bar-action-buttons">
+                <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#deleteModal">
+                    <i class="fas fa-trash-alt"></i> &nbsp;Delete
+                </button>
+                <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                        <div class="alert alert-danger" role="alert">
+                            <i class="fas fa-exclamation-triangle"></i><span class="bold"> &nbsp;Hold up!</span> Deleting a bar cannot be undone!
+                        </div>
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+                        <a href="/bars/@Model.CurrentBar.BarId/delete"><button type="button" class="btn btn-outline-danger">Delete </button></a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <a href="/bars/@Model.CurrentBar.BarId/edit" class="btn btn-outline-info btn-sm"><i class="fas fa-edit"></i> &nbsp;Edit</a>
+            </div>
+        }
 
     <div id="map_canvas"></div>
 
@@ -98,10 +122,5 @@
                 }
             </div>
         </div>
-    }
-    @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
-    {
-        <a href="/bars/@Model.CurrentBar.BarId/delete">Delete</a>
-        <a href="/bars/@Model.CurrentBar.BarId/edit">Edit</a>
     }
 </div>

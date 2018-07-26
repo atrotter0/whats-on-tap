@@ -41,6 +41,7 @@ namespace WhatsOnTap.Controllers
         {
             BarDetailsViewModel viewModel = new BarDetailsViewModel(_db, id);
             viewModel.FindAllBeers();
+            viewModel.FindBarBeers(id);
             return View(viewModel);
         }
 
@@ -75,7 +76,7 @@ namespace WhatsOnTap.Controllers
             }
             _db.SaveChanges();
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Details", new { id = viewModel.CurrentBar.BarId});
         }
 
         [Authorize(Roles="admin")]

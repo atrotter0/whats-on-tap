@@ -326,3 +326,8 @@ input[type="radio"]:hover, .radio-with-height:hover {
 .validation-errors {
   color: red;
 }
+
+.bar-action-buttons {
+  display: block;
+  text-align: center;
+}
