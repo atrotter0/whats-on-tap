@@ -298,3 +298,7 @@ input[type="radio"]:hover, .radio-with-height:hover {
   margin-left: 10%;
 }
 
+.validation-errors {
+  color: red;
+}
+

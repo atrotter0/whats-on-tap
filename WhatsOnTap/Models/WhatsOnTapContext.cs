@@ -14,11 +14,6 @@ namespace WhatsOnTap.Models
         public virtual DbSet<Taplist> Taplists { get; set; }
         public virtual DbSet<UserBeer> UsersBeers { get; set; }
 
-        // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        // {
-        //     optionsBuilder.UseMySql(@"Server=localhost;Port=8889;database=whatsontap;uid=root;pwd=root;");
-        // }
-
         public WhatsOnTapContext(DbContextOptions options) : base(options)
         {
 
