@@ -24,7 +24,8 @@ namespace WhatsOnTap.Controllers
         [HttpGet("/user/beers")]
         public IActionResult Beers()
         {
-            return View();
+            UserBeersViewModel viewModel = new UserBeersViewModel(_db);
+            return View(viewModel);
         }
 
         [HttpPost("/user/beers")]
