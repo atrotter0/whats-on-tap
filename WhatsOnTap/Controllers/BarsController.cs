@@ -78,24 +78,13 @@ namespace WhatsOnTap.Controllers
         public ActionResult Create() => View(_db.Beers.ToList());
 
         [HttpPost("/bars/new")]
-        public ActionResult Create(Bar bar, List<int> BeerId, string barName, string barRating, string barWebsite, string barStreet, string barCity, string barState, string barZip, string barPhone, string barLatitude, string barLongitude, string barNeighborhood)
+        public ActionResult Create(Bar bar, List<int> BeerId)
         {
-            Bar newBar = new Bar();
-            newBar.BarName = barName;
-            newBar.BarRating = int.Parse(barRating);
-            newBar.BarWebsite = barWebsite;
-            newBar.BarStreet = barStreet;
-            newBar.BarCity = barCity;
-            newBar.BarState = barState;
-            newBar.BarZip = barZip;
-            newBar.BarPhone = barPhone;
-            newBar.BarLatitude = Convert.ToDouble(barLatitude);
-            newBar.BarLongitude = Convert.ToDouble(barLongitude);
-            newBar.BarNeighborhood = barNeighborhood;
-            _db.Add(newBar);
+            _db.Bars.Add(bar);
+            
             foreach (int beerId in BeerId)
             {
-                Taplist newTaplist = new Taplist(beerId, newBar.BarId);
+                Taplist newTaplist = new Taplist(beerId, bar.BarId);
                 _db.Taplists.Add(newTaplist);
             }
             _db.SaveChanges();
