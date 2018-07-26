@@ -6,65 +6,72 @@
 }
 
 <div class='container'>
-
     <div class="row beers-list-row">
         <div class="col-4">
             <ul class="list-group list-group-flush">
-                <li class="list-group-item column-header"><a href="/beers/sortby/name">Beer Name
-                @if(BeerIndexViewModel.ReverseName == true)
-                {
-                    <i class="fas fa-angle-up"></i>
-                }
-                else
-                {
-                    <i class="fas fa-angle-down"></i>
-                }
-                </a></li>
-            </ul>
-        </div>
-        <div class="col-2">
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item column-header"><a href="/beers/sortby/style">Beer Style
-                @if(BeerIndexViewModel.ReverseStyle == true)
-                {
-                    <i class="fas fa-angle-up"></i>
-                }
-                else
-                {
-                    <i class="fas fa-angle-down"></i>
-                }
-                </a></li>
-            </ul>
-        </div>
-        <div class="col-2">
-            <ul class="list-group list-group-flush">
                 <li class="list-group-item column-header">
-                    <span data-toggle="tooltip" data-placement="top" title="Alcohol by Volume"><a href="/beers/sortby/abv">ABV
-                @if(BeerIndexViewModel.ReverseAbv == true)
-                {
-                    <i class="fas fa-angle-up"></i>
-                }
-                else
-                {
-                    <i class="fas fa-angle-down"></i>
-                }                    
-                </a></span>
+                    <a href="/beers/sortby/name">Beer Name
+                        @if(BeerIndexViewModel.ReverseName == true)
+                        {
+                            <i class="fas fa-angle-up"></i>
+                        }
+                        else
+                        {
+                            <i class="fas fa-angle-down"></i>
+                        }
+                    </a>
                 </li>
             </ul>
         </div>
         <div class="col-2">
             <ul class="list-group list-group-flush">
                 <li class="list-group-item column-header">
-                    <span data-toggle="tooltip" data-placement="top" title="International Bittering Units"><a href="/beers/sortby/ibu">IBU
-                @if(BeerIndexViewModel.ReverseIbu == true)
-                {
-                    <i class="fas fa-angle-up"></i>
-                }
-                else
-                {
-                    <i class="fas fa-angle-down"></i>
-                }                    
-                </a></span>
+                    <a href="/beers/sortby/style">Beer Style
+                        @if(BeerIndexViewModel.ReverseStyle == true)
+                        {
+                            <i class="fas fa-angle-up"></i>
+                        }
+                        else
+                        {
+                            <i class="fas fa-angle-down"></i>
+                        }
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-2">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item column-header">
+                    <span data-toggle="tooltip" data-placement="top" title="Alcohol by Volume">
+                        <a href="/beers/sortby/abv">ABV
+                            @if(BeerIndexViewModel.ReverseAbv == true)
+                            {
+                                <i class="fas fa-angle-up"></i>
+                            }
+                            else
+                            {
+                                <i class="fas fa-angle-down"></i>
+                            }               
+                        </a>
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <div class="col-2">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item column-header">
+                    <span data-toggle="tooltip" data-placement="top" title="International Bittering Units">
+                        <a href="/beers/sortby/ibu">IBU
+                            @if(BeerIndexViewModel.ReverseIbu == true)
+                            {
+                                <i class="fas fa-angle-up"></i>
+                            }
+                            else
+                            {
+                                <i class="fas fa-angle-down"></i>
+                            }                    
+                        </a>
+                    </span>
                 </li>
             </ul>
         </div>

@@ -11,10 +11,10 @@
             <div class="filter-choice">
                 <select name="barNeighborhood">
                     <option value="">Select a Neighborhood</option>
-                    @foreach (var neighborhood in @Model.AllNeighborhoods)
-                    {
-                        <option value="@neighborhood">@neighborhood</option>
-                    }
+                        @foreach (var neighborhood in @Model.AllNeighborhoods)
+                        {
+                            <option value="@neighborhood">@neighborhood</option>
+                        }
                 </select>
             </div>
             <div class="filter-choice">
@@ -63,10 +63,10 @@
                 </div>
                 <div class="card-footer">
                     <span class="rating-text">Rating:</span>
-                @for (var i = 0; i < @bar.BarRating; i++)
-                {
-                    <img class="rating-icons" src="~/img/beer-bottle.png" alt="Star Icon"> 
-                }
+                    @for (var i = 0; i < @bar.BarRating; i++)
+                    {
+                        <img class="rating-icons" src="~/img/beer-bottle.png" alt="Star Icon"> 
+                    }
                 </div>
             </div>
 
