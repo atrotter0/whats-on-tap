@@ -41,6 +41,7 @@ namespace WhatsOnTap.Controllers
         {
             BarDetailsViewModel viewModel = new BarDetailsViewModel(_db, id);
             viewModel.FindAllBeers();
+            viewModel.FindBarBeers(id);
             return View(viewModel);
         }
 
