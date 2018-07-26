@@ -56,10 +56,10 @@
         </div>
         <div class="col-2">
         </div>
-    </div> 
+    </div>
     @foreach (var beer in Model.BarBeers)
-    {    
-        
+    {
+
         <div class="row beers-list-row">
             <div class="col-4">
                 <ul class="list-group list-group-flush">
@@ -82,7 +82,20 @@
                 </ul>
             </div>
             <div class="col-2">
-                <button id="@beer.BeerId" class="btn btn-sm btn-outline-warning add-beer favorite-beer"><i class="fas fa-heart"></i> &nbsp;Favorite</button>
+                @if (User.Identity.IsAuthenticated && User.IsInRole("user"))
+                {
+                    <button id="@beer.BeerId" class="btn btn-sm btn-outline-warning add-beer favorite-beer"><i class="fas fa-heart"></i> &nbsp;Favorite</button>
+                }
+                else if (User.Identity.IsAuthenticated && User.IsInRole("owner"))
+                {
+                    <button id="@beer.BeerId" class="btn btn-sm btn-outline-warning add-beer favorite-beer"><i class="fas fa-plus"></i> &nbsp;Add To Taplist</button>
+                }
+                else
+                {
+                    <span data-toggle="tooltip" data-placement="top" title="Sign Up to Add Beers">
+                        <button class="btn btn-sm favorite-beer fake-button"><i class="fas fa-heart"></i> &nbsp;Favorite</button>
+                    </span>
+                }
             </div>
         </div>
     }
