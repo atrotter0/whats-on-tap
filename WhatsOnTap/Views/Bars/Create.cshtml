@@ -6,7 +6,6 @@
 }
 
 <div class="container">
-
     <form action="/bars/new" method="post">
         <h1>Enter a new Bar:</h1>
         <div class="input-group input-group-sm mb-3">
@@ -64,38 +63,32 @@
               <option value="Vancouver">Vancouver</option>
               <option value="Downtown Portland">Downtown Portland</option>
             </select>
-
         </div>
-
-
-
-
         <h2>Which beer does this bar serve?</h2>
-            @foreach (var beer in Model)
+        @foreach (var beer in Model)
+        {
+            @if (itemCount == 1)
             {
-                @if (itemCount == 1)
-                {
-                    @Html.Raw("<div class='card-deck'>")
-                }
-                <div class="card">
-
-                    <img class="card-img-top" src="~/img/beer-icon.jpg" alt="Card image cap" for="beerId">
-                    <div class="card-body" for="beerId">
-                        <h4 class="card-title">@beer.BeerName</h4>
-                    </div>
-                    <input type="checkbox" name="beerId" value="@beer.BeerId">
-                </div>
-
-                @if (itemCount == 3)
-                {
-                    @Html.Raw("</div>")
-                    itemCount = 1;
-                }
-                else {
-                    itemCount++;
-                }
+                @Html.Raw("<div class='card-deck'>")
             }
+            <div class="card">
+
+                <img class="card-img-top" src="~/img/beer-icon.jpg" alt="Card image cap" for="beerId">
+                <div class="card-body" for="beerId">
+                    <h4 class="card-title">@beer.BeerName</h4>
+                </div>
+                <input type="checkbox" name="beerId" value="@beer.BeerId">
+            </div>
+
+            @if (itemCount == 3)
+            {
+                @Html.Raw("</div>")
+                itemCount = 1;
+            }
+            else {
+                itemCount++;
+            }
+        }
         <button class="submitForm" type="submit">Submit</button>
     </form>
-
 </div>

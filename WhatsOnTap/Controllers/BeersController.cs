@@ -6,6 +6,8 @@ using WhatsOnTap.Models;
 using WhatsOnTap.ViewModels;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WhatsOnTap.Controllers
 {
@@ -69,6 +71,7 @@ namespace WhatsOnTap.Controllers
             return View(viewModel);
         }
 
+        [Authorize(Roles="owner, admin")]
         [HttpGet("/beers/{id}/edit")]
         public ActionResult Edit(int id)
         {
@@ -108,6 +111,7 @@ namespace WhatsOnTap.Controllers
             return RedirectToAction("Details", new { id = viewModel.CurrentBeer.BeerId});
         }
 
+        [Authorize(Roles="owner, admin")]
         [HttpGet("/beers/new")]
         public ActionResult Create() => View(_db.Bars.ToList());
 
@@ -126,6 +130,7 @@ namespace WhatsOnTap.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles="owner, admin")]
         [HttpGet("/beers/{id}/delete")]
         public ActionResult Delete(int id)
         {
