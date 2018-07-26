@@ -5,7 +5,7 @@
 @using System.Security.Claims
 
 <div class="container">
-    @if (User.Identity.IsAuthenticated && User.IsInRole("user"))
+    @if (User.Identity.IsAuthenticated && User.IsInRole("user") || User.IsInRole("owner"))
     {
         <h1>Your Beer List, @User.Identity.Name:</h1>
     }

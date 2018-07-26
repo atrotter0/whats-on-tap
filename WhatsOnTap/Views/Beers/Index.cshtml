@@ -99,6 +99,10 @@
                 {
                     <button id="@beer.BeerId" class="btn btn-sm btn-outline-warning add-beer favorite-beer"><i class="fas fa-heart"></i> &nbsp;Favorite</button>
                 }
+                else if (User.Identity.IsAuthenticated && User.IsInRole("owner"))
+                {
+                    <button id="@beer.BeerId" class="btn btn-sm btn-outline-warning add-beer favorite-beer"><i class="fas fa-heart"></i> &nbsp;Add To Taplist</button>
+                }
                 else
                 {
                     <span data-toggle="tooltip" data-placement="top" title="Sign Up to Add Beers">

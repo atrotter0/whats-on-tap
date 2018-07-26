@@ -20,7 +20,7 @@ namespace WhatsOnTap.Controllers
             _db = db;
         }
 
-        [Authorize(Roles="user")]
+        [Authorize(Roles="user, owner")]
         [HttpGet("/user/beers")]
         public IActionResult Beers()
         {
