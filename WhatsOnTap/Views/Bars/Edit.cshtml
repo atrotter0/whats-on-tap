@@ -4,7 +4,6 @@
 }
 
 <div class="container">
-
     <form action="/bars/@Model.CurrentBar.BarId/edit" method="post">
         <h1>Edit this Bar:</h1>
         <div class="input-group input-group-sm mb-3">
@@ -65,13 +64,7 @@
               <option value="Vancouver">Vancouver</option>
               <option value="Downtown Portland">Downtown Portland</option>
             </select>
-
-
         </div>
-
-
-
-
         <h2>Which beers does this bar serve?</h2>
             @foreach (var beer in @Model.AllBeers)
             {
@@ -93,7 +86,8 @@
                     @Html.Raw("</div>")
                     itemCount = 1;
                 }
-                else {
+                else
+                {
                     itemCount++;
                 }
             }

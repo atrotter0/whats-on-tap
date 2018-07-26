@@ -11,10 +11,10 @@
             <div class="filter-choice">
                 <select name="barNeighborhood">
                     <option value="">Select a Neighborhood</option>
-                    @foreach (var neighborhood in @Model.AllNeighborhoods)
-                    {
-                        <option value="@neighborhood">@neighborhood</option>
-                    }
+                        @foreach (var neighborhood in @Model.AllNeighborhoods)
+                        {
+                            <option value="@neighborhood">@neighborhood</option>
+                        }
                 </select>
             </div>
             <div class="filter-choice">
@@ -51,22 +51,22 @@
                     <div class="card-insides">
                         <div class="address-icon"><img class="card-icons" src="~/img/address.png" alt="Address Icon"></div>
                         <div class="address-text">@bar.BarStreet, @bar.BarCity, @bar.BarState @bar.BarZip</div>
-                    </div>  
+                    </div>
                     <div class="card-insides">
                         <img class="card-icons" src="~/img/telephone.png" alt="Phone Icon">
                         <span>@bar.BarPhone</span>
                     </div>
                     <div class="card-insides">
                         <img class="card-icons" src="~/img/web.png" alt="Website Icon">
-                        <span><a href="@bar.BarWebsite">@bar.BarName Site</a></span>
+                        <span><a href="@bar.BarWebsite" target="_blank">@bar.BarName Site</a></span>
                     </div>
                 </div>
                 <div class="card-footer">
                     <span class="rating-text">Rating:</span>
-                @for (var i = 0; i < @bar.BarRating; i++)
-                {
-                    <img class="rating-icons" src="~/img/beer-bottle.png" alt="Star Icon"> 
-                }
+                    @for (var i = 0; i < @bar.BarRating; i++)
+                    {
+                        <img class="rating-icons" src="~/img/beer-bottle.png" alt="Star Icon"> 
+                    }
                 </div>
             </div>
 
@@ -75,7 +75,8 @@
                 @Html.Raw("</div>")
                 itemCount = 1;
             }
-            else {
+            else
+            {
                 itemCount++;
             } 
         }
