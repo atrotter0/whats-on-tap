@@ -192,8 +192,12 @@
   text-align: center;
 }
 
-.alert-success {
+.beer-added {
   display: none;
+}
+
+.beer-added-icon {
+  margin-right: 5px;
 }
 
 .radio-with-height {

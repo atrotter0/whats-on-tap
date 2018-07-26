@@ -35,7 +35,7 @@ namespace WhatsOnTap.Controllers
             userBeer.User = currentUser;
             _db.UsersBeers.Add(userBeer);
             _db.SaveChanges();
-            return View();
+            return View("Beers");
         }
 
         [HttpGet("/user/profile")]
