@@ -41,20 +41,20 @@ namespace WhatsOnTap.Controllers
         }
 
         [HttpPost("/bars/{id}/edit")]
-        public ActionResult Edit(List<int> BeerId, string barName, string barRating, string barWebsite, string barStreet, string barCity, string barState, string barZip, string barPhone, string barLatitude, string barLongitude, string barNeighborhood, int id)
+        public ActionResult Edit(Bar bar, List<int> BeerId, string BarName, string BarRating, string BarWebsite, string BarStreet, string BarCity, string BarState, string BarZip, string BarPhone, string BarLatitude, string BarLongitude, string BarNeighborhood, int id)
         {
             BarDetailsViewModel viewModel = new BarDetailsViewModel(_db, id);
-            viewModel.CurrentBar.BarName = barName;
-            viewModel.CurrentBar.BarRating = int.Parse(barRating);
-            viewModel.CurrentBar.BarWebsite = barWebsite;
-            viewModel.CurrentBar.BarStreet = barStreet;
-            viewModel.CurrentBar.BarCity = barCity;
-            viewModel.CurrentBar.BarState = barState;
-            viewModel.CurrentBar.BarZip = barZip;
-            viewModel.CurrentBar.BarPhone = barPhone;
-            viewModel.CurrentBar.BarLatitude = Convert.ToDouble(barLatitude);
-            viewModel.CurrentBar.BarLongitude = Convert.ToDouble(barLongitude);
-            viewModel.CurrentBar.BarNeighborhood = barNeighborhood;
+            viewModel.CurrentBar.BarName = BarName;
+            viewModel.CurrentBar.BarRating = int.Parse(BarRating);
+            viewModel.CurrentBar.BarWebsite = BarWebsite;
+            viewModel.CurrentBar.BarStreet = BarStreet;
+            viewModel.CurrentBar.BarCity = BarCity;
+            viewModel.CurrentBar.BarState = BarState;
+            viewModel.CurrentBar.BarZip = BarZip;
+            viewModel.CurrentBar.BarPhone = BarPhone;
+            viewModel.CurrentBar.BarLatitude = Convert.ToDouble(BarLatitude);
+            viewModel.CurrentBar.BarLongitude = Convert.ToDouble(BarLongitude);
+            viewModel.CurrentBar.BarNeighborhood = BarNeighborhood;
             var barsToRemove = _db.Taplists.Where(entry => entry.BarId == id).ToList();
             foreach (var bars in barsToRemove)
             {
