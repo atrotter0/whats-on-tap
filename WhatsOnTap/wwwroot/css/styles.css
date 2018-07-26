@@ -248,6 +248,21 @@ input[type="radio"]:hover, .radio-with-height:hover {
   margin-top: 8px;
 }
 
+.fake-button {
+  color: white;
+  background-color: #7080905c;
+  border: 1px solid #88888859;
+  cursor: not-allowed;
+}
+
+.fake-button:hover {
+  cursor: not-allowed;
+}
+
+.fake-button:not(:disabled):not(.disabled) {
+  cursor: not-allowed;
+}
+
 .beer-detail-modal {
   display: block;
   text-align: center;

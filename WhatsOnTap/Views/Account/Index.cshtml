@@ -11,8 +11,6 @@
     }
     else
     {
-        <div class="alert alert-warning" role="alert">
-            <i class="fas fa-exclamation-triangle"></i>&nbsp;<strong>Oops! </strong> You need to log in to view this page!
-        </div>
+        await Html.RenderPartialAsync("_RequiresLogin");
     }
 </div>

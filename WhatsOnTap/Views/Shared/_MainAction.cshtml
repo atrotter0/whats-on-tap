@@ -4,8 +4,12 @@
 <div class="index-buttons">
     <a class="btn btn-outline-dark btn-lg" id="bar-button" href="/bars">Bars</a>
     <a class="btn btn-outline-dark btn-lg" id="beer-button" href="/beers">Beers</a>
-    @if(User.Identity.IsAuthenticated)
+    @if(User.Identity.IsAuthenticated && User.IsInRole("user"))
     {
         <a class="btn btn-outline-dark btn-lg" id="fav-beer-button" href="/user/beers">My Beers</a>     
+    }
+    else if(User.Identity.IsAuthenticated && User.IsInRole("owner"))
+    {
+        <a class="btn btn-outline-dark btn-lg" id="fav-beer-button" href="/user/beers">My Taplist</a>     
     }
 </div>
