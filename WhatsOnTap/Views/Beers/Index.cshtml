@@ -1,0 +1,122 @@
+@using WhatsOnTap.ViewModels
+@model WhatsOnTap.ViewModels.BeerIndexViewModel
+
+@{
+    Layout = "_Layout";
+}
+
+<div class='container'>
+    <div class="row beers-list-row">
+        <div class="col-4">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <a href="/beers/sortby/name" class="beer-details-header">Beer Name
+                        @if(BeerIndexViewModel.ReverseName == true)
+                        {
+                            <i class="fas fa-angle-up"></i>
+                        }
+                        else
+                        {
+                            <i class="fas fa-angle-down"></i>
+                        }
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-2">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <a href="/beers/sortby/style" class="beer-details-header">Beer Style
+                        @if(BeerIndexViewModel.ReverseStyle == true)
+                        {
+                            <i class="fas fa-angle-up"></i>
+                        }
+                        else
+                        {
+                            <i class="fas fa-angle-down"></i>
+                        }
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-2">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <span data-toggle="tooltip" data-placement="top" title="Alcohol by Volume">
+                        <a href="/beers/sortby/abv" class="beer-details-header">ABV
+                            @if(BeerIndexViewModel.ReverseAbv == true)
+                            {
+                                <i class="fas fa-angle-up"></i>
+                            }
+                            else
+                            {
+                                <i class="fas fa-angle-down"></i>
+                            }               
+                        </a>
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <div class="col-2">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <span data-toggle="tooltip" data-placement="top" title="International Bittering Units">
+                        <a href="/beers/sortby/ibu" class="beer-details-header">IBU
+                            @if(BeerIndexViewModel.ReverseIbu == true)
+                            {
+                                <i class="fas fa-angle-up"></i>
+                            }
+                            else
+                            {
+                                <i class="fas fa-angle-down"></i>
+                            }                    
+                        </a>
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <div class="col-2">
+        </div>
+    </div>
+    @foreach (var beer in Model.Matches)
+    {    
+        <div class="row beers-list-row">
+            <div class="col-4">
+                <ul class="list-group list-group-flush">
+                    <a href="/beers/@beer.BeerId"><li class="list-group-item">@beer.BeerName</li></a>
+                </ul>
+            </div>
+            <div class="col-2">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">@beer.BeerStyle</li>
+                </ul>
+            </div>
+            <div class="col-2">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">@beer.BeerAbv</li>
+                </ul>
+            </div>
+            <div class="col-2">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">@beer.BeerIbu</li>
+                </ul>
+            </div>
+            <div class="col-2">
+                @if (User.Identity.IsAuthenticated && User.IsInRole("user"))
+                {
+                    <button id="@beer.BeerId" class="btn btn-sm btn-outline-warning add-beer favorite-beer"><i class="fas fa-heart"></i> &nbsp;Favorite</button>
+                }
+                else if (User.Identity.IsAuthenticated && User.IsInRole("owner"))
+                {
+                    <button id="@beer.BeerId" class="btn btn-sm btn-outline-warning add-beer favorite-beer"><i class="fas fa-plus"></i> &nbsp;Add To Taplist</button>
+                }
+                else
+                {
+                    <span data-toggle="tooltip" data-placement="top" title="Sign Up to Add Beers">
+                        <button class="btn btn-sm favorite-beer fake-button"><i class="fas fa-heart"></i> &nbsp;Favorite</button>
+                    </span>
+                }
+            </div>
+        </div>
+    }
+</div>

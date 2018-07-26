@@ -8,9 +8,10 @@ using WhatsOnTap.Models;
 namespace WhatsOnTap.Migrations
 {
     [DbContext(typeof(WhatsOnTapContext))]
-    partial class WhatsOnTapContextModelSnapshot : ModelSnapshot
+    [Migration("20180723183032_CreateIdentityTables")]
+    partial class CreateIdentityTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2");
@@ -185,8 +186,6 @@ namespace WhatsOnTap.Migrations
 
                     b.Property<string>("BarName");
 
-                    b.Property<string>("BarNeighborhood");
-
                     b.Property<string>("BarPhone");
 
                     b.Property<int>("BarRating");
@@ -253,11 +252,9 @@ namespace WhatsOnTap.Migrations
 
                     b.Property<string>("Notes");
 
-                    b.Property<string>("UserId");
+                    b.Property<int>("UserId");
 
                     b.HasKey("UserBeerId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("UsersBeers");
                 });
@@ -310,13 +307,6 @@ namespace WhatsOnTap.Migrations
                         .WithMany("Taplists")
                         .HasForeignKey("BeerId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("WhatsOnTap.Models.UserBeer", b =>
-                {
-                    b.HasOne("WhatsOnTap.Models.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
                 });
         }
     }

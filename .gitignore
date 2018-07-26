@@ -1,3 +1,6 @@
 # ignore bin and obj files
 obj/
 bin/
+.vscode/
+.DS_Store
+.vs/

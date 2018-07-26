@@ -1,0 +1,328 @@
+/* Bars and Beers Index & Details */
+.card-deck {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0px auto;
+  margin-bottom: 20px;
+}
+
+.bar-card {
+  max-width: 350px;
+}
+
+.card-body {
+  padding-bottom: 0px;
+  font-size: 14px;
+}
+
+.card-img-top {
+  padding: 20px;
+}
+
+.card-title {
+  border-bottom: 1px solid lightgray;
+  padding: 8px;
+}
+
+.card-icons {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+.rating-icons {
+  width: 24px;
+  height: 24px;
+}
+
+.card-insides {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.rating-text {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.address-icon {
+  display: inline-block;
+  width: 10%;
+  vertical-align: top;
+}
+
+.address-text {
+  display: inline-block;
+  width: 80%;
+}
+
+/* Beer Details Grid */
+.beersGridThree {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.beersGridFive {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 4px;
+}
+
+.cellHead {
+  border-bottom: 1px lightgray solid;
+}
+
+/* Buttons */
+.btn-hover {
+  cursor: pointer
+}
+
+#id {
+    width: 200px;
+    height: 100px;
+}
+
+/* Owner's Bar Index */
+.owner-bar {
+  height: 100px;
+  margin: 0 auto;
+}
+
+.owner-beers {
+  margin: 0 auto;
+}
+
+/* Map */
+#map_canvas {
+  width: 100%;
+  max-width: 900px;
+  height: 300px;
+  margin: 24px auto;
+  position: relative;
+  overflow: hidden;
+  border: 4px solid #fec325;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.details-heading {
+  margin-top: 25px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.details-subheading {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.center {
+  text-align: center;
+}
+
+.splash-logo {
+  display: block;
+  margin-top: 0%;
+  margin-bottom: 0%;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.splash-logo img {
+  width: 100%;
+}
+
+.index-buttons {
+  display: block;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#bar-button {
+  width: 150px;
+  margin-right: 50px;
+}
+
+#beer-button {
+  width: 150px;
+}
+
+#fav-beer-button {
+  margin-left: 50px;
+  width: 150px;
+}
+
+.cancel-button {
+  margin-right: 15px; 
+}
+
+.form-header {
+  text-align: center;
+  margin-top: 5%;
+}
+
+.form-model {
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+.btn-outline-warning:hover {
+  color: #fff;
+}
+
+.user-header {
+  text-align: center;
+  margin-top: 5%;
+}
+
+.user-actions {
+  display: block;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reg-buttons {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.login-buttons {
+  text-align: center;
+}
+
+.beer-added {
+  display: none;
+}
+
+.beer-added-icon {
+  margin-right: 5px;
+}
+
+.radio-with-height {
+  height: 40px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+input[type="radio"]:hover, .radio-with-height:hover {
+  cursor: pointer;
+}
+
+.register-radio-label {
+  padding-top: 7px;
+}
+
+.beers-list-row {
+  border-bottom: 1px solid #E9ECEF;
+}
+
+.beer-detail-card {
+  width: 100%;
+}
+
+.beer-card-title {
+  display: block;
+  text-align: center;
+  font-size: 2.5em;
+  margin-bottom: 15px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.beer-details {
+  display: block;
+  text-align: center;
+  font-size: 1.5em;
+  margin-bottom: 25px;
+}
+
+.favorite-beer {
+  margin-top: 8px;
+}
+
+.fake-button {
+  color: white;
+  background-color: #7080905c;
+  border: 1px solid #88888859;
+  cursor: not-allowed;
+}
+
+.fake-button:hover {
+  cursor: not-allowed;
+}
+
+.fake-button:not(:disabled):not(.disabled) {
+  cursor: not-allowed;
+}
+
+.beer-detail-modal {
+  display: block;
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.modal-button {
+  font-size: 1.2em;
+}
+
+.beer-modal-bar-name {
+  font-size: 1.25em;
+}
+
+.beer-detail-info {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.update-row {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.update-subheader {
+  margin-bottom: 20px;
+  text-decoration: underline;
+  text-align: center;
+}
+
+.available-at-list {
+  margin-top: 50px;
+  margin-left: 10%;
+}
+
+.authorization-label {
+  margin-left: 5px;
+}
+
+.card-header {
+  background-color: white;
+  margin-bottom: -5%;
+}
+
+.bar-icon-col {
+  margin-right: 20px;
+}
+
+.beer-details-header {
+  color: black;
+  font-weight: bold;
+  
+}
+
+.beer-details-header:hover {
+  text-decoration: none;
+  color: black;
+}
+
+.beers-header {
+  margin-bottom: 60px;
+}
+
+.validation-errors {
+  color: red;
+}

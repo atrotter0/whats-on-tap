@@ -1,0 +1,57 @@
+@model IEnumerable<WhatsOnTap.Models.Bar>
+
+@{
+  Layout = "_Layout";
+  var itemCount = 1;
+}
+
+@{
+  Layout = "_Layout";
+}
+
+<div class="container">
+    <form action="/beers/new" method="post">
+        <h2 class="form-header">Add New Beer</h1>
+        <div class="form-model">
+            <hr>
+        </div>
+        <div class="row update-row">
+            <div class="col">
+                <h3 class="update-subheader">Beer Details</h3>
+                <div class="form-group">
+                    <label for="BeerName">Beer Name </label>
+                    <input name="BeerName" type="text" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="BeerBreweryName">Brewery Name </label>
+                    <input name="BeerBreweryName" type="text" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="BeerStyle">Beer Style </label>
+                    <input name="BeerStyle" type="text" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="BeerAbv">ABV </label>
+                    <input name="BeerAbv" type="text" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="BeerIbu">IBU </label>
+                    <input name="BeerIbu" type="text" class="form-control" required>
+                </div>
+            </div>
+            <div class="col">
+                <h3 class="update-subheader">Available At</h3>
+                <ul class="list-group list-group-flush available-at-list">
+                    @foreach (var bar in Model)
+                    {
+                        <li class="list-group-item"><input type="checkbox" name="barId" value="@bar.BarId"> &nbsp;@bar.BarName</li>
+                    }
+                </ul>
+            </div>
+        </div>
+        <div class="reg-buttons">
+            <a href="/beers" class="btn btn-lg btn-outline-warning cancel-button">Cancel</a>
+            <button type="submit" class="btn btn-lg btn-outline-primary">Submit</button> 
+        </div>
+    </form>
+</div>

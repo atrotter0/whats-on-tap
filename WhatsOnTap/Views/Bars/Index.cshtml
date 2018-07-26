@@ -1,0 +1,106 @@
+@model WhatsOnTap.ViewModels.BarIndexViewModel
+
+@{
+    Layout = "_Layout";
+    var itemCount = 1;
+}
+<div class='container'>
+    <form action="/bars/filter" method="get">
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <select name="barNeighborhood" class="form-control" id="barNeighborhood">
+                        <option value="">Select a neighborhood</option>
+                        @foreach (var neighborhood in @Model.AllNeighborhoods)
+                        {
+                            <option value="@neighborhood">@neighborhood</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <select name="barRating" class="form-control" id="barRating">
+                        <option value="1">Select a minimum rating</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option> 
+                    </select>
+                </div>
+            </div>
+            <div class="col">
+                <button type="submit" class="btn btn-outline-info">Filter</button>
+            </div>
+        </div>
+    </form>
+
+    @if (Model.Matches.Count == 0)
+    { 
+        <span>Whoops! Your search returned 0 results!</span>
+    }
+    else 
+    {
+        @foreach (var bar in Model.Matches)
+        {   
+            @if (itemCount == 1)
+            {
+                @Html.Raw("<div class='card-deck'>")
+            }
+
+            <div class="card bar-card">
+                <div class="card-body">
+                    <h4 class="card-title"><a href="/bars/@bar.BarId">@bar.BarName</a></h4>
+                    <div class="card-insides">
+                        <div class="row">
+                            <div class="col-1 bar-icon-col">
+                                <i class="fas fa-map-marker-alt fa-2x"></i>
+                            </div>
+                            <div class="col">
+                                <span>@bar.BarStreet, @bar.BarCity, @bar.BarState @bar.BarZip</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-insides">
+                        <div class="row">
+                            <div class="col-1 bar-icon-col">
+                                <i class="fas fa-phone fa-2x"></i>
+                            </div>
+                            <div class="col">
+                                <span>@bar.BarPhone</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-insides">
+                        <div class="row">
+                            <div class="col-1 bar-icon-col">
+                                <i class="fas fa-globe card-icons fa-2x"></i>
+                            </div>
+                            <div class="col">
+                                <span><a href="@bar.BarWebsite" target="_blank"> &nbsp;&nbsp;@bar.BarName Site</a></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <span class="rating-text">Rating:</span>
+                    @for (var i = 0; i < @bar.BarRating; i++)
+                    {
+                        <img class="rating-icons" src="~/img/beer-bottle.png" alt="Star Icon"> 
+                    }
+                </div>
+            </div>
+
+            @if (itemCount == 3)
+            {
+                @Html.Raw("</div>")
+                itemCount = 1;
+            }
+            else
+            {
+                itemCount++;
+            } 
+        }
+    }
+</div>
