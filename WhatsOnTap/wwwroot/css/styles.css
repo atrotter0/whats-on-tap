@@ -298,3 +298,7 @@ input[type="radio"]:hover, .radio-with-height:hover {
   margin-left: 10%;
 }
 
+.authorization-label {
+  margin-left: 5px;
+}
+
