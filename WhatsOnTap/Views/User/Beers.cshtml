@@ -3,6 +3,8 @@
 }
 
 @using System.Security.Claims
+@using WhatsOnTap.ViewModels
+@model WhatsOnTap.ViewModels.UserBeersViewModel
 
 <div class="container">
     @if (User.Identity.IsAuthenticated && User.IsInRole("user") || User.IsInRole("owner"))
