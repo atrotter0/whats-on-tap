@@ -41,7 +41,14 @@
                 </div>
                 <div class="col-2">
                     <form method="post" action="/user/beers/@beer.BeerId/delete">
+                    @if (User.IsInRole("user"))
+                    {
                         <button id="@beer.BeerId" class="btn btn-sm btn-outline-warning favorite-beer"><i class="fas fa-times"></i> &nbsp;Unfavorite</button>
+                    }
+                    else
+                    {
+                        <button id="@beer.BeerId" class="btn btn-sm btn-outline-warning favorite-beer"><i class="fas fa-times"></i> &nbsp;Remove</button>
+                    }
                     </form>
                 </div>
             </div>
