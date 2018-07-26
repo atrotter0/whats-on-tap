@@ -45,20 +45,20 @@ namespace WhatsOnTap.Controllers
         }
 
         [HttpPost("/bars/{id}/edit")]
-        public ActionResult Edit(List<int> BeerId, string barName, string barRating, string barWebsite, string barStreet, string barCity, string barState, string barZip, string barPhone, string barLatitude, string barLongitude, string barNeighborhood, int id)
+        public ActionResult Edit(Bar bar, List<int> BeerId, string BarName, string BarRating, string BarWebsite, string BarStreet, string BarCity, string BarState, string BarZip, string BarPhone, string BarLatitude, string BarLongitude, string BarNeighborhood, int id)
         {
             BarDetailsViewModel viewModel = new BarDetailsViewModel(_db, id);
-            viewModel.CurrentBar.BarName = barName;
-            viewModel.CurrentBar.BarRating = int.Parse(barRating);
-            viewModel.CurrentBar.BarWebsite = barWebsite;
-            viewModel.CurrentBar.BarStreet = barStreet;
-            viewModel.CurrentBar.BarCity = barCity;
-            viewModel.CurrentBar.BarState = barState;
-            viewModel.CurrentBar.BarZip = barZip;
-            viewModel.CurrentBar.BarPhone = barPhone;
-            viewModel.CurrentBar.BarLatitude = Convert.ToDouble(barLatitude);
-            viewModel.CurrentBar.BarLongitude = Convert.ToDouble(barLongitude);
-            viewModel.CurrentBar.BarNeighborhood = barNeighborhood;
+            viewModel.CurrentBar.BarName = BarName;
+            viewModel.CurrentBar.BarRating = int.Parse(BarRating);
+            viewModel.CurrentBar.BarWebsite = BarWebsite;
+            viewModel.CurrentBar.BarStreet = BarStreet;
+            viewModel.CurrentBar.BarCity = BarCity;
+            viewModel.CurrentBar.BarState = BarState;
+            viewModel.CurrentBar.BarZip = BarZip;
+            viewModel.CurrentBar.BarPhone = BarPhone;
+            viewModel.CurrentBar.BarLatitude = Convert.ToDouble(BarLatitude);
+            viewModel.CurrentBar.BarLongitude = Convert.ToDouble(BarLongitude);
+            viewModel.CurrentBar.BarNeighborhood = BarNeighborhood;
             var barsToRemove = _db.Taplists.Where(entry => entry.BarId == id).ToList();
             foreach (var bars in barsToRemove)
             {
@@ -83,24 +83,13 @@ namespace WhatsOnTap.Controllers
         public ActionResult Create() => View(_db.Beers.ToList());
 
         [HttpPost("/bars/new")]
-        public ActionResult Create(List<int> BeerId, string barName, string barRating, string barWebsite, string barStreet, string barCity, string barState, string barZip, string barPhone, string barLatitude, string barLongitude, string barNeighborhood)
+        public ActionResult Create(Bar bar, List<int> BeerId)
         {
-            Bar newBar = new Bar();
-            newBar.BarName = barName;
-            newBar.BarRating = int.Parse(barRating);
-            newBar.BarWebsite = barWebsite;
-            newBar.BarStreet = barStreet;
-            newBar.BarCity = barCity;
-            newBar.BarState = barState;
-            newBar.BarZip = barZip;
-            newBar.BarPhone = barPhone;
-            newBar.BarLatitude = Convert.ToDouble(barLatitude);
-            newBar.BarLongitude = Convert.ToDouble(barLongitude);
-            newBar.BarNeighborhood = barNeighborhood;
-            _db.Add(newBar);
+            _db.Bars.Add(bar);
+            
             foreach (int beerId in BeerId)
             {
-                Taplist newTaplist = new Taplist(beerId, newBar.BarId);
+                Taplist newTaplist = new Taplist(beerId, bar.BarId);
                 _db.Taplists.Add(newTaplist);
             }
             _db.SaveChanges();
