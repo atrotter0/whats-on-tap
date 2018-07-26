@@ -309,12 +309,7 @@ input[type="radio"]:hover, .radio-with-height:hover {
   margin-bottom: -5%;
 }
 
-.bar-address-info {
-  display: inline;
-  margin-left: 10px;
-}
-
-.fa-map-marker-alt {
-  display: inline;
+.bar-icon-col {
+  margin-right: 20px;
 }
 

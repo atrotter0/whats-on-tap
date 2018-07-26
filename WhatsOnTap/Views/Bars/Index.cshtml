@@ -53,18 +53,34 @@
                 <div class="card-body">
                     <h4 class="card-title"><a href="/bars/@bar.BarId">@bar.BarName</a></h4>
                     <div class="card-insides">
-                        <i class="fas fa-map-marker-alt fa-2x"></i>
-                        <div class="bar-address-info">
-                            <span> &nbsp;&nbsp;@bar.BarStreet, @bar.BarCity, @bar.BarState @bar.BarZip</span>
+                        <div class="row">
+                            <div class="col-1 bar-icon-col">
+                                <i class="fas fa-map-marker-alt fa-2x"></i>
+                            </div>
+                            <div class="col">
+                                <span>@bar.BarStreet, @bar.BarCity, @bar.BarState @bar.BarZip</span>
+                            </div>
                         </div>
                     </div>
                     <div class="card-insides">
-                        <i class="fas fa-phone fa-2x"></i>
-                        <span> &nbsp;&nbsp;&nbsp;@bar.BarPhone</span>
+                        <div class="row">
+                            <div class="col-1 bar-icon-col">
+                                <i class="fas fa-phone fa-2x"></i>
+                            </div>
+                            <div class="col">
+                                <span>@bar.BarPhone</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="card-insides">
-                        <i class="fas fa-globe card-icons fa-2x"></i>
-                        <span><a href="@bar.BarWebsite" target="_blank"> &nbsp;&nbsp;@bar.BarName Site</a></span>
+                        <div class="row">
+                            <div class="col-1 bar-icon-col">
+                                <i class="fas fa-globe card-icons fa-2x"></i>
+                            </div>
+                            <div class="col">
+                                <span><a href="@bar.BarWebsite" target="_blank"> &nbsp;&nbsp;@bar.BarName Site</a></span>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="card-footer">
