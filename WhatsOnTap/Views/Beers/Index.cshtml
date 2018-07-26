@@ -6,8 +6,8 @@
 }
 
 <div class='container'>
-    <div class="row beers-list-row">
-        <div class="col-4">
+    <div class="row beers-list-row header-row">
+        <div class="col-sm-4">
             <ul class="list-group list-group-flush">
                 <li class="list-group-item column-header">
                     <a href="/beers/sortby/name">Beer Name
@@ -23,7 +23,7 @@
                 </li>
             </ul>
         </div>
-        <div class="col-2">
+        <div class="col-sm-2">
             <ul class="list-group list-group-flush">
                 <li class="list-group-item column-header">
                     <a href="/beers/sortby/style">Beer Style
@@ -39,7 +39,7 @@
                 </li>
             </ul>
         </div>
-        <div class="col-2">
+        <div class="col-sm-2">
             <ul class="list-group list-group-flush">
                 <li class="list-group-item column-header">
                     <span data-toggle="tooltip" data-placement="top" title="Alcohol by Volume">
@@ -57,7 +57,7 @@
                 </li>
             </ul>
         </div>
-        <div class="col-2">
+        <div class="col-sm-2">
             <ul class="list-group list-group-flush">
                 <li class="list-group-item column-header">
                     <span data-toggle="tooltip" data-placement="top" title="International Bittering Units">
@@ -75,33 +75,33 @@
                 </li>
             </ul>
         </div>
-        <div class="col-2">
+        <div class="col-sm-2">
         </div>
     </div>
     @foreach (var beer in Model.Matches)
     {    
         <div class="row beers-list-row">
-            <div class="col-4">
+            <div class="col-sm-4 beer-name-box">
                 <ul class="list-group list-group-flush">
                     <a href="/beers/@beer.BeerId"><li class="list-group-item">@beer.BeerName</li></a>
                 </ul>
             </div>
-            <div class="col-2">
+            <div class="col-sm-2">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">@beer.BeerStyle</li>
                 </ul>
             </div>
-            <div class="col-2">
+            <div class="col-sm-2">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">@beer.BeerAbv</li>
                 </ul>
             </div>
-            <div class="col-2">
+            <div class="col-sm-2">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">@beer.BeerIbu</li>
                 </ul>
             </div>
-            <div class="col-2">
+            <div class="col-sm-2 favorite-box">
                 @if (User.Identity.IsAuthenticated && User.IsInRole("user"))
                 {
                     <button id="@beer.BeerId" class="btn btn-sm btn-outline-warning add-beer favorite-beer"><i class="fas fa-heart"></i> &nbsp;Favorite</button>

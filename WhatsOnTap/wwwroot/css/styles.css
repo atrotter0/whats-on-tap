@@ -305,3 +305,70 @@ input[type="radio"]:hover, .radio-with-height:hover {
 .validation-errors {
   color: red;
 }
+
+/* responsive styles */
+
+@media screen and (max-width: 992px) {
+  .ml-auto, .mx-auto {
+    margin-left: 0!important;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .form-header, .form-model {
+    width: 90%;
+    margin: 40px auto;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  /* adjust report views */
+}
+
+@media screen and (max-width: 600px) {
+  #bar-button, #beer-button {
+    display: block;
+    width: 90%;
+    margin: 20px auto;
+  }
+
+  .splash-logo img {
+    margin-top: 50px;
+    margin-bottom: 30px;
+  }
+
+  .header-row {
+    display: none;
+  }
+
+  .col-sm-2 {
+    border-bottom: 1px solid #E9ECEF;
+    margin: 0px auto;
+    width: 90%;
+    height: 50px;
+    padding-top: 0px;
+    padding-left: 10px;
+    font-size: 1.125rem;
+    line-height: 1.5;
+  }
+
+  .beers-list-row {
+    border-bottom: none;
+  }
+
+  .favorite-box {
+    border: none;
+  }
+
+  .favorite-beer {
+    height: 45px;
+    width: 100%;
+    margin: 20px auto 20px auto;
+    display: block;
+  }
+
+  .beer-name-box {
+    text-align: center;
+    margin-top: 50px;
+  }
+}
