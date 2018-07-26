@@ -298,7 +298,10 @@ input[type="radio"]:hover, .radio-with-height:hover {
   margin-left: 10%;
 }
 
+.beers-header {
+  margin-bottom: 60px;
+}
+
 .validation-errors {
   color: red;
 }
-
