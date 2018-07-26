@@ -9,104 +9,45 @@
 <div class="container">
     @if (User.Identity.IsAuthenticated && User.IsInRole("user") || User.IsInRole("owner"))
     {
-        <h1 class="form-header">My Beer List</h1>
-        <div class="row beers-list-row">
-        <div class="col-4">
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item column-header">
-                    <a href="/beers/sortby/name">Beer Name
-                        @if(UserBeersViewModel.ReverseName == true)
-                        {
-                            <i class="fas fa-angle-up"></i>
-                        }
-                        else
-                        {
-                            <i class="fas fa-angle-down"></i>
-                        }
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div class="col-2">
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item column-header">
-                    <a href="/beers/sortby/style">Beer Style
-                        @if(UserBeersViewModel.ReverseStyle == true)
-                        {
-                            <i class="fas fa-angle-up"></i>
-                        }
-                        else
-                        {
-                            <i class="fas fa-angle-down"></i>
-                        }
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div class="col-2">
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item column-header">
-                    <span data-toggle="tooltip" data-placement="top" title="Alcohol by Volume">
-                        <a href="/beers/sortby/abv">ABV
-                            @if(UserBeersViewModel.ReverseAbv == true)
-                            {
-                                <i class="fas fa-angle-up"></i>
-                            }
-                            else
-                            {
-                                <i class="fas fa-angle-down"></i>
-                            }               
-                        </a>
-                    </span>
-                </li>
-            </ul>
-        </div>
-        <div class="col-2">
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item column-header">
-                    <span data-toggle="tooltip" data-placement="top" title="International Bittering Units">
-                        <a href="/beers/sortby/ibu">IBU
-                            @if(UserBeersViewModel.ReverseIbu == true)
-                            {
-                                <i class="fas fa-angle-up"></i>
-                            }
-                            else
-                            {
-                                <i class="fas fa-angle-down"></i>
-                            }                    
-                        </a>
-                    </span>
-                </li>
-            </ul>
-        </div>
-        <div class="col-2">
-        </div>
-    </div>
-    @foreach (var beer in Model.Matches)
-    {    
-        <div class="row beers-list-row">
-            <div class="col-4">
-                <ul class="list-group list-group-flush">
-                    <a href="/beers/@beer.BeerId"><li class="list-group-item">@beer.BeerName</li></a>
-                </ul>
+        if (User.IsInRole("user"))
+        {
+            <h2 class="form-header beers-header">My Beers</h2>
+        }
+        else
+        {
+            <h2 class="form-header beers-header">My Taplist</h2>
+        }
+
+        foreach (var beer in Model)
+        {    
+            <div class="row beers-list-row">
+                <div class="col-4">
+                    <ul class="list-group list-group-flush">
+                        <a href="/beers/@beer.BeerId"><li class="list-group-item">@beer.BeerName</li></a>
+                    </ul>
+                </div>
+                <div class="col-2">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">@beer.BeerStyle</li>
+                    </ul>
+                </div>
+                <div class="col-2">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">@beer.BeerAbv</li>
+                    </ul>
+                </div>
+                <div class="col-2">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">@beer.BeerIbu</li>
+                    </ul>
+                </div>
+                <div class="col-2">
+                    <form method="post" action="/user/beers/@beer.BeerId/delete">
+                        <button id="@beer.BeerId" class="btn btn-sm btn-outline-warning favorite-beer"><i class="fas fa-times"></i> &nbsp;Unfavorite</button>
+                    </form>
+                </div>
             </div>
-            <div class="col-2">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">@beer.BeerStyle</li>
-                </ul>
-            </div>
-            <div class="col-2">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">@beer.BeerAbv</li>
-                </ul>
-            </div>
-            <div class="col-2">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">@beer.BeerIbu</li>
-                </ul>
-            </div>
-        </div>
-    }
+        }
     }
     else
     {

@@ -24,5 +24,10 @@ namespace WhatsOnTap.Models
             BeerId = beerId;
             Favorite = false;
         }
+
+        public UserBeer()
+        {
+            
+        }
     }
 }
