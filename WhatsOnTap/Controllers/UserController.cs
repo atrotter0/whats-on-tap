@@ -39,7 +39,7 @@ namespace WhatsOnTap.Controllers
             return View("Beers");
         }
 
-        [Authorize(Roles="user")]
+        [Authorize(Roles="user, admin, owner")]
         [HttpGet("/user/profile")]
         public async Task<IActionResult> Details()
         {
