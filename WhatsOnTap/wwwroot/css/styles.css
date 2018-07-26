@@ -37,6 +37,7 @@
 
 .card-insides {
   margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .rating-text {
@@ -218,16 +219,12 @@ input[type="radio"]:hover, .radio-with-height:hover {
   border-bottom: 1px solid #E9ECEF;
 }
 
-
-.column-header {
-  font-weight: bold;
-}
-
 .beer-detail-card {
   width: 100%;
 }
 
 .beer-card-title {
+  display: block;
   text-align: center;
   font-size: 2.5em;
   margin-bottom: 15px;
@@ -296,6 +293,30 @@ input[type="radio"]:hover, .radio-with-height:hover {
 .available-at-list {
   margin-top: 50px;
   margin-left: 10%;
+}
+
+.authorization-label {
+  margin-left: 5px;
+}
+
+.card-header {
+  background-color: white;
+  margin-bottom: -5%;
+}
+
+.bar-icon-col {
+  margin-right: 20px;
+}
+
+.beer-details-header {
+  color: black;
+  font-weight: bold;
+  
+}
+
+.beer-details-header:hover {
+  text-decoration: none;
+  color: black;
 }
 
 .beers-header {
