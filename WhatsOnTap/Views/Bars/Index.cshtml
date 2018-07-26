@@ -6,28 +6,33 @@
 }
 <div class='container'>
     <form action="/bars/filter" method="get">
-        <div class="filter-box">
-            <div>Filter Your Search:</div>
-            <div class="filter-choice">
-                <select name="barNeighborhood">
-                    <option value="">Select a Neighborhood</option>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <select name="barNeighborhood" class="form-control" id="barNeighborhood">
+                        <option value="">Select a neighborhood</option>
                         @foreach (var neighborhood in @Model.AllNeighborhoods)
                         {
                             <option value="@neighborhood">@neighborhood</option>
                         }
-                </select>
+                    </select>
+                </div>
             </div>
-            <div class="filter-choice">
-                <select name="barRating">
-                    <option value="1">Select a minimum rating</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>                     
-                </select>
+            <div class="col">
+                <div class="form-group">
+                    <select name="barRating" class="form-control" id="barRating">
+                        <option value="1">Select a minimum rating</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option> 
+                    </select>
+                </div>
             </div>
-            <input type="submit" value="Filter">
+            <div class="col">
+                <button type="submit" class="btn btn-outline-info">Filter</button>
+            </div>
         </div>
     </form>
 
