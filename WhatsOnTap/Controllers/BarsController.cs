@@ -76,7 +76,7 @@ namespace WhatsOnTap.Controllers
             }
             _db.SaveChanges();
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Details", new { id = viewModel.CurrentBar.BarId});
         }
 
         [Authorize(Roles="admin")]
