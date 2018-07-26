@@ -7,7 +7,7 @@
 }
 
 .bar-card {
-  max-width: 350px;
+  max-width: 25%;
 }
 
 .card-body {
@@ -155,7 +155,7 @@
 }
 
 .cancel-button {
-  margin-right: 15px; 
+  margin-right: 15px;
 }
 
 .form-header {
@@ -311,7 +311,7 @@ input[type="radio"]:hover, .radio-with-height:hover {
 .beer-details-header {
   color: black;
   font-weight: bold;
-  
+
 }
 
 .beer-details-header:hover {
