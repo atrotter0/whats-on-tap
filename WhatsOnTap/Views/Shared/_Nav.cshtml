@@ -35,10 +35,26 @@
             {
                 <li class="nav-item dropdown ml-auto">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Admin
+                        Admin Account
                     </a>
                      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="/bars/new">Add Bars</a>
+                        <a class="dropdown-item" href="/beers/new">Add Beers</a>
+                        <a class="dropdown-item" href="/user/profile">My Profile</a>
+                        @using (Html.BeginForm("LogOff", "Account"))
+                        {
+                            <input type="submit" class="dropdown-item btn-hover" value="Log out" />
+                        }
+                    </div>
+                </li>
+            }
+            else if (User.Identity.IsAuthenticated && User.IsInRole("owner"))
+            {
+                <li class="nav-item dropdown ml-auto">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Owner Account
+                    </a>
+                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="/beers/new">Add Beers</a>
                         <a class="dropdown-item" href="/user/profile">My Profile</a>
                         @using (Html.BeginForm("LogOff", "Account"))

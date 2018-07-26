@@ -5,14 +5,12 @@
 @using System.Security.Claims
 
 <div class="container">
-    @if (User.Identity.IsAuthenticated)
+    @if (User.Identity.IsAuthenticated && User.IsInRole("user"))
     {
         <h1>Your Beer List, @User.Identity.Name:</h1>
     }
     else
     {
-        <div class="alert alert-warning" role="alert">
-            <i class="fas fa-exclamation-triangle"></i>&nbsp;<strong>Oops! </strong> You need to log in to view this page!
-        </div>
+        await Html.RenderPartialAsync("_RequiresLogin");
     }
 </div>

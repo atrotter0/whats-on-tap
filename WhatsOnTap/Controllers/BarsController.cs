@@ -78,7 +78,7 @@ namespace WhatsOnTap.Controllers
             return RedirectToAction("Index");
         }
 
-        [Authorize(Roles="owner, admin")]
+        [Authorize(Roles="admin")]
         [HttpGet("/bars/new")]
         public ActionResult Create() => View(_db.Beers.ToList());
 
@@ -108,7 +108,7 @@ namespace WhatsOnTap.Controllers
             return RedirectToAction("Index");
         }
 
-        [Authorize(Roles="owner, admin")]
+        [Authorize(Roles="admin")]
         [HttpGet("/bars/{id}/delete")]
         public ActionResult Delete(int id)
         {
