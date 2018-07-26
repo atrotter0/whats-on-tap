@@ -6,6 +6,8 @@ using WhatsOnTap.Models;
 using WhatsOnTap.ViewModels;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WhatsOnTap.Controllers
 {
@@ -69,6 +71,7 @@ namespace WhatsOnTap.Controllers
             return View(viewModel);
         }
 
+        [Authorize(Roles="owner, admin")]
         [HttpGet("/beers/{id}/edit")]
         public ActionResult Edit(int id)
         {
@@ -79,14 +82,14 @@ namespace WhatsOnTap.Controllers
         }
 
         [HttpPost("/beers/{id}/edit")]
-        public ActionResult Edit(List<int> BarId, string beerName, string brewery, string style, string abv, int ibu, int id)
+        public ActionResult Edit(List<int> BarId, string BeerName, string BeerBreweryName, string BeerStyle, string BeerAbv, int BeerIbu, int id)
         {
             BeerDetailsViewModel viewModel = new BeerDetailsViewModel(_db, id);
-            viewModel.CurrentBeer.BeerName = beerName;
-            viewModel.CurrentBeer.BeerBreweryName = brewery;
-            viewModel.CurrentBeer.BeerStyle = style;
-            viewModel.CurrentBeer.BeerAbv = Convert.ToDouble(abv);
-            viewModel.CurrentBeer.BeerIbu = ibu;
+            viewModel.CurrentBeer.BeerName = BeerName;
+            viewModel.CurrentBeer.BeerBreweryName = BeerBreweryName;
+            viewModel.CurrentBeer.BeerStyle = BeerStyle;
+            viewModel.CurrentBeer.BeerAbv = Convert.ToDouble(BeerAbv);
+            viewModel.CurrentBeer.BeerIbu = BeerIbu;
 
             var beersToRemove = _db.Taplists.Where(entry => entry.BeerId == id).ToList();
             foreach (var beer in beersToRemove)
@@ -108,23 +111,18 @@ namespace WhatsOnTap.Controllers
             return RedirectToAction("Details", new { id = viewModel.CurrentBeer.BeerId});
         }
 
+        [Authorize(Roles="owner, admin")]
         [HttpGet("/beers/new")]
         public ActionResult Create() => View(_db.Bars.ToList());
 
         [HttpPost("/beers/new")]
-        public ActionResult Create(List<int> BarId, string beerName, string brewery, string style, string abv, string ibu)
+        public ActionResult Create(Beer beer, List<int> BarId)
         {
-            Beer newBeer = new Beer();
-            newBeer.BeerName = beerName;
-            newBeer.BeerBreweryName = brewery;
-            newBeer.BeerStyle = style;
-            newBeer.BeerAbv = Convert.ToDouble(abv);
-            newBeer.BeerIbu = int.Parse(ibu);
-
-            _db.Add(newBeer);
+            _db.Beers.Add(beer);
+            
             foreach (int barId in BarId)
             {
-                Taplist newTaplist = new Taplist(newBeer.BeerId, barId);
+                Taplist newTaplist = new Taplist(beer.BeerId, barId);
                 _db.Taplists.Add(newTaplist);
             }
             _db.SaveChanges();
@@ -132,6 +130,7 @@ namespace WhatsOnTap.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles="owner, admin")]
         [HttpGet("/beers/{id}/delete")]
         public ActionResult Delete(int id)
         {

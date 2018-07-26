@@ -4,7 +4,6 @@ function initializeToolTipAndPopover() {
     $('[data-toggle="tooltip"]').tooltip()
 }
 
-
 $(function () {
     initializeToolTipAndPopover();
 })

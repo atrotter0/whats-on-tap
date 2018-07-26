@@ -3,7 +3,6 @@
 }
 
 <div class="container">
-
     <form action="/beers/@Model.CurrentBeer.BeerId/edit" method="post">
         <h2 class="form-header">Update Beer</h1>
         <div class="form-model">
@@ -13,24 +12,24 @@
             <div class="col">
                 <h3 class="update-subheader">Beer Details</h3>
                 <div class="form-group">
-                    <label for="beerName">Beer Name </label>
-                    <input name="beerName" type="text" class="form-control" value="@Model.CurrentBeer.BeerName" required>
+                    <label for="BeerName">Beer Name </label>
+                    <input name="BeerName" type="text" class="form-control" value="@Model.CurrentBeer.BeerName" required>
                 </div>
                 <div class="form-group">
-                    <label for="brewery">Brewery Name </label>
-                    <input name="brewery" type="text" class="form-control" value="@Model.CurrentBeer.BeerBreweryName" required>
+                    <label for="BeerBreweryName">Brewery Name </label>
+                    <input name="BeerBreweryName" type="text" class="form-control" value="@Model.CurrentBeer.BeerBreweryName" required>
                 </div>
                 <div class="form-group">
-                    <label for="style">Beer Style </label>
-                    <input name="style" type="text" class="form-control" value="@Model.CurrentBeer.BeerStyle" required>
+                    <label for="BeerStyle">Beer Style </label>
+                    <input name="BeerStyle" type="text" class="form-control" value="@Model.CurrentBeer.BeerStyle" required>
                 </div>
                 <div class="form-group">
-                    <label for="abv">ABV </label>
-                    <input name="abv" type="text" class="form-control" value="@Model.CurrentBeer.BeerAbv" required>
+                    <label for="BeerAbv">ABV </label>
+                    <input name="BeerAbv" type="text" class="form-control" value="@Model.CurrentBeer.BeerAbv" required>
                 </div>
                 <div class="form-group">
-                    <label for="ibu">IBU </label>
-                    <input name="ibu" type="text" class="form-control" value="@Model.CurrentBeer.BeerIbu" required>
+                    <label for="BeerIbu">IBU </label>
+                    <input name="BeerIbu" type="text" class="form-control" value="@Model.CurrentBeer.BeerIbu" required>
                 </div>
             </div>
             <div class="col">

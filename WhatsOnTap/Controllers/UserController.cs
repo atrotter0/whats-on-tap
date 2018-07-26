@@ -21,6 +21,7 @@ namespace WhatsOnTap.Controllers
             _db = db;
         }
 
+        [Authorize(Roles="user, owner")]
         [HttpGet("/user/beers")]
         public IActionResult Beers()
         {
@@ -44,21 +45,20 @@ namespace WhatsOnTap.Controllers
             userBeer.User = currentUser;
             _db.UsersBeers.Add(userBeer);
             _db.SaveChanges();
-            return View("Beers");
+            return View("Details");
         }
 
         [HttpPost("/user/beers/{id}/delete")]
         public IActionResult DeleteFromJoinTable(int id)
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            //HERE//
-            Beer foundBeer = _db.UsersBeers.Where(entry => entry.BeerId == id).Where(entry => entry.UserId == userId);
-            _db.Remove(foundBeer);
+            UserBeer foundBeer = _db.UsersBeers.Where(entry => entry.BeerId == id).Where(entry => entry.UserId == userId).ToList()[0];
+            _db.UsersBeers.Remove(foundBeer);
             _db.SaveChanges();
-
             return RedirectToAction("Beers");
         }
 
+        [Authorize(Roles="user, admin, owner")]
         [HttpGet("/user/profile")]
         public async Task<IActionResult> Details()
         {

@@ -5,7 +5,7 @@
 @using System.Security.Claims
 
 <div class="container">
-    @if (User.Identity.IsAuthenticated)
+    @if (User.Identity.IsAuthenticated && User.IsInRole("user") || User.IsInRole("owner"))
     {
         <h1>Your Beer List, @User.Identity.Name:</h1>
         foreach (var beer in Model)
@@ -33,7 +33,7 @@
                 </div>
                 <div class="col-2">
                     <form method="post" action="/user/beers/@beer.BeerId/delete">
-                        <button id="@beer.BeerId" class="btn btn-sm btn-outline-warning add-beer favorite-beer"><i class="fas fa-times"></i> &nbsp;Unfavorite</button>
+                        <button id="@beer.BeerId" class="btn btn-sm btn-outline-warning favorite-beer"><i class="fas fa-times"></i> &nbsp;Unfavorite</button>
                     </form>
                 </div>
             </div>
@@ -41,8 +41,6 @@
     }
     else
     {
-        <div class="alert alert-warning" role="alert">
-            <i class="fas fa-exclamation-triangle"></i>&nbsp;<strong>Oops! </strong> You need to log in to view this page!
-        </div>
+        await Html.RenderPartialAsync("_RequiresLogin");
     }
 </div>

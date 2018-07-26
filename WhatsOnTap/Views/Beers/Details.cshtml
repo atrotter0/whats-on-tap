@@ -7,27 +7,43 @@
 <div class='container'>
   <div class="card">
     <div class="card-body">
-      <button id="@Model.CurrentBeer.BeerId" class="btn btn-outline-warning btn-sm float-right add-beer"><i class="fas fa-heart"></i> &nbsp;Favorite</button>
+      @if (User.Identity.IsAuthenticated && User.IsInRole("user"))
+      {
+        <button id="@Model.CurrentBeer.BeerId" class="btn btn-outline-warning btn-sm float-right add-beer"><i class="fas fa-heart"></i> &nbsp;Favorite</button>
+      }
+      else if (User.Identity.IsAuthenticated && User.IsInRole("owner"))
+      {
+        <button id="@Model.CurrentBeer.BeerId" class="btn btn-outline-warning btn-sm float-right add-beer"><i class="fas fa-heart"></i> &nbsp;Add to Taplist</button>
+      }
+      else
+      {
+        <span data-toggle="tooltip" data-placement="right" title="Sign Up to Add Beers">
+            <button class="btn btn-sm favorite-beer fake-button float-right"><i class="fas fa-heart"></i> &nbsp;Favorite</button>
+        </span>
+      }
       <div class="beer-detail-actions">
-        <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#deleteModal">
-          <i class="fas fa-trash-alt"></i> &nbsp;Delete
-        </button>
-        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-body">
-                <div class="alert alert-danger" role="alert">
-                  <i class="fas fa-exclamation-triangle"></i><span class="bold"> &nbsp;Hold up!</span> Deleting a beer cannot be undone!
+        @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
+        {
+          <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#deleteModal">
+            <i class="fas fa-trash-alt"></i> &nbsp;Delete
+          </button>
+          <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-body">
+                  <div class="alert alert-danger" role="alert">
+                    <i class="fas fa-exclamation-triangle"></i><span class="bold"> &nbsp;Hold up!</span> Deleting a beer cannot be undone!
+                  </div>
                 </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
-                <a href="/beers/@Model.CurrentBeer.BeerId/delete"><button type="button" class="btn btn-outline-danger">Delete </button></a>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+                  <a href="/beers/@Model.CurrentBeer.BeerId/delete"><button type="button" class="btn btn-outline-danger">Delete </button></a>
+                </div>
               </div>
             </div>
           </div>
-        </div>        
-      <a href="/beers/@Model.CurrentBeer.BeerId/edit" class="btn btn-outline-info btn-sm"><i class="fas fa-edit"></i> &nbsp;Edit</a>
+          <a href="/beers/@Model.CurrentBeer.BeerId/edit" class="btn btn-outline-info btn-sm"><i class="fas fa-edit"></i> &nbsp;Edit</a>
+        }
       </div>
       <div class="beer-card-title">
         <span>@Model.CurrentBeer.BeerName </span><i class="fas fa-angle-right"></i>&nbsp;<span class="text-muted">@Model.CurrentBeer.BeerBreweryName</span>

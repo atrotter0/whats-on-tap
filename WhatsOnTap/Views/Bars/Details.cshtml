@@ -7,7 +7,6 @@
 <div class='container'>
     <h1 class="details-heading">@Model.CurrentBar.BarName</h1>
 
-
     <div id="map_canvas"></div>
 
     @{
@@ -58,6 +57,9 @@
             </div>
         </div>
     }
-    <a href="/bars/@Model.CurrentBar.BarId/delete">Delete</a>
-    <a href="/bars/@Model.CurrentBar.BarId/edit">Edit</a>
+    @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
+    {
+        <a href="/bars/@Model.CurrentBar.BarId/delete">Delete</a>
+        <a href="/bars/@Model.CurrentBar.BarId/edit">Edit</a>
+    }
 </div>
