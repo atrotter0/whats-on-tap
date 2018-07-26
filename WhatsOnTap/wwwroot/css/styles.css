@@ -301,3 +301,7 @@ input[type="radio"]:hover, .radio-with-height:hover {
 .beers-header {
   margin-bottom: 60px;
 }
+
+.validation-errors {
+  color: red;
+}
