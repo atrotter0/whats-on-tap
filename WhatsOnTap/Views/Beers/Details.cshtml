@@ -6,14 +6,15 @@
 
 <div class='container'>
   <div class="card">
-    <div class="card-body">
+    <div class="card-header">
+
       @if (User.Identity.IsAuthenticated && User.IsInRole("user"))
       {
         <button id="@Model.CurrentBeer.BeerId" class="btn btn-outline-warning btn-sm float-right add-beer"><i class="fas fa-heart"></i> &nbsp;Favorite</button>
       }
       else if (User.Identity.IsAuthenticated && User.IsInRole("owner"))
       {
-        <button id="@Model.CurrentBeer.BeerId" class="btn btn-outline-warning btn-sm float-right add-beer"><i class="fas fa-heart"></i> &nbsp;Add to Taplist</button>
+        <button id="@Model.CurrentBeer.BeerId" class="btn btn-outline-warning btn-sm float-right add-beer"><i class="fas fa-plus"></i> &nbsp;Add to Taplist</button>
       }
       else
       {
@@ -21,6 +22,8 @@
             <button class="btn btn-sm favorite-beer fake-button float-right"><i class="fas fa-heart"></i> &nbsp;Favorite</button>
         </span>
       }
+    </div>
+    <div class="card-body">
       <div class="beer-detail-actions">
         @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
         {

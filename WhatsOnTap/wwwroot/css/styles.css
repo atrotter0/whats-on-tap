@@ -303,3 +303,8 @@ input[type="radio"]:hover, .radio-with-height:hover {
   margin-left: 5px;
 }
 
+.card-header {
+  background-color: white;
+  margin-bottom: -5%;
+}
+
