@@ -51,14 +51,14 @@
                     <div class="card-insides">
                         <div class="address-icon"><img class="card-icons" src="~/img/address.png" alt="Address Icon"></div>
                         <div class="address-text">@bar.BarStreet, @bar.BarCity, @bar.BarState @bar.BarZip</div>
-                    </div>  
+                    </div>
                     <div class="card-insides">
                         <img class="card-icons" src="~/img/telephone.png" alt="Phone Icon">
                         <span>@bar.BarPhone</span>
                     </div>
                     <div class="card-insides">
                         <img class="card-icons" src="~/img/web.png" alt="Website Icon">
-                        <span><a href="@bar.BarWebsite">@bar.BarName Site</a></span>
+                        <span><a href="@bar.BarWebsite" target="_blank">@bar.BarName Site</a></span>
                     </div>
                 </div>
                 <div class="card-footer">
@@ -75,7 +75,8 @@
                 @Html.Raw("</div>")
                 itemCount = 1;
             }
-            else {
+            else
+            {
                 itemCount++;
             } 
         }
