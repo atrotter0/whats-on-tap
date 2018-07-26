@@ -26,7 +26,7 @@
                         <option value="2">2</option>
                         <option value="3">3</option>
                         <option value="4">4</option>
-                        <option value="5">5</option> 
+                        <option value="5">5</option>
                     </select>
                 </div>
             </div>
@@ -37,13 +37,13 @@
     </form>
 
     @if (Model.Matches.Count == 0)
-    { 
+    {
         <span>Whoops! Your search returned 0 results!</span>
     }
-    else 
+    else
     {
         @foreach (var bar in Model.Matches)
-        {   
+        {
             @if (itemCount == 1)
             {
                 @Html.Raw("<div class='card-deck'>")
@@ -87,7 +87,7 @@
                     <span class="rating-text">Rating:</span>
                     @for (var i = 0; i < @bar.BarRating; i++)
                     {
-                        <img class="rating-icons" src="~/img/beer-bottle.png" alt="Star Icon"> 
+                        <img class="rating-icons" src="~/img/beer-bottle.png" alt="Star Icon">
                     }
                 </div>
             </div>
@@ -100,7 +100,7 @@
             else
             {
                 itemCount++;
-            } 
+            }
         }
     }
 </div>
