@@ -20,6 +20,7 @@ namespace WhatsOnTap.Controllers
             _db = db;
         }
 
+        [Authorize(Roles="user")]
         [HttpGet("/user/beers")]
         public IActionResult Beers()
         {
@@ -38,6 +39,7 @@ namespace WhatsOnTap.Controllers
             return View("Beers");
         }
 
+        [Authorize(Roles="user")]
         [HttpGet("/user/profile")]
         public async Task<IActionResult> Details()
         {
