@@ -8,9 +8,10 @@ using WhatsOnTap.Models;
 namespace WhatsOnTap.Migrations
 {
     [DbContext(typeof(WhatsOnTapContext))]
-    partial class WhatsOnTapContextModelSnapshot : ModelSnapshot
+    [Migration("20180724172025_MakeUserIdString")]
+    partial class MakeUserIdString
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2");
@@ -184,8 +185,6 @@ namespace WhatsOnTap.Migrations
                     b.Property<double>("BarLongitude");
 
                     b.Property<string>("BarName");
-
-                    b.Property<string>("BarNeighborhood");
 
                     b.Property<string>("BarPhone");
 

@@ -1,0 +1,54 @@
+@{
+    Layout = "_Layout";
+}
+
+@using WhatsOnTap.ViewModels
+@model RegisterViewModel
+
+<div class="container">
+    <h2 class="form-header">Register</h2>
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+    {
+        <div class="form-model">
+            <hr>
+            <br>
+            @{
+                await Html.RenderPartialAsync("_ValidationErrors");
+            }
+            <div class="form-group">
+                @Html.LabelFor(user => user.Email)
+                @Html.TextBoxFor(user => user.Email, new {@class="form-control", required="required"})
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(user => user.Password)
+                @Html.PasswordFor(user => user.Password, new {@class="form-control", required="required"})
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(user => user.ConfirmPassword)
+                @Html.PasswordFor(user => user.ConfirmPassword, new {@class="form-control", required="required"})
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Account Type</label>
+                <div class="input-group-prepend">
+                    <div class="input-group-text radio-with-height">
+                        @Html.RadioButtonFor(user => user.UserType, "owner", new { id = "user-account" })
+                    </div>
+                    <label for="user-account" class="register-radio-label">Bar Owner</label>
+                </div>
+                <div class="input-group-prepend">
+                    <div class="input-group-text radio-with-height">
+                        @Html.RadioButtonFor(model => model.UserType, "user", new { id = "owner-account" })
+                    </div>
+                    <label for="owner-account" class="register-radio-label">User</label>
+                </div>
+            </div>
+        </div>
+        <div class="reg-buttons">
+            <a href="/" class="btn btn-lg btn-outline-warning cancel-button">Cancel</a>
+            <input type="submit" class="btn btn-lg btn-outline-primary" value="Register" />
+        </div>
+    }
+</div>

@@ -1,23 +1,78 @@
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-          <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="/">App Name</a>
-          </div>
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li><a href="#">Item 1</a></li>
-                <li><a href="#">Item 2</a></li>
-                <li><a href="#">Item 3</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="#">Item 4</a></li>
-            </ul>
-        </div>
+@using System.Security.Claims
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <a class="navbar-brand" href="/">What's On Tap</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/bars">Bars</a>
+             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/beers">Beers</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            @if (User.Identity.IsAuthenticated && User.IsInRole("user"))
+            {
+                <li class="nav-item dropdown ml-auto">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        My Account
+                    </a>
+                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/user/beers">My Beers</a>
+                        <a class="dropdown-item" href="/user/profile">My Profile</a>
+                        @using (Html.BeginForm("LogOff", "Account"))
+                        {
+                            <input type="submit" class="dropdown-item btn-hover" value="Log out" />
+                        }
+                    </div>
+                </li>
+            }
+            else if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
+            {
+                <li class="nav-item dropdown ml-auto">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Admin Account
+                    </a>
+                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/bars/new">Add Bars</a>
+                        <a class="dropdown-item" href="/beers/new">Add Beers</a>
+                        <a class="dropdown-item" href="/user/profile">My Profile</a>
+                        @using (Html.BeginForm("LogOff", "Account"))
+                        {
+                            <input type="submit" class="dropdown-item btn-hover" value="Log out" />
+                        }
+                    </div>
+                </li>
+            }
+            else if (User.Identity.IsAuthenticated && User.IsInRole("owner"))
+            {
+                <li class="nav-item dropdown ml-auto">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Owner Account
+                    </a>
+                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/user/beers">My Taplist</a>
+                        <a class="dropdown-item" href="/user/profile">My Profile</a>
+                        @using (Html.BeginForm("LogOff", "Account"))
+                        {
+                            <input type="submit" class="dropdown-item btn-hover" value="Log out" />
+                        }
+                    </div>
+                </li>
+            }
+            else
+            {
+                <li class="nav-item">
+                    <a class="nav-link" href="/signup">Sign Up</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Log In</a>
+                </li>
+            }
+        </ul>
     </div>
 </nav>
