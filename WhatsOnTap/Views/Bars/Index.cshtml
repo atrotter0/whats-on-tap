@@ -53,16 +53,18 @@
                 <div class="card-body">
                     <h4 class="card-title"><a href="/bars/@bar.BarId">@bar.BarName</a></h4>
                     <div class="card-insides">
-                        <div class="address-icon"><img class="card-icons" src="~/img/address.png" alt="Address Icon"></div>
-                        <div class="address-text">@bar.BarStreet, @bar.BarCity, @bar.BarState @bar.BarZip</div>
+                        <i class="fas fa-map-marker-alt fa-2x"></i>
+                        <div class="bar-address-info">
+                            <span> &nbsp;&nbsp;@bar.BarStreet, @bar.BarCity, @bar.BarState @bar.BarZip</span>
+                        </div>
                     </div>
                     <div class="card-insides">
-                        <img class="card-icons" src="~/img/telephone.png" alt="Phone Icon">
-                        <span>@bar.BarPhone</span>
+                        <i class="fas fa-phone fa-2x"></i>
+                        <span> &nbsp;&nbsp;&nbsp;@bar.BarPhone</span>
                     </div>
                     <div class="card-insides">
-                        <img class="card-icons" src="~/img/web.png" alt="Website Icon">
-                        <span><a href="@bar.BarWebsite" target="_blank">@bar.BarName Site</a></span>
+                        <i class="fas fa-globe card-icons fa-2x"></i>
+                        <span><a href="@bar.BarWebsite" target="_blank"> &nbsp;&nbsp;@bar.BarName Site</a></span>
                     </div>
                 </div>
                 <div class="card-footer">

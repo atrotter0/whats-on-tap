@@ -37,6 +37,7 @@
 
 .card-insides {
   margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .rating-text {
@@ -306,5 +307,14 @@ input[type="radio"]:hover, .radio-with-height:hover {
 .card-header {
   background-color: white;
   margin-bottom: -5%;
+}
+
+.bar-address-info {
+  display: inline;
+  margin-left: 10px;
+}
+
+.fa-map-marker-alt {
+  display: inline;
 }
 
