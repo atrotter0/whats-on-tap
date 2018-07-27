@@ -13,12 +13,13 @@ What's On Tap is a web application that displays the different bars in the Portl
 * As a user, I am able to make an account and choose between being a regular user or an owner.
 * As a user, I am able to see the bars and beers in the Portland area.
 * As a user, I am able to add beers to my favorite list.
+* As a user, I am able to remove beers from my favorite list.
 * As a user, I am able to filter bars and beers by specific categories (rating, neighborhood, etc.)
 * As a user, I am able to see the details of the bars and beers.
 * As a user, I am able to see where a bar is on a map view.
-* As an owner, I am able to add beers and bars to the program.
-* As an owner, I am able to edit the information of the bars and beers.
-* As an owner, I am able to delete bars and beers.
+* As an owner, I am able to edit the information of my bar, and add beers to my taplist.
+* As an owner, I am able to remove beers from my taplist.
+* As an admin, I am able to create, edit, and delete bars and beers.
 
 
 ## Setup on OSX
@@ -56,11 +57,10 @@ What's On Tap is a web application that displays the different bars in the Portl
 
 ## Links
 
-* [Github Repo] ()
-* [Heroku] ()
+* [Github Repo] (https://github.com/atrotter0/whats-on-tap)
 
 ## License
 
 This software is licensed under the MIT license.
 
-Copyright (c) 2018 **Dream Team**
+Copyright (c) 2018 **Abel Trotter, Elly Maimon, Kevin Ahn and Ryan Murry**
