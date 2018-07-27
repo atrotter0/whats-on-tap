@@ -36,6 +36,24 @@ What's On Tap is a web application that displays the different bars in the Portl
 * Run `dotnet run` to start the server
 * Alternatively, run `dotnet watch run` to start the server with the watcher tool
 
+## Setting up User Roles
+
+* You will need to run the following SQL script in MySQL to insert the authorization roles into your database:
+
+```
+INSERT INTO `AspNetRoles` (`Id`, `ConcurrencyStamp`, `Name`, `NormalizedName`) VALUES ('1', NULL, 'admin', 'admin'), ('2', NULL, 'owner', 'owner'), ('3', NULL, 'user', 'user');
+```
+
+## Creating an Admin Account
+
+* In order to create an admin, sign up through the application interface for a user account, and then manually set the `RoleId` to `1` in the `AspNetUserRoles` table for the given user.
+
+This can be done through phpMyAdmin, or with the following SQL if you know the `UserId` and the `RoleId` of the account you would like to modify:
+
+```
+UPDATE `AspNetUserRoles` SET `RoleId` = '1' WHERE `AspNetUserRoles`.`UserId` = '<user ID here>' AND `AspNetUserRoles`.`RoleId` = '<role ID here>';
+```
+
 ## Contribution Requirements
 
 1. Clone the repo
