@@ -5,90 +5,89 @@
   var itemCount = 1;
 }
 
+
 <div class="container">
     <form action="/bars/new" method="post">
-        <h1>Enter a new Bar:</h1>
-        <div class="input-group input-group-sm mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-sm">Bar Name</span>
-            </div>
-            <input type="text" name="BarName" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required>
-
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-sm">Rating</span>
-            </div>
-            <input type="text" name="BarRating" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required>
-
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-sm">Website</span>
-            </div>
-            <input type="text" name="BarWebsite" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required>
-
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-sm">Street Address</span>
-            </div>
-            <input type="text" name="BarStreet" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required>
-
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-sm">City</span>
-            </div>
-            <input type="text" name="BarCity" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required>
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-sm">State</span>
-            </div>
-            <input type="text" name="BarState" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required>
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-sm">Zip</span>
-            </div>
-            <input type="text" name="BarZip" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required>
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-sm">Phone number</span>
-            </div>
-            <input type="text" name="BarPhone" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required>
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-sm">Latitude</span>
-            </div>
-            <input type="text" name="BarLatitude" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required>
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-sm">Longitude</span>
-            </div>
-            <input type="text" name="BarLongitude" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required>
-            <select name="BarNeighborhood">
-              <option value="SouthWest Portland">SouthWest Portland</option>
-              <option value="SouthEast Portland">SouthEast Portland</option>
-              <option value="NorthEast Portland">NorthEast Portland</option>
-              <option value="North Portland">North Portland</option>
-              <option value="NorthWest Portland">NorthWest Portland</option>
-              <option value="Beaverton">Beaverton</option>
-              <option value="Vancouver">Vancouver</option>
-              <option value="Downtown Portland">Downtown Portland</option>
-            </select>
+        <h2 class="form-header">Add New Bar</h1>
+        <div class="form-model">
+            <hr>
         </div>
-        <h2>Which beer does this bar serve?</h2>
-        @foreach (var beer in Model)
-        {
-            @if (itemCount == 1)
-            {
-                @Html.Raw("<div class='card-deck'>")
-            }
-            <div class="card">
-
-                <img class="card-img-top" src="~/img/beer-icon.jpg" alt="Card image cap" for="beerId">
-                <div class="card-body" for="beerId">
-                    <h4 class="card-title">@beer.BeerName</h4>
+        <div class="row update-row">
+            <div class="col">
+                <h3 class="update-subheader">Bar Details</h3>
+                <div class="form-group">
+                    <label for="BarName">Bar Name </label>
+                    <input name="BarName" type="text" class="form-control" required>
                 </div>
-                <input type="checkbox" name="beerId" value="@beer.BeerId">
+                <div class="form-group">
+                    <label for="BarNeighborhood">Rating </label>
+                    <select class="form-control" name="BarRating">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="BarWebsite">Website </label>
+                    <input name="BarWebsite" type="text" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="BarStreet">Street Address </label>
+                    <input name="BarStreet" type="text" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="BarCity">City </label>
+                    <input name="BarCity" type="text" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="BarState">State </label>
+                    <input name="BarState" type="text" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="BarZip">Zip </label>
+                    <input name="BarZip" type="text" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="BarPhone">Phone Number </label>
+                    <input name="BarPhone" type="text" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="BarLatitude">Latitude </label>
+                    <input name="BarLatitude" type="text" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="BarLongitude">Longitude </label>
+                    <input name="BarLongitude" type="text" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="BarNeighborhood">Bar Neighborhood </label>
+                    <select class="form-control" name="BarNeighborhood">
+                        <option value="SouthWest Portland">SouthWest Portland</option>
+                        <option value="SouthEast Portland">SouthEast Portland</option>
+                        <option value="NorthEast Portland">NorthEast Portland</option>
+                        <option value="North Portland">North Portland</option>
+                        <option value="NorthWest Portland">NorthWest Portland</option>
+                        <option value="Beaverton">Beaverton</option>
+                        <option value="Vancouver">Vancouver</option>
+                        <option value="Downtown Portland">Downtown Portland</option>
+                    </select>
+                </div>
             </div>
-
-            @if (itemCount == 3)
-            {
-                @Html.Raw("</div>")
-                itemCount = 1;
-            }
-            else {
-                itemCount++;
-            }
-        }
-        <button class="submitForm" type="submit">Submit</button>
+            <div class="col">
+                <h3 class="update-subheader">Beers On Tap</h3>
+                <ul class="list-group list-group-flush available-at-list">
+                    @foreach (var beer in Model)
+                    {
+                        <li class="list-group-item"><input type="checkbox" name="beerId" value="@beer.BeerId"> &nbsp;@beer.BeerName</li>
+                    }
+                </ul>
+            </div>
+        </div>
+        <div class="reg-buttons">
+            <a href="/bars" class="btn btn-lg btn-outline-warning cancel-button">Cancel</a>
+            <button type="submit" class="btn btn-lg btn-outline-primary">Submit</button> 
+        </div>
     </form>
 </div>
