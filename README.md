@@ -38,7 +38,7 @@ What's On Tap is a web application that displays the different bars in the Portl
 
 ## Setting up User Roles
 
-* You will need to run the following SQL script in MySQL to insert the authorization roles into your database:
+You will need to run the following SQL script in MySQL to insert the authorization roles into your database:
 
 ```
 INSERT INTO `AspNetRoles` (`Id`, `ConcurrencyStamp`, `Name`, `NormalizedName`) VALUES ('1', NULL, 'admin', 'admin'), ('2', NULL, 'owner', 'owner'), ('3', NULL, 'user', 'user');
@@ -46,7 +46,7 @@ INSERT INTO `AspNetRoles` (`Id`, `ConcurrencyStamp`, `Name`, `NormalizedName`) V
 
 ## Creating an Admin Account
 
-* In order to create an admin, sign up through the application interface for a user account, and then manually set the `RoleId` to `1` in the `AspNetUserRoles` table for the given user.
+In order to create an admin, sign up through the application interface for a user account, and then manually set the `RoleId` to `1` in the `AspNetUserRoles` table for the given user.
 
 This can be done through phpMyAdmin, or with the following SQL if you know the `UserId` and the `RoleId` of the account you would like to modify:
 
