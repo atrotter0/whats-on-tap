@@ -20,8 +20,7 @@ namespace WhatsOnTap
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
-                .AddEnvironmentVariables()
-                .AddJsonFile("appsettings.json");
+                .AddEnvironmentVariables();
             Configuration = builder.Build();
         }
 
