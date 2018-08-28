@@ -14,11 +14,6 @@ namespace WhatsOnTap.Models
         public virtual DbSet<Taplist> Taplists { get; set; }
         public virtual DbSet<UserBeer> UsersBeers { get; set; }
 
-        public WhatsOnTapContext(DbContextOptions options) : base(options)
-        {
-
-        }
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseNpgsql(@"User ID=" + System.Environment.GetEnvironmentVariable("DATABASE_USER") +
