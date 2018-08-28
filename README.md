@@ -6,7 +6,7 @@
 
 ## Description
 
-What's On Tap is a web application that displays the different bars in the Portland Metro area and the various beers that are on tap. Users can now see which bars are serving which beers without having to go to the bar. What's on Tap also allows users to maintain a list of their favorite beers, making it easier to find and save your favorite drinks.
+What's On Tap is a web application that displays the different bars in the Portland Metro area and the various beers that are on tap. Users can now see which bars are serving which beers without having to go to the bar. What's on Tap also allows users to maintain a list of their favorite beers, making it easier to find and save your favorite drinks!
 
 ## User Stories
 
