@@ -20,8 +20,7 @@ namespace WhatsOnTap.Models
             optionsBuilder.UseMySql(@"Server=" + System.Environment.GetEnvironmentVariable("DATABASE_SERVER") +
                                         ";Port=" + System.Environment.GetEnvironmentVariable("DATABASE_PORT") +
                                         ";uid=" + System.Environment.GetEnvironmentVariable("DATABASE_USER") +
-                                        ";pwd=" + System.Environment.GetEnvironmentVariable("DATABASE_PASSWORD") +
-                                        ";Pooling=true;Use SSL Stream=True;SSL Mode=Require;TrustServerCertificate=True;"
+                                        ";pwd=" + System.Environment.GetEnvironmentVariable("DATABASE_PASSWORD")
                                     );
         }
 
