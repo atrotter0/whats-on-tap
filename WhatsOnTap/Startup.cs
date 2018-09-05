@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Pomelo.EntityFrameworkCore.MySql;
 using WhatsOnTap.Models;
 
 namespace WhatsOnTap
@@ -19,8 +20,7 @@ namespace WhatsOnTap
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
-                .AddEnvironmentVariables()
-                .AddJsonFile("appsettings.json");
+                .AddEnvironmentVariables();
             Configuration = builder.Build();
         }
 
@@ -28,11 +28,12 @@ namespace WhatsOnTap
 
         public void ConfigureServices(IServiceCollection services)
         {
+            var connectionString = Configuration.GetConnectionString("WhatsOnTapContext");
+            services.AddEntityFrameworkMySql()
+                    .AddDbContext<WhatsOnTapContext>(options => options.UseMySql(connectionString));
+
             services.AddMvc();
 
-            services.AddEntityFrameworkMySql()
-                    .AddDbContext<WhatsOnTapContext>(options => options.UseMySql(Configuration["ConnectionStrings:DefaultConnection"]));
-            
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<WhatsOnTapContext>()
                 .AddDefaultTokenProviders();
@@ -59,8 +60,9 @@ namespace WhatsOnTap
             });
         }
 
-        public void Configure(IApplicationBuilder app)
+        public void Configure(IApplicationBuilder app, WhatsOnTapContext db)
         {
+            db.Database.Migrate();
             app.UseStaticFiles();
             app.UseDeveloperExceptionPage();
             app.UseIdentity();
