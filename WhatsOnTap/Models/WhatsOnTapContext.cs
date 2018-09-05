@@ -14,9 +14,15 @@ namespace WhatsOnTap.Models
         public virtual DbSet<Taplist> Taplists { get; set; }
         public virtual DbSet<UserBeer> UsersBeers { get; set; }
 
-        public WhatsOnTapContext(DbContextOptions options) : base(options)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-
+            optionsBuilder.UseNpgsql(@"User ID=" + System.Environment.GetEnvironmentVariable("DATABASE_USER") +
+                                        ";Password=" + System.Environment.GetEnvironmentVariable("DATABASE_PASSWORD") +
+                                        ";Host=" + System.Environment.GetEnvironmentVariable("DATABASE_HOST") +
+                                        ";Port=" + System.Environment.GetEnvironmentVariable("DATABASE_PORT") +
+                                        ";Database=" + System.Environment.GetEnvironmentVariable("DATABASE_NAME") +
+                                        ";Pooling=true;Use SSL Stream=True;SSL Mode=Require;TrustServerCertificate=True;"
+                                    );
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
