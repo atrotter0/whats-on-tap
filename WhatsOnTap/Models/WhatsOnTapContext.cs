@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Pomelo.EntityFrameworkCore.MySql;
 
 namespace WhatsOnTap.Models
 {
@@ -14,9 +15,14 @@ namespace WhatsOnTap.Models
         public virtual DbSet<Taplist> Taplists { get; set; }
         public virtual DbSet<UserBeer> UsersBeers { get; set; }
 
-        public WhatsOnTapContext(DbContextOptions options) : base(options)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-
+            optionsBuilder.UseMySql(@"Server=" + System.Environment.GetEnvironmentVariable("DATABASE_SERVER") +
+                                        ";Port=" + System.Environment.GetEnvironmentVariable("DATABASE_PORT") +
+                                        ";Database=" + System.Environment.GetEnvironmentVariable("DATABASE_NAME") +
+                                        ";uid=" + System.Environment.GetEnvironmentVariable("DATABASE_USER") +
+                                        ";pwd=" + System.Environment.GetEnvironmentVariable("DATABASE_PASSWORD")
+                                    );
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
