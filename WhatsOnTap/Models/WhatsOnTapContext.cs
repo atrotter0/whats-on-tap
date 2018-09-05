@@ -17,13 +17,12 @@ namespace WhatsOnTap.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql(@System.Environment.GetEnvironmentVariable("CLEARDB_DATABASE_URL"));
-            // optionsBuilder.UseMySql(@"Server=" + System.Environment.GetEnvironmentVariable("DATABASE_SERVER") +
-            //                             ";Port=" + System.Environment.GetEnvironmentVariable("DATABASE_PORT") +
-            //                             ";uid=" + System.Environment.GetEnvironmentVariable("DATABASE_USER") +
-            //                             ";pwd=" + System.Environment.GetEnvironmentVariable("DATABASE_PASSWORD") +
-            //                             ";Pooling=true;Use SSL Stream=True;SSL Mode=Require;TrustServerCertificate=True;"
-            //                         );
+            optionsBuilder.UseMySql(@"Server=" + System.Environment.GetEnvironmentVariable("DATABASE_SERVER") +
+                                        ";Port=" + System.Environment.GetEnvironmentVariable("DATABASE_PORT") +
+                                        ";uid=" + System.Environment.GetEnvironmentVariable("DATABASE_USER") +
+                                        ";pwd=" + System.Environment.GetEnvironmentVariable("DATABASE_PASSWORD") +
+                                        ";Pooling=true;Use SSL Stream=True;SSL Mode=Require;TrustServerCertificate=True;"
+                                    );
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
